@@ -6,10 +6,10 @@ import rateLimit from "express-rate-limit";
 import { Server as SocketIO } from "socket.io";
 
 
-import { SecurityManager } from './webshell/SecurityManager.js';
-import { AuthManager } from './webshell/AuthManager.js';
-import { SessionManager } from './webshell/SessionManager.js';
-import { CommandExecutor } from './webshell/CommandExecution.js';
+import { SecurityManager } from './webshell-server-things/SecurityManager.js';
+import { AuthManager } from './webshell-server-things/AuthManager.js';
+import { SessionManager } from './webshell-server-things/SessionManager.js';
+import { CommandExecutor } from './webshell-server-things/CommandExecution.js';
 
 
 
