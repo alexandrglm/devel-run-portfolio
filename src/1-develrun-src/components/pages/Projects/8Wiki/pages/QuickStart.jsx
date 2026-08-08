@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const QuickStart = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Quick Start</h1>
 
       <p>
@@ -107,39 +107,39 @@ traceroute -i wg_home openwrt.org`}</code>
       <p>Try the commands above in the terminal below to see how they work:</p>
 
       <WikiCommandDemo
-        title="Interactive Quick Start Demo"
-        commands={[
-        'help',
-        'list',
-        'test home',
-        'setup home',
-        'up wg_home',
-        'status',
-        'routes set wg_home lan3',
-        'routes show']
-        }
-        initialOutput={[
-        {
-          type: 'system',
-          content: [
-          '==================================================',
-          'wg-autoconf Interactive Demo - Quick Start',
-          '==================================================',
-          'Try these commands to learn wg-autoconf:',
-          '  help          - Show available commands',
-          '  list          - List available .conf files',
-          '  test home     - Test configuration',
-          '  setup home    - Create interface',
-          '  up wg_home    - Activate interface',
-          '  status        - Check interface status',
-          '  routes set    - Route LAN through VPN',
-          '',
-          'Ready for your command.',
-          '']
+      title="Interactive Quick Start Demo"
+      commands={[
+      'help',
+      'list',
+      'test home',
+      'setup home',
+      'up wg_home',
+      'status',
+      'routes set wg_home lan3',
+      'routes show']}
 
-        }]
-        } />
-      
+      initialOutput={[
+      {
+        type: 'system',
+        content: [
+        '==================================================',
+        'wg-autoconf Interactive Demo - Quick Start',
+        '==================================================',
+        'Try these commands to learn wg-autoconf:',
+        '  help          - Show available commands',
+        '  list          - List available .conf files',
+        '  test home     - Test configuration',
+        '  setup home    - Create interface',
+        '  up wg_home    - Activate interface',
+        '  status        - Check interface status',
+        '  routes set    - Route LAN through VPN',
+        '',
+        'Ready for your command.',
+        '']
+
+      }]} />
+
+
 
       <div className="wiki-navigation-links">
         <Link to="/wiki/installation" className="nav-link prev">

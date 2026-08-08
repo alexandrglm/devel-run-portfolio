@@ -68,13 +68,13 @@ const ShaderTres = ({ style = {} }) => {
   const { scene, camera, renderer } = useMemo(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(
-      window.innerWidth / -2,
-      window.innerWidth / 2,
-      window.innerHeight / 2,
-      window.innerHeight / -2,
-      0.1,
-      1000
-    );
+    window.innerWidth / -2,
+    window.innerWidth / 2,
+    window.innerHeight / 2,
+    window.innerHeight / -2,
+    0.1,
+    1000);
+
     camera.position.z = 500;
 
     const renderer = new THREE.WebGLRenderer({
@@ -162,10 +162,10 @@ const ShaderTres = ({ style = {} }) => {
             for (let i = 0; i < edgePositions.length; i += 3) {
 
               pointPositions.push(
-                edgePositions[i] + (Math.random() - 0.5) * 0.3,
-                edgePositions[i + 1] + (Math.random() - 0.5) * 0.3,
-                edgePositions[i + 2] || 0
-              );
+              edgePositions[i] + (Math.random() - 0.5) * 0.3,
+              edgePositions[i + 1] + (Math.random() - 0.5) * 0.3,
+              edgePositions[i + 2] || 0);
+
 
               sizes.push(CONFIG.blurSize * (0.3 + Math.random() * 0.7));
             }
@@ -181,10 +181,10 @@ const ShaderTres = ({ style = {} }) => {
 
               if (Math.random() > 0.5) {
                 finalPositions.push(
-                  pointPositions[i] + (Math.random() - 0.5) * 2,
-                  pointPositions[i + 1] + (Math.random() - 0.5) * 2,
-                  pointPositions[i + 2]
-                );
+                pointPositions[i] + (Math.random() - 0.5) * 2,
+                pointPositions[i + 1] + (Math.random() - 0.5) * 2,
+                pointPositions[i + 2]);
+
                 finalSizes.push(sizes[i / 3] * 0.8);
               }
             }

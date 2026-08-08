@@ -38,9 +38,9 @@ const WikiCommandDemo = ({
     const input = document.querySelector('.mock-shell-container .terminal-input');
     if (input) {
       const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-        window.HTMLInputElement.prototype,
-        'value'
-      ).set;
+      window.HTMLInputElement.prototype,
+      'value').
+      set;
       nativeInputValueSetter.call(input, cmd);
 
       input.dispatchEvent(new Event('input', { bubbles: true }));
@@ -77,24 +77,24 @@ const WikiCommandDemo = ({
             <span className="quick-label">Quick commands:</span>
             {quickCommands.map((cmd, idx) =>
           <button
-            key={idx}
-            className="quick-command-btn"
-            onClick={() => handleQuickCommand(cmd)}>
-            
+          key={idx}
+          className="quick-command-btn"
+          onClick={() => handleQuickCommand(cmd)}>
+
                 <code>{cmd}</code>
-              </button>
-          )}
+              </button>)}
+
           </div>
 
           <div className="demo-terminal-wrapper">
             <MockShell
-            mockData={MOCK_SHELL_DATA}
-            initialOutput={initialOutput}
-            commandHistoryKey="wiki_demo_history" />
-          
+          mockData={MOCK_SHELL_DATA}
+          initialOutput={initialOutput}
+          commandHistoryKey="wiki_demo_history" />
+
           </div>
-        </div>
-      }
+        </div>}
+
     </div>);
 
 };

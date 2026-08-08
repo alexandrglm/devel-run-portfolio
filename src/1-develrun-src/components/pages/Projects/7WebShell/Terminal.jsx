@@ -135,36 +135,36 @@ const Terminal = ({ className = '', isStandalone = false }) => {
       <div className="terminal-container" onClick={handleWebshellFocus}>
     
         <TerminalHeader
-          isConnected={isConnected}
-          onLogout={() => {socket?.disconnect();logout();}}
-          currentDirectory={currentDirectory}
-          socket={socket}
-          executeCommand={executeCommand}
-          setShowAuthForm={setShowAuthForm} />
-        
+        isConnected={isConnected}
+        onLogout={() => {socket?.disconnect();logout();}}
+        currentDirectory={currentDirectory}
+        socket={socket}
+        executeCommand={executeCommand}
+        setShowAuthForm={setShowAuthForm} />
+
         
         <div className="terminal-body" ref={outputRef}>
     
           <TerminalOutput
-            output={output}
-            isExecuting={isExecuting}
-            isWaitingForInput={isWaitingForInput}
-            outputRef={outputRef} />
-          
+          output={output}
+          isExecuting={isExecuting}
+          isWaitingForInput={isWaitingForInput}
+          outputRef={outputRef} />
+
           
           <TerminalInput
-            currentCommand={currentCommand}
-            setCurrentCommand={setCurrentCommand}
-            onExecuteCommand={executeCommand}
-            onNavigateHistory={navigateHistory}
-            isExecuting={isExecuting}
-            isWaitingForInput={isWaitingForInput}
-            isPtyActive={isPtyActive}
-            isAuthenticated={isAuthenticated || guestMode}
-            terminalInputRef={terminalInputRef}
-            socket={socket}
-            disabled={showAuthForm} />
-          
+          currentCommand={currentCommand}
+          setCurrentCommand={setCurrentCommand}
+          onExecuteCommand={executeCommand}
+          onNavigateHistory={navigateHistory}
+          isExecuting={isExecuting}
+          isWaitingForInput={isWaitingForInput}
+          isPtyActive={isPtyActive}
+          isAuthenticated={isAuthenticated || guestMode}
+          terminalInputRef={terminalInputRef}
+          socket={socket}
+          disabled={showAuthForm} />
+
     
         </div>
 
@@ -178,16 +178,16 @@ const Terminal = ({ className = '', isStandalone = false }) => {
             
             <div className="auth-overlay" onClick={() => setShowAuthForm(false)}></div>
             <AuthForm
-            onAuthenticate={authenticate}
-            isAuthenticating={isAuthenticating}
-            authError={authError}
-            remainingAttempts={remainingAttempts}
-            isLockedOut={isLockedOut}
-            isConnected={isConnected}
-            onBack={() => setShowAuthForm(false)} />
-          
-          </div>
-        }
+          onAuthenticate={authenticate}
+          isAuthenticating={isAuthenticating}
+          authError={authError}
+          remainingAttempts={remainingAttempts}
+          isLockedOut={isLockedOut}
+          isConnected={isConnected}
+          onBack={() => setShowAuthForm(false)} />
+
+          </div>}
+
 
 
         {}
@@ -209,20 +209,20 @@ const Terminal = ({ className = '', isStandalone = false }) => {
           
           
               <button
-              type="button"
-              onClick={() => {
-                setShowReconnectModal(false);
-                connect();
-              }}
-              className="auth-button">
-              
+            type="button"
+            onClick={() => {
+              setShowReconnectModal(false);
+              connect();
+            }}
+            className="auth-button">
+
                 Sign In Again
               </button>
           
             </div>
           
-          </div>
-        }
+          </div>}
+
 
 
         

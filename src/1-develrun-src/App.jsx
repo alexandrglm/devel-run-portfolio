@@ -57,13 +57,13 @@ function App() {
           <Route path="/login" element={<Login isLoading={isLoading} />} />
         
           <Route
-            path="/admin"
-            element={
-            <Protected>
+          path="/admin"
+          element={
+          <Protected>
                 <Index isLoading={isLoading} />
-              </Protected>
-            } />
-          
+              </Protected>} />
+
+
 
           <Route path="/webshell/launcher" element={<WebshellLauncher isLoading={isLoading} />} />
           <Route path="/webshell" element={<AppWebshell isLoading={isLoading} />} />

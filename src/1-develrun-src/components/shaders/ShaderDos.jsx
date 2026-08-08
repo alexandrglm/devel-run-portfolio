@@ -9,11 +9,11 @@ const ShaderDos = ({ style = {} }) => {
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000);
+
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio || 1);

@@ -8,166 +8,166 @@ axios.defaults.withCredentials = true;
 
 
 export const fetchWikiPages = createAsyncThunk(
-  'wiki/fetchPages',
-  async (_, { dispatch, rejectWithValue }) => {
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.get('/api/wiki');
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/fetchPages',
+async (_, { dispatch, rejectWithValue }) => {
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.get('/api/wiki');
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
   }
-);
+});
+
 
 
 export const fetchAdminWikiPages = createAsyncThunk(
-  'wiki/fetchAdmin',
-  async (_, { dispatch, rejectWithValue }) => {
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.get('/api/wiki/admin');
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/fetchAdmin',
+async (_, { dispatch, rejectWithValue }) => {
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.get('/api/wiki/admin');
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
   }
-);
+});
+
 
 
 export const fetchWikiPageBySlug = createAsyncThunk(
-  'wiki/fetchBySlug',
-  async (slug, { dispatch, rejectWithValue }) => {
-    if (!slug) {
-      return rejectWithValue('Slug is required');
-    }
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.get(`/api/wiki/slug/${encodeURIComponent(slug)}`);
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/fetchBySlug',
+async (slug, { dispatch, rejectWithValue }) => {
+  if (!slug) {
+    return rejectWithValue('Slug is required');
   }
-);
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.get(`/api/wiki/slug/${encodeURIComponent(slug)}`);
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
 
 
 export const fetchWikiPageById = createAsyncThunk(
-  'wiki/fetchById',
-  async (id, { dispatch, rejectWithValue }) => {
-    if (!id) {
-      return rejectWithValue('ID is required');
-    }
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.get(`/api/wiki/${id}`);
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/fetchById',
+async (id, { dispatch, rejectWithValue }) => {
+  if (!id) {
+    return rejectWithValue('ID is required');
   }
-);
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.get(`/api/wiki/${id}`);
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
 
 
 export const createWikiPage = createAsyncThunk(
-  'wiki/create',
-  async (pageData, { dispatch, rejectWithValue }) => {
-    if (!pageData || !pageData.title) {
-      return rejectWithValue('Title is required');
-    }
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.post('/api/wiki', pageData);
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/create',
+async (pageData, { dispatch, rejectWithValue }) => {
+  if (!pageData || !pageData.title) {
+    return rejectWithValue('Title is required');
   }
-);
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.post('/api/wiki', pageData);
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
 
 
 export const updateWikiPage = createAsyncThunk(
-  'wiki/update',
-  async ({ id, data }, { dispatch, rejectWithValue }) => {
-    if (!id) {
-      return rejectWithValue('ID is required for update');
-    }
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.put(`/api/wiki/${id}`, data);
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/update',
+async ({ id, data }, { dispatch, rejectWithValue }) => {
+  if (!id) {
+    return rejectWithValue('ID is required for update');
   }
-);
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.put(`/api/wiki/${id}`, data);
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
 
 
 export const deleteWikiPage = createAsyncThunk(
-  'wiki/delete',
-  async (id, { dispatch, rejectWithValue }) => {
-    if (!id) {
-      return rejectWithValue('ID is required for deletion');
-    }
-    dispatch(setIsLoading(true));
-    try {
-      await axios.delete(`/api/wiki/${id}`);
-      dispatch(setIsLoading(false));
-      return id;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/delete',
+async (id, { dispatch, rejectWithValue }) => {
+  if (!id) {
+    return rejectWithValue('ID is required for deletion');
   }
-);
+  dispatch(setIsLoading(true));
+  try {
+    await axios.delete(`/api/wiki/${id}`);
+    dispatch(setIsLoading(false));
+    return id;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
 
 
 export const fetchWikiTree = createAsyncThunk(
-  'wiki/fetchTree',
-  async (rootId = null, { dispatch, rejectWithValue }) => {
-    dispatch(setIsLoading(true));
-    try {
-      const url = rootId ? `/api/wiki/tree/${rootId}` : '/api/wiki/tree';
-      const res = await axios.get(url);
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/fetchTree',
+async (rootId = null, { dispatch, rejectWithValue }) => {
+  dispatch(setIsLoading(true));
+  try {
+    const url = rootId ? `/api/wiki/tree/${rootId}` : '/api/wiki/tree';
+    const res = await axios.get(url);
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
   }
-);
+});
+
 
 
 export const searchWiki = createAsyncThunk(
-  'wiki/search',
-  async (query, { dispatch, rejectWithValue }) => {
-    if (!query || query.trim().length < 2) {
-      return rejectWithValue('Search query must be at least 2 characters');
-    }
-    dispatch(setIsLoading(true));
-    try {
-      const res = await axios.get(`/api/wiki/search/${encodeURIComponent(query.trim())}`);
-      dispatch(setIsLoading(false));
-      return res.data;
-    } catch (err) {
-      dispatch(setIsLoading(false));
-      return rejectWithValue(err.response?.data?.error || err.message);
-    }
+'wiki/search',
+async (query, { dispatch, rejectWithValue }) => {
+  if (!query || query.trim().length < 2) {
+    return rejectWithValue('Search query must be at least 2 characters');
   }
-);
+  dispatch(setIsLoading(true));
+  try {
+    const res = await axios.get(`/api/wiki/search/${encodeURIComponent(query.trim())}`);
+    dispatch(setIsLoading(false));
+    return res.data;
+  } catch (err) {
+    dispatch(setIsLoading(false));
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
 
 
 

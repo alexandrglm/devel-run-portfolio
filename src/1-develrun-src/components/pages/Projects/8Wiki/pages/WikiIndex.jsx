@@ -49,11 +49,11 @@ const WikiIndex = ({ structure }) => {
 
   return (
     <motion.div
-      className="wiki-page-content wiki-index-page"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content wiki-index-page"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>📚 wg-autoconf Documentation</h1>
       <p className="wiki-subtitle">
         Complete technical documentation for wg-autoconf - WireGuard Auto-Configuration Tool for OpenWrt
@@ -62,11 +62,11 @@ const WikiIndex = ({ structure }) => {
       <div className="wiki-index-grid">
         {sections.map((section, index) =>
         <motion.div
-          key={section.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}>
-          
+        key={section.id}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}>
+
             <Link to={section.path} className="wiki-index-card">
               <div className="card-icon" style={{ color: section.color }}>
                 {section.icon}
@@ -74,8 +74,8 @@ const WikiIndex = ({ structure }) => {
               <h3>{section.title}</h3>
               <p>{section.description}</p>
             </Link>
-          </motion.div>
-        )}
+          </motion.div>)}
+
       </div>
 
       <div className="wiki-quick-links">

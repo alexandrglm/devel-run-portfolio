@@ -148,8 +148,8 @@ const AppMenu = ({
         break;
 
       default:
-        console.log(`[DEBUG APPMENU] ${action}`, value);
-    }
+        console.log(`[DEBUG APPMENU] ${action}`, value);}
+
     onClose();
   };
 
@@ -202,23 +202,23 @@ const AppMenu = ({
     return (
 
       <div
-        key={item.id}
+      key={item.id}
 
-        className={`app-menu-item ${isActive ? 'active' : ''} ${isSubmenu ? 'has-submenu' : ''}`}
+      className={`app-menu-item ${isActive ? 'active' : ''} ${isSubmenu ? 'has-submenu' : ''}`}
 
-        onClick={() => {
-          if (!isSubmenu && item.action) {
-            handleAction(item.action, item.value);
-            if (isSubmenuItem) closeSubmenu();
-          }
-        }}
+      onClick={() => {
+        if (!isSubmenu && item.action) {
+          handleAction(item.action, item.value);
+          if (isSubmenuItem) closeSubmenu();
+        }
+      }}
 
-        onMouseEnter={(e) => {
-          if (!isSubmenuItem) {
-            handleSubmenuHover(item, e);
-          }
-        }}>
-        
+      onMouseEnter={(e) => {
+        if (!isSubmenuItem) {
+          handleSubmenuHover(item, e);
+        }
+      }}>
+
     
         <span className="menu-label">{item.label}</span>
         {}
@@ -237,18 +237,18 @@ const AppMenu = ({
     return (
 
       <div
-        className="app-submenu"
+      className="app-submenu"
 
-        style={{
-          position: 'fixed',
-          top: submenuPosition.top,
-          left: submenuPosition.left,
-          zIndex: 1001
-        }}
+      style={{
+        position: 'fixed',
+        top: submenuPosition.top,
+        left: submenuPosition.left,
+        zIndex: 1001
+      }}
 
 
-        onMouseLeave={closeSubmenu}>
-        
+      onMouseLeave={closeSubmenu}>
+
         {submenu.items.map((item) => renderMenuItem(item, true))}
       </div>);
 

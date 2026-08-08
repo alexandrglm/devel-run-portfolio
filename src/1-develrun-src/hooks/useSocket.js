@@ -1,8 +1,26 @@
+
 import { useState, useEffect, useRef, useCallback } from 'react';
 import io from 'socket.io-client';
 
+
+const getSocketURL = () => {
+  const baseUrl = import.meta.env.VITE_SHELL_URI || window.location.origin;
+
+
+  if (baseUrl.startsWith('https://') && !baseUrl.includes(':')) {
+    return `${baseUrl}:3001`;
+  }
+
+
+  if (baseUrl.startsWith('http://') && !baseUrl.includes(':')) {
+    return `${baseUrl}:3001`;
+  }
+
+  return baseUrl;
+};
+
 const SOCKET_CONFIG = {
-  url: import.meta.env.VITE_SHELL_URI || window.location.origin,
+  url: getSocketURL(),
   options: {
     autoConnect: false,
     transports: ['websocket', 'polling']
@@ -10,6 +28,7 @@ const SOCKET_CONFIG = {
 };
 
 export const useSocket = () => {
+
   const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [connectionError, setConnectionError] = useState(null);

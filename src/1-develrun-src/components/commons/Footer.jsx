@@ -38,11 +38,11 @@ const Footer = () => {
     <footer className={`footer ${!isVisible ? 'footer--hidden' : ''}`}>
       <div className="footer-content">
         <a
-          href="https://github.com/alexandrglm"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer-github">
-          
+        href="https://github.com/alexandrglm"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="footer-github">
+
           Built by <Icons icon={faGithub} /> @alexandrglm
         </a>
       </div>

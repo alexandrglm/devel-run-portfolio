@@ -100,24 +100,24 @@ const TerminalInput = ({
           <span className="prompt-path">~</span>
           <span className="prompt-symbol">$</span>
       
-        </div>
-      }
+        </div>}
+
 
       <input
 
-        ref={terminalInputRef}
-        type="text"
-        value={currentCommand}
-        onChange={(e) => setCurrentCommand(e.target.value)}
-        onKeyPress={handleKeyPress}
-        onKeyDown={handleKeyDown}
-        className="terminal-input"
-        disabled={disabled}
-        autoComplete="off"
-        spellCheck="false"
-        placeholder={isExecuting ? 'Executing ...' : isWaitingForInput ? '' : ''} />
+      ref={terminalInputRef}
+      type="text"
+      value={currentCommand}
+      onChange={(e) => setCurrentCommand(e.target.value)}
+      onKeyPress={handleKeyPress}
+      onKeyDown={handleKeyDown}
+      className="terminal-input"
+      disabled={disabled}
+      autoComplete="off"
+      spellCheck="false"
+      placeholder={isExecuting ? 'Executing ...' : isWaitingForInput ? '' : ''} />
 
-      
+
     
     </div>);
 

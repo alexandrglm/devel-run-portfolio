@@ -4,9 +4,9 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
-  {
-    ignores: ['dist', 'node_modules', '.vite', 'build']
-  },
+{
+  ignores: ['dist', 'node_modules', '.vite', 'build']
+},
 {
   files: ['**/*.{js,jsx}'],
   languageOptions: {
@@ -29,7 +29,7 @@ export default [
   plugins: {
     react,
     'react-hooks': reactHooks
-    // ❌ ELIMINADO: 'react-refresh'
+
   },
   rules: {
     ...js.configs.recommended.rules,
@@ -46,5 +46,4 @@ export default [
     'no-console': 'off',
     'no-debugger': 'off'
   }
-}
-];
+}];

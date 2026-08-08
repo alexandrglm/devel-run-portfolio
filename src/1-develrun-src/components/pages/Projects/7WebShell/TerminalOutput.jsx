@@ -20,19 +20,19 @@ const TerminalOutput = ({ output, isExecuting, isWaitingForInput, isStuck, outpu
 
         item.content.map((line, lineIndex) =>
 
-        <div key={lineIndex} className="line">{line}</div>
-
-        ) :
+        <div key={lineIndex} className="line">{line}</div>) :
 
 
 
-        <div className="line">{item.content}</div>
 
-        }
+
+        <div className="line">{item.content}</div>}
+
+
         
-        </div>
+        </div>)}
 
-      )}
+
 
       
       {isExecuting && !isWaitingForInput &&
@@ -40,8 +40,8 @@ const TerminalOutput = ({ output, isExecuting, isWaitingForInput, isStuck, outpu
           <div className="line">
             <span className="typing-indicator">●●●</span>
           </div>
-        </div>
-      }
+        </div>}
+
     
     </div>);
 

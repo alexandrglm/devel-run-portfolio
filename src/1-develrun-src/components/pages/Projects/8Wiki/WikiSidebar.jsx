@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 const WikiSidebar = ({ structure, currentPath, isOpen, onToggle }) => {
   const [expandedSections, setExpandedSections] = useState(
-    structure.reduce((acc, section) => ({ ...acc, [section.id]: true }), {})
-  );
+  structure.reduce((acc, section) => ({ ...acc, [section.id]: true }), {}));
+
 
   const toggleSection = (sectionId) => {
     setExpandedSections((prev) => ({
@@ -34,9 +34,9 @@ const WikiSidebar = ({ structure, currentPath, isOpen, onToggle }) => {
           {structure.map((section) =>
           <div key={section.id} className="wiki-nav-section">
               <button
-              className="wiki-nav-section-header"
-              onClick={() => toggleSection(section.id)}>
-              
+            className="wiki-nav-section-header"
+            onClick={() => toggleSection(section.id)}>
+
                 <span className="section-icon">{section.icon}</span>
                 <span className="section-title">{section.title}</span>
                 <span className={`section-arrow ${expandedSections[section.id] ? 'expanded' : ''}`}>
@@ -46,42 +46,42 @@ const WikiSidebar = ({ structure, currentPath, isOpen, onToggle }) => {
 
               {expandedSections[section.id] &&
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="wiki-nav-children">
-              
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="wiki-nav-children">
+
                   {section.children.map((child) =>
               <Link
-                key={child.id}
-                to={child.path}
-                className={`wiki-nav-child ${currentPath === child.path ? 'active' : ''}`}>
-                
+              key={child.id}
+              to={child.path}
+              className={`wiki-nav-child ${currentPath === child.path ? 'active' : ''}`}>
+
                       <span className="child-indent">└──</span>
                       {child.title}
-                    </Link>
-              )}
-                </motion.div>
-            }
-            </div>
-          )}
+                    </Link>)}
+
+                </motion.div>}
+
+            </div>)}
+
         </nav>
 
         <div className="wiki-sidebar-footer">
           <a
-            href="https://github.com/alexandrglm/openwrt_wg-autoconf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="wiki-github-link">
-            
+          href="https://github.com/alexandrglm/openwrt_wg-autoconf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="wiki-github-link">
+
             <span>🐙</span> GitHub
           </a>
         </div>
       </aside>
 
       {isOpen &&
-      <div className="wiki-overlay" onClick={onToggle} />
-      }
+      <div className="wiki-overlay" onClick={onToggle} />}
+
     </>);
 
 };

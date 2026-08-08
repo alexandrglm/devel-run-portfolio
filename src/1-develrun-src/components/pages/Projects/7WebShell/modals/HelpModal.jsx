@@ -64,10 +64,10 @@ const HelpModal = ({ isOpen, onClose }) => {
         </div>
 
         <button
-          type="button"
-          onClick={onClose}
-          className="auth-button">
-          
+        type="button"
+        onClick={onClose}
+        className="auth-button">
+
           Close
         </button>
 

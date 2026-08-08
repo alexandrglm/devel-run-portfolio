@@ -11,10 +11,10 @@ const NavBarLogos = ({ isHamburger }) => {
   return (
     <div className="logos">
             <img
-        src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
-        alt="Logo"
-        className="navbar-logo" />
-      
+      src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
+      alt="Logo"
+      className="navbar-logo" />
+
         </div>);
 
 };

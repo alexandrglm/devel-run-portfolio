@@ -49,23 +49,23 @@ export default function Login() {
     <div className="login-page" role="main" aria-labelledby="login-title">
             {}
             <ShaderBackground
-        style={{ position: 'fixed', inset: 0, zIndex: 1 }}
-        breathing={true}
-        breathingSpeed={2}
-        breathingIntensity={0.03}
-        colorShift={true}
-        colorShiftSpeed={0.2}
-        opacity={0.25}
-        blurAmount={4} />
-      
+      style={{ position: 'fixed', inset: 0, zIndex: 1 }}
+      breathing={true}
+      breathingSpeed={2}
+      breathingIntensity={0.03}
+      colorShift={true}
+      colorShiftSpeed={0.2}
+      opacity={0.25}
+      blurAmount={4} />
+
 
             <motion.div
-        className="login-container"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        style={{ position: 'relative', zIndex: 2 }}>
-        
+      className="login-container"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      style={{ position: 'relative', zIndex: 2 }}>
+
 
                 <div className="login-header">
                     
@@ -93,26 +93,26 @@ export default function Login() {
                         </label>
                         
                         <input
-              id="username"
-              type="text"
-              name="username"
-              placeholder="Enter your username"
-              value={form.username}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              required
-              disabled={loading}
-              className={`login-input ${touched.username && (form.username.length >= 3 ? 'valid' : 'invalid')}`}
-              aria-invalid={touched.username && form.username.length < 3}
-              aria-describedby="username-error"
-              autoComplete="username"
-              autoFocus />
-            
-                        {
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            value={form.username}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            required
+            disabled={loading}
+            className={`login-input ${touched.username && (form.username.length >= 3 ? 'valid' : 'invalid')}`}
+            aria-invalid={touched.username && form.username.length < 3}
+            aria-describedby="username-error"
+            autoComplete="username"
+            autoFocus />
+
+                        {}
 
 
 
-            }
+
                     </div>
 
                     <div className="login-field">
@@ -122,53 +122,53 @@ export default function Login() {
                         </label>
                         <div className="login-password-wrapper">
                             <input
-                id="password"
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Enter your password"
-                value={form.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-                disabled={loading}
-                className={`login-input ${touched.password && (form.password.length >= 4 ? 'valid' : 'invalid')}`}
-                aria-invalid={touched.password && form.password.length < 4}
-                aria-describedby="password-error"
-                autoComplete="current-password" />
-              
+              id="password"
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Enter your password"
+              value={form.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              required
+              disabled={loading}
+              className={`login-input ${touched.password && (form.password.length >= 4 ? 'valid' : 'invalid')}`}
+              aria-invalid={touched.password && form.password.length < 4}
+              aria-describedby="password-error"
+              autoComplete="current-password" />
+
                             <button
-                type="button"
-                className="login-password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}>
-                
+              type="button"
+              className="login-password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}>
+
                                 {showPassword ? '👁️' : '👁️‍🗨️'}
                             </button>
                         </div>
                         {touched.password && form.password.length < 4 &&
             <span id="password-error" className="login-error" role="alert">
                                 Password requiered
-                            </span>
-            }
+                            </span>}
+
                     </div>
 
                     {error &&
           <motion.div
-            className="login-error-general"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            role="alert">
-            
+          className="login-error-general"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          role="alert">
+
                             <Icons icon={faKey} aria-hidden="true" />
                             {error}
-                        </motion.div>
-          }
+                        </motion.div>}
+
 
                     <button
-            type="submit"
-            className="login-submit"
-            disabled={loading || !form.username || !form.password}>
-            
+          type="submit"
+          className="login-submit"
+          disabled={loading || !form.username || !form.password}>
+
                         {loading ?
             <>
                                 <span className="login-spinner" aria-hidden="true" />
@@ -178,12 +178,12 @@ export default function Login() {
             <>
                                 Sign In
                                 <Icons icon={faArrowRight} aria-hidden="true" />
-                            </>
-            }
+                            </>}
+
                     </button>
 
-                    {
-          }
+                    {}
+
 
                     <Link to="/" className="login-back">
                         ← Back to Home

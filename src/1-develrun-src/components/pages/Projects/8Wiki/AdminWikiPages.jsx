@@ -160,23 +160,23 @@ export default function AdminWikiPages() {
         <div className="form-group">
         <label>Título de la página *</label>
         <input
-              type="text"
-              value={form.title}
-              onChange={(e) => handleTitleChange(e.target.value)}
-              required
-              placeholder="Ej: Configuración del Servidor WireGuard" />
-            
+            type="text"
+            value={form.title}
+            onChange={(e) => handleTitleChange(e.target.value)}
+            required
+            placeholder="Ej: Configuración del Servidor WireGuard" />
+
         </div>
 
         <div className="form-group">
         <label>URL (slug) *</label>
         <input
-              type="text"
-              value={form.slug}
-              onChange={(e) => setForm({ ...form, slug: e.target.value })}
-              required
-              placeholder="configuracion-servidor-wireguard" />
-            
+            type="text"
+            value={form.slug}
+            onChange={(e) => setForm({ ...form, slug: e.target.value })}
+            required
+            placeholder="configuracion-servidor-wireguard" />
+
         </div>
         </div>
 
@@ -184,11 +184,11 @@ export default function AdminWikiPages() {
         <div className="form-row">
         <label>Descripción breve</label>
         <textarea
-            value={form.excerpt}
-            onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
-            rows="2"
-            placeholder="Resumen de lo que trata esta página..." />
-          
+          value={form.excerpt}
+          onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
+          rows="2"
+          placeholder="Resumen de lo que trata esta página..." />
+
         </div>
 
         {}
@@ -196,24 +196,24 @@ export default function AdminWikiPages() {
         <div className="form-group">
         <label>Categoría</label>
         <select
-              value={form.category}
-              onChange={(e) => setForm({ ...form, category: e.target.value })}>
-              
+            value={form.category}
+            onChange={(e) => setForm({ ...form, category: e.target.value })}>
+
         {WIKI_CATEGORIES.map((cat) =>
-              <option key={cat.value} value={cat.value}>{cat.label}</option>
-              )}
+              <option key={cat.value} value={cat.value}>{cat.label}</option>)}
+
         </select>
         </div>
 
         <div className="form-group">
         <label>Versión del software</label>
         <select
-              value={form.version}
-              onChange={(e) => setForm({ ...form, version: e.target.value })}>
-              
+            value={form.version}
+            onChange={(e) => setForm({ ...form, version: e.target.value })}>
+
         {SOFTWARE_VERSIONS.map((v) =>
-              <option key={v} value={v}>{v}</option>
-              )}
+              <option key={v} value={v}>{v}</option>)}
+
         </select>
         </div>
         </div>
@@ -223,25 +223,25 @@ export default function AdminWikiPages() {
         <div className="form-group">
         <label>Página padre (para jerarquía)</label>
         <select
-              value={form.parentPage}
-              onChange={(e) => setForm({ ...form, parentPage: e.target.value })}>
-              
+            value={form.parentPage}
+            onChange={(e) => setForm({ ...form, parentPage: e.target.value })}>
+
         <option value="">-- Página raíz --</option>
         {parentOptions.map((opt) =>
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-              )}
+              <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+
         </select>
         </div>
 
         <div className="form-group">
         <label>Orden (número)</label>
         <input
-              type="number"
-              value={form.order}
-              onChange={(e) => setForm({ ...form, order: parseInt(e.target.value) || 0 })}
-              min="0"
-              step="1" />
-            
+            type="number"
+            value={form.order}
+            onChange={(e) => setForm({ ...form, order: parseInt(e.target.value) || 0 })}
+            min="0"
+            step="1" />
+
         </div>
         </div>
 
@@ -250,17 +250,17 @@ export default function AdminWikiPages() {
         <label>Contenido (Markdown)</label>
         <div className="editor-toolbar">
         <button
-              type="button"
-              className={!previewMode ? 'active' : ''}
-              onClick={() => setPreviewMode(false)}>
-              
+            type="button"
+            className={!previewMode ? 'active' : ''}
+            onClick={() => setPreviewMode(false)}>
+
         ✏️ Editar
         </button>
         <button
-              type="button"
-              className={previewMode ? 'active' : ''}
-              onClick={() => setPreviewMode(true)}>
-              
+            type="button"
+            className={previewMode ? 'active' : ''}
+            onClick={() => setPreviewMode(true)}>
+
         👁️ Vista previa
         </button>
         </div>
@@ -272,12 +272,12 @@ export default function AdminWikiPages() {
             </div> :
 
             <MDEditor
-              value={form.markdown}
-              onChange={(val) => setForm({ ...form, markdown: val || '' })}
-              preview="edit"
-              height={500} />
+            value={form.markdown}
+            onChange={(val) => setForm({ ...form, markdown: val || '' })}
+            preview="edit"
+            height={500} />}
 
-            }
+
         </div>
         </div>
 
@@ -288,40 +288,40 @@ export default function AdminWikiPages() {
         <div className="form-row">
         <label>Comando relacionado</label>
         <input
-              type="text"
-              value={form.metadata.command}
-              onChange={(e) => setForm({
-                ...form,
-                metadata: { ...form.metadata, command: e.target.value }
-              })}
-              placeholder="Ej: wg-autoconf server create" />
-            
+            type="text"
+            value={form.metadata.command}
+            onChange={(e) => setForm({
+              ...form,
+              metadata: { ...form.metadata, command: e.target.value }
+            })}
+            placeholder="Ej: wg-autoconf server create" />
+
         </div>
 
         <div className="form-row">
         <label>Ruta en documentación original</label>
         <input
-              type="text"
-              value={form.metadata.filePath}
-              onChange={(e) => setForm({
-                ...form,
-                metadata: { ...form.metadata, filePath: e.target.value }
-              })}
-              placeholder="Ej: /docs/DOCS.md#server-management" />
-            
+            type="text"
+            value={form.metadata.filePath}
+            onChange={(e) => setForm({
+              ...form,
+              metadata: { ...form.metadata, filePath: e.target.value }
+            })}
+            placeholder="Ej: /docs/DOCS.md#server-management" />
+
         </div>
 
         <div className="form-row">
         <label>Ver también (IDs separados por comas)</label>
         <input
-              type="text"
-              value={form.metadata.seeAlso}
-              onChange={(e) => setForm({
-                ...form,
-                metadata: { ...form.metadata, seeAlso: e.target.value }
-              })}
-              placeholder="page-id-1, page-id-2" />
-            
+            type="text"
+            value={form.metadata.seeAlso}
+            onChange={(e) => setForm({
+              ...form,
+              metadata: { ...form.metadata, seeAlso: e.target.value }
+            })}
+            placeholder="page-id-1, page-id-2" />
+
         </div>
         </div>
 
@@ -330,19 +330,19 @@ export default function AdminWikiPages() {
         <div className="form-group">
         <label>Tags (separados por comas)</label>
         <input
-              type="text"
-              value={form.tags}
-              onChange={(e) => setForm({ ...form, tags: e.target.value })}
-              placeholder="wireguard, vpn, routing" />
-            
+            type="text"
+            value={form.tags}
+            onChange={(e) => setForm({ ...form, tags: e.target.value })}
+            placeholder="wireguard, vpn, routing" />
+
         </div>
 
         <div className="form-group">
         <label>Estado</label>
         <select
-              value={form.status}
-              onChange={(e) => setForm({ ...form, status: e.target.value })}>
-              
+            value={form.status}
+            onChange={(e) => setForm({ ...form, status: e.target.value })}>
+
         <option value="draft">📝 Borrador</option>
         <option value="published">✅ Publicado</option>
         <option value="archived">📦 Archivado</option>
@@ -359,8 +359,8 @@ export default function AdminWikiPages() {
         {editing &&
           <button type="button" className="btn-secondary" onClick={() => {setEditing(null);resetForm();}}>
             Cancelar
-            </button>
-          }
+            </button>}
+
         </div>
         </form>
 
@@ -369,21 +369,21 @@ export default function AdminWikiPages() {
         <div className="filter-group">
         <label>Estado:</label>
         <button
-            className={filter === 'all' ? 'active' : ''}
-            onClick={() => setFilter('all')}>
-            
+          className={filter === 'all' ? 'active' : ''}
+          onClick={() => setFilter('all')}>
+
         Todos ({pages.length})
         </button>
         <button
-            className={filter === 'published' ? 'active' : ''}
-            onClick={() => setFilter('published')}>
-            
+          className={filter === 'published' ? 'active' : ''}
+          onClick={() => setFilter('published')}>
+
         Publicados ({pages.filter((p) => p.status === 'published').length})
         </button>
         <button
-            className={filter === 'draft' ? 'active' : ''}
-            onClick={() => setFilter('draft')}>
-            
+          className={filter === 'draft' ? 'active' : ''}
+          onClick={() => setFilter('draft')}>
+
         Borradores ({pages.filter((p) => p.status === 'draft').length})
         </button>
         </div>
@@ -391,13 +391,13 @@ export default function AdminWikiPages() {
         <div className="filter-group">
         <label>Categoría:</label>
         <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}>
-            
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}>
+
         <option value="all">Todas las categorías</option>
         {WIKI_CATEGORIES.map((cat) =>
-            <option key={cat.value} value={cat.value}>{cat.label}</option>
-            )}
+            <option key={cat.value} value={cat.value}>{cat.label}</option>)}
+
         </select>
         </div>
         </div>
@@ -411,8 +411,8 @@ export default function AdminWikiPages() {
             <h3>
             {page.title}
             {page.metadata?.command &&
-                <code className="page-command">{page.metadata.command}</code>
-                }
+                <code className="page-command">{page.metadata.command}</code>}
+
             </h3>
             <div className="page-meta-badges">
             <span className={`status-badge status-${page.status}`}>
@@ -427,8 +427,8 @@ export default function AdminWikiPages() {
                 </div>
 
                 {page.excerpt &&
-            <p className="page-excerpt">{page.excerpt}</p>
-            }
+            <p className="page-excerpt">{page.excerpt}</p>}
+
                 </div>
 
                 <div className="page-metadata">
@@ -441,25 +441,25 @@ export default function AdminWikiPages() {
                 {page.parentPage &&
             <small>
                     <strong>Padre:</strong> {pages.find((p) => p._id === page.parentPage)?.title}
-                    </small>
-            }
+                    </small>}
+
                 </div>
 
                 {page.tags && page.tags.length > 0 &&
           <div className="page-tags">
                     {page.tags.map((tag) =>
-            <span key={tag} className="tag">{tag}</span>
-            )}
-                    </div>
-          }
+            <span key={tag} className="tag">{tag}</span>)}
+
+                    </div>}
+
 
                 <div className="page-actions">
                 <button onClick={() => handleEdit(page)}>✏️ Editar</button>
                 <button onClick={() => dispatch(deleteWikiPage(page._id))}>🗑️ Eliminar</button>
                 <button onClick={() => window.open(`/wiki/${page.slug}`, '_blank')}>👁️ Ver</button>
                 </div>
-                </div>
-        )}
+                </div>)}
+
         </div>
         </div>);
 

@@ -243,9 +243,9 @@ export default function NavBar() {
   return (
     <nav className={`navbar ${!isVisible ? 'navbar--hidden' : ''}`}>
       
-      {
+      {}
 
-      }
+
       {!isMobile &&
       <div className="navbar__desktop">
           <Link to="/" className="navbar__logo-link" aria-label="Home">
@@ -259,11 +259,11 @@ export default function NavBar() {
             
             <div className="dropdown desktop-dropdown">
               <button
-              className="drop-label"
-              onClick={handleProjectsToggle}
-              aria-expanded={isProjectsOpen}
-              aria-haspopup="true">
-              
+            className="drop-label"
+            onClick={handleProjectsToggle}
+            aria-expanded={isProjectsOpen}
+            aria-haspopup="true">
+
                 Projects
                 <span className={`chevron ${isProjectsOpen ? 'open' : ''}`}>
                   <FontAwesomeIcon icon={faChevronDown} />
@@ -274,17 +274,17 @@ export default function NavBar() {
             <div className="dropdown-content" role="menu">
                   {NAV_LINKS.projects.map((link) =>
               <NavLink
-                key={link.name}
-                to={link.path}
-                role="menuitem"
-                onClick={() => setIsProjectsOpen(false)}
-                className={({ isActive }) => isActive ? 'active' : ''}>
-                
+              key={link.name}
+              to={link.path}
+              role="menuitem"
+              onClick={() => setIsProjectsOpen(false)}
+              className={({ isActive }) => isActive ? 'active' : ''}>
+
                       {link.name}
-                    </NavLink>
-              )}
-                </div>
-            }
+                    </NavLink>)}
+
+                </div>}
+
             </div>
 
             <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>
@@ -294,8 +294,8 @@ export default function NavBar() {
             {isAuthenticated &&
           <NavLink to="/admin" className={({ isActive }) => isActive ? 'active' : ''}>
                 Admin
-              </NavLink>
-          }
+              </NavLink>}
+
           </div>
           
           <div className="navbar__right">
@@ -303,107 +303,107 @@ export default function NavBar() {
           <span className="user-info">
                 <FontAwesomeIcon icon={faUser} size="sm" style={{ marginRight: 4 }} />
                 {user?.username}
-              </span>
-          }
+              </span>}
+
             
             {isAuthenticated ?
           <button onClick={handleLogout}>Logout</button> :
 
-          <Link to="/login">Login</Link>
-          }
+          <Link to="/login">Login</Link>}
+
             
             <button
-            className="theme-toggle"
-            aria-label="Toggle theme"
-            onClick={() => dispatch(toggleTheme())}>
-            
+          className="theme-toggle"
+          aria-label="Toggle theme"
+          onClick={() => dispatch(toggleTheme())}>
+
               <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} size="lg" />
             </button>
           </div>
-        </div>
-      }
+        </div>}
 
-      {
 
-      }
+      {}
+
+
       {isMobile &&
       <>
           <button
-          ref={buttonRef}
-          className="navbar__toggle"
-          aria-controls="navbar-menu"
-          aria-expanded={open}
-          onClick={handleToggleClick}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-          style={{
-            left: `${position.x}px`,
-            top: `${position.y}px`,
-            cursor: isDragging ? 'grabbing' : 'grab'
-          }}>
-          
+        ref={buttonRef}
+        className="navbar__toggle"
+        aria-controls="navbar-menu"
+        aria-expanded={open}
+        onClick={handleToggleClick}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          cursor: isDragging ? 'grabbing' : 'grab'
+        }}>
+
             <img
-            src={theme === 'dark' ? '/hamb-dark.png' : '/hamb-light.png'}
-            alt="Menu"
-            style={{ width: '24px', height: '24px' }} />
-          
+          src={theme === 'dark' ? '/hamb-dark.png' : '/hamb-light.png'}
+          alt="Menu"
+          style={{ width: '24px', height: '24px' }} />
+
           </button>
 
-          {
+          {}
 
-        }
+
           <div
-          id="navbar-menu"
-          ref={overlayRef}
-          className={`navbar__menu${open ? ' navbar__menu--open' : ''}`}
-          role="menu"
-          aria-hidden={!open}
-          tabIndex={open ? 0 : -1}
-          style={{
-            display: open ? 'flex' : 'none',
-            ...menuPosition
-          }}>
-          
+        id="navbar-menu"
+        ref={overlayRef}
+        className={`navbar__menu${open ? ' navbar__menu--open' : ''}`}
+        role="menu"
+        aria-hidden={!open}
+        tabIndex={open ? 0 : -1}
+        style={{
+          display: open ? 'flex' : 'none',
+          ...menuPosition
+        }}>
+
             <NavLink to="/" role="menuitem" onClick={() => setOpen(false)}>
               Home
             </NavLink>
 
             <div className={`dropdown mobile-dropdown ${
-          position.x > window.innerWidth / 2 ? 'hamburger-right' : 'hamburger-left'}`
-          }>
+          position.x > window.innerWidth / 2 ? 'hamburger-right' : 'hamburger-left'
+          }`}>
               <button
-              className="drop-label"
-              onClick={handleProjectsToggle}
-              role="menuitem"
-              aria-expanded={isProjectsOpen}>
-              
+            className="drop-label"
+            onClick={handleProjectsToggle}
+            role="menuitem"
+            aria-expanded={isProjectsOpen}>
+
                 {position.x <= window.innerWidth / 2 &&
               <span className="chevron-left">
                     <FontAwesomeIcon icon={faChevronRight} />
-                  </span>
-              }
+                  </span>}
+
                 <span className="menu-label-text">Projects</span>
                 {position.x > window.innerWidth / 2 &&
               <span className="chevron-right">
                     <FontAwesomeIcon icon={faChevronLeft} />
-                  </span>
-              }
+                  </span>}
+
               </button>
               
               {isProjectsOpen &&
             <div className="dropdown-content" role="menu">
                   {NAV_LINKS.projects.map((link) =>
               <NavLink
-                key={link.name}
-                to={link.path}
-                role="menuitem"
-                onClick={() => {setOpen(false);setIsProjectsOpen(false);}}>
-                
+              key={link.name}
+              to={link.path}
+              role="menuitem"
+              onClick={() => {setOpen(false);setIsProjectsOpen(false);}}>
+
                       {link.name}
-                    </NavLink>
-              )}
-                </div>
-            }
+                    </NavLink>)}
+
+                </div>}
+
             </div>
 
             <NavLink to="/contact" role="menuitem" onClick={() => setOpen(false)}>
@@ -413,15 +413,15 @@ export default function NavBar() {
             {isAuthenticated &&
           <NavLink to="/admin" role="menuitem" onClick={() => setOpen(false)}>
                 Admin
-              </NavLink>
-          }
+              </NavLink>}
+
             
             {isAuthenticated &&
           <span className="user-info">
                 <FontAwesomeIcon icon={faUser} size="sm" style={{ marginRight: 4 }} />
                 {user?.username}
-              </span>
-          }
+              </span>}
+
             
             {isAuthenticated ?
           <button onClick={handleLogout} role="menuitem">
@@ -430,20 +430,20 @@ export default function NavBar() {
 
           <NavLink to="/login" role="menuitem" onClick={() => setOpen(false)}>
                 Login
-              </NavLink>
-          }
+              </NavLink>}
+
             
             <button
-            className="theme-toggle"
-            aria-label="Toggle theme"
-            onClick={() => dispatch(toggleTheme())}
-            role="menuitem">
-            
+          className="theme-toggle"
+          aria-label="Toggle theme"
+          onClick={() => dispatch(toggleTheme())}
+          role="menuitem">
+
               <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} size="lg" />
             </button>
           </div>
-        </>
-      }
+        </>}
+
     </nav>);
 
 }

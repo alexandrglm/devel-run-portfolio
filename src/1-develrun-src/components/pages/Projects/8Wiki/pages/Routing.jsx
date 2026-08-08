@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const ServerManagement = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Server Management</h1>
 
       <p>
@@ -158,15 +158,15 @@ wg_server_work (10.98.0.0/24)
       </div>
 
       <WikiCommandDemo
-        title="Try Server Management Commands"
-        commands={[
-        'help',
-        'server create',
-        'server list',
-        'server stats myserver',
-        'server add myserver alice']
-        } />
-      
+      title="Try Server Management Commands"
+      commands={[
+      'help',
+      'server create',
+      'server list',
+      'server stats myserver',
+      'server add myserver alice']} />
+
+
 
       <div className="wiki-navigation-links">
         <Link to="/wiki/routing" className="nav-link prev">

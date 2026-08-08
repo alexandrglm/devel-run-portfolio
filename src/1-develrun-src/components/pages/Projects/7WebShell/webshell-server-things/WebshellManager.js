@@ -31,7 +31,19 @@ export class WebShellManager {
 
 
     this.io = new socketIo(server, {
-      cors: this.config.cors,
+      cors: {
+        origin: [
+        process.env.VITE_FRONTEND_BASE_URL,
+        process.env.VITE_SERVER_URL,
+        /^https?:\/\/localhost(:\d+)?$/,
+        /^https?:\/\/0\.0\.0\.0(:\d+)?$/,
+        /^https?:\/\/127\.0\.0\.1(:\d+)?$/,
+        /\.onrender\.com$/,
+        /^https?:\/\/devel\.run(:\d+)?$/],
+
+        credentials: true,
+        methods: ["GET", "POST"]
+      },
       ...this.config.socketConfig
     });
 

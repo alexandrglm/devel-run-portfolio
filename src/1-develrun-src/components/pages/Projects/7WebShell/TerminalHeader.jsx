@@ -90,38 +90,38 @@ const TerminalHeader = ({
       }}>
           
         <span
-          className={`status-dot ${isConnected ? 'connected' : 'disconnected'}`}
-          style={{ cursor: 'pointer' }}>
+        className={`status-dot ${isConnected ? 'connected' : 'disconnected'}`}
+        style={{ cursor: 'pointer' }}>
         </span>
         <AppMenu
-          isOpen={showAppMenu}
-          onClose={() => setShowAppMenu(false)}
-          onShowHelp={() => openModal('help')}
-          onShowAbout={() => openModal('about')}
-          socket={socket}
-          executeCommand={executeCommand}
-          setShowAuthForm={setShowAuthForm}
-          onLogout={onLogout} />
+        isOpen={showAppMenu}
+        onClose={() => setShowAppMenu(false)}
+        onShowHelp={() => openModal('help')}
+        onShowAbout={() => openModal('about')}
+        socket={socket}
+        executeCommand={executeCommand}
+        setShowAuthForm={setShowAuthForm}
+        onLogout={onLogout} />
 
-        
+
     
       </div>
 
       {}
       {showHelpModal &&
       <HelpModal
-        isOpen={showHelpModal}
-        onClose={() => {setShowHelpModal(false);}} />
+      isOpen={showHelpModal}
+      onClose={() => {setShowHelpModal(false);}} />}
 
-      }
+
 
       {}
       {showAboutModal &&
       <AboutModal
-        isOpen={showAboutModal}
-        onClose={() => {setShowAboutModal(false);}} />
+      isOpen={showAboutModal}
+      onClose={() => {setShowAboutModal(false);}} />}
 
-      }
+
     
     </div>);
 

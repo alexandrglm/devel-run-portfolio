@@ -249,29 +249,29 @@ const SvgHandler = ({
 
   return (
     <div
-      ref={containerRef}
-      className="shader-svg-container"
-      style={{
-        position: position,
-        inset: '0',
-        zIndex: style?.zIndex ?? -1,
-        pointerEvents: 'none',
-        overflow: 'hidden',
-        ...style
-      }}>
-      
+    ref={containerRef}
+    className="shader-svg-container"
+    style={{
+      position: position,
+      inset: '0',
+      zIndex: style?.zIndex ?? -1,
+      pointerEvents: 'none',
+      overflow: 'hidden',
+      ...style
+    }}>
+
             {svgContent &&
       <div
-        dangerouslySetInnerHTML={{ __html: svgContent }}
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }} />
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }} />}
 
-      }
+
             
             <style>{getCSS()}</style>
         </div>);

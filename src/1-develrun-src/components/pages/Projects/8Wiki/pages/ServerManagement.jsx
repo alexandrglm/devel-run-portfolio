@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const ServerManagement = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Server Management</h1>
 
       <p>
@@ -369,40 +369,40 @@ SERVER_USER_1_PRIVKEY=...`}</code>
       <p>Try server management commands in the terminal below:</p>
 
       <WikiCommandDemo
-        title="Try Server Management Commands"
-        commands={[
-        'help',
-        'server create',
-        'server list',
-        'server stats myserver',
-        'server add myserver alice',
-        'server add myserver bob',
-        'server list',
-        'server stats myserver',
-        'server revoke myserver alice',
-        'server remove myserver']
-        }
-        initialOutput={[
-        {
-          type: 'system',
-          content: [
-          '==================================================',
-          'wg-autoconf Server Management Demo',
-          '==================================================',
-          'Try these server management commands:',
-          '  server create      - Create a new WireGuard server',
-          '  server list        - List all servers and clients',
-          '  server stats       - Show detailed server statistics',
-          '  server add         - Add a client to a server',
-          '  server revoke      - Revoke client access',
-          '  server remove      - Remove entire server',
-          '',
-          'Ready for your command.',
-          '']
+      title="Try Server Management Commands"
+      commands={[
+      'help',
+      'server create',
+      'server list',
+      'server stats myserver',
+      'server add myserver alice',
+      'server add myserver bob',
+      'server list',
+      'server stats myserver',
+      'server revoke myserver alice',
+      'server remove myserver']}
 
-        }]
-        } />
-      
+      initialOutput={[
+      {
+        type: 'system',
+        content: [
+        '==================================================',
+        'wg-autoconf Server Management Demo',
+        '==================================================',
+        'Try these server management commands:',
+        '  server create      - Create a new WireGuard server',
+        '  server list        - List all servers and clients',
+        '  server stats       - Show detailed server statistics',
+        '  server add         - Add a client to a server',
+        '  server revoke      - Revoke client access',
+        '  server remove      - Remove entire server',
+        '',
+        'Ready for your command.',
+        '']
+
+      }]} />
+
+
 
       <h2>Server Management Commands Reference</h2>
 

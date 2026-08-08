@@ -72,8 +72,8 @@ export default function PerformanceStats() {
       <div className="perf-row">
                     <div className="perf-label">Heap</div>
                     <div className="perf-value">{heap} MB</div>
-                </div>
-      }
+                </div>}
+
             <div className="perf-row">
                 <div className="perf-label">Quality</div>
                 <button className="perf-btn" onClick={toggleQuality} aria-pressed={quality === 'hifi'}>

@@ -75,33 +75,33 @@ const AuthForm = ({
               <div className="input-group">
                   
                   <input
-                ref={passwordRef}
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Auth ..."
-                disabled={isAuthenticating || isLockedOut}
-                className="auth-input"
-                autoComplete="off" />
-              
+              ref={passwordRef}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Auth ..."
+              disabled={isAuthenticating || isLockedOut}
+              className="auth-input"
+              autoComplete="off" />
+
               
               </div>
               
               <button
-              type="submit"
-              disabled={isAuthenticating || !password.trim() || isLockedOut}
-              className="auth-button">
-              
+            type="submit"
+            disabled={isAuthenticating || !password.trim() || isLockedOut}
+            className="auth-button">
+
                 {isAuthenticating ? 'Checking Token ...' : 'Log in'}
               </button>
 
               <button
-              type="button"
-              onClick={() => onBack && onBack()}
-              disabled={isAuthenticating || isLockedOut}
-              className="auth-button">
-              
+            type="button"
+            onClick={() => onBack && onBack()}
+            disabled={isAuthenticating || isLockedOut}
+            className="auth-button">
+
                 Return to Guest Mode
               </button>
 
@@ -116,8 +116,8 @@ const AuthForm = ({
           
             {authError}
           
-          </div>
-        }
+          </div>}
+
 
 
 

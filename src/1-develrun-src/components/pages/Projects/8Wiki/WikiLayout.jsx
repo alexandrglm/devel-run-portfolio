@@ -100,8 +100,8 @@ const WikiLayout = () => {
     ...page,
     section: section.title,
     sectionId: section.id
-  }))
-  );
+  })));
+
 
 
 
@@ -117,8 +117,8 @@ const WikiLayout = () => {
     const results = flatPages.filter((page) => {
       return searchTerms.every((term) =>
       page.title.toLowerCase().includes(term) ||
-      page.id.toLowerCase().includes(term)
-      );
+      page.id.toLowerCase().includes(term));
+
     });
 
     setSearchResults(results);
@@ -137,85 +137,85 @@ const WikiLayout = () => {
     <div className="wiki-layout">
       {}
       <WikiSidebar
-        structure={wikiStructure}
-        currentPath={currentPath}
-        isOpen={isSidebarOpen}
-        onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
-      
+      structure={wikiStructure}
+      currentPath={currentPath}
+      isOpen={isSidebarOpen}
+      onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
+
 
       {}
       <main className={`wiki-main ${!isSidebarOpen ? 'expanded' : ''}`}>
         <div className="wiki-header">
           <div className="wiki-header-left">
             <button
-              className="wiki-toggle-btn"
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              aria-label="Toggle sidebar">
-              
+            className="wiki-toggle-btn"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            aria-label="Toggle sidebar">
+
               ☰
             </button>
             <h1>{currentPage?.title || 'Documentation'}</h1>
           </div>
 
           <WikiSearch
-            value={searchQuery}
-            onChange={handleSearch}
-            results={searchResults}
-            onResultClick={() => {
-              setSearchQuery('');
-              setSearchResults([]);
-            }} />
-          
+          value={searchQuery}
+          onChange={handleSearch}
+          results={searchResults}
+          onResultClick={() => {
+            setSearchQuery('');
+            setSearchResults([]);
+          }} />
+
         </div>
 
         <div className="wiki-content">
           <AnimatePresence mode="wait">
             <Routes>
-              {
+              {}
 
-              }
+
               <Route path="/" element={<WikiIndex structure={wikiStructure} />} />
 
-              {
+              {}
 
-              }
+
               <Route path="/installation" element={<Installation />} />
               <Route path="/quick-start" element={<QuickStart />} />
               <Route path="/first-steps" element={<GettingStarted />} />
 
-              {
+              {}
 
-              }
+
               <Route path="/config-mgmt" element={<CommandsReference />} />
               <Route path="/interface-control" element={<InterfaceControl />} />
               <Route path="/routing" element={<Routing />} />
               <Route path="/server-mgmt" element={<ServerManagement />} />
               <Route path="/utility" element={<UtilityCommands />} />
 
-              {
+              {}
 
-              }
+
               <Route path="/architecture" element={<Architecture />} />
               <Route path="/state-machine" element={<StateMachine />} />
               <Route path="/naming" element={<NamingConvention />} />
               <Route path="/c-modules" element={<CModules />} />
 
-              {
+              {}
 
-              }
+
               <Route path="/common-issues" element={<Troubleshooting />} />
               <Route path="/debug" element={<DebugCommands />} />
               <Route path="/recovery" element={<Recovery />} />
 
-              {
+              {}
 
-              }
+
               <Route path="/file-locations" element={<Reference />} />
               <Route path="/changelog" element={<Changelog />} />
 
-              {
+              {}
 
-              }
+
               <Route path="*" element={<Navigate to="/wiki" replace />} />
             </Routes>
           </AnimatePresence>

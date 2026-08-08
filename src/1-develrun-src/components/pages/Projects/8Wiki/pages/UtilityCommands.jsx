@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const UtilityCommands = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Utility Commands</h1>
 
       <p>
@@ -207,15 +207,15 @@ wg-autoconf settings set verbose 1`}</code></pre>
       </div>
 
       <WikiCommandDemo
-        title="Try Utility Commands"
-        commands={[
-        'help',
-        'backups show',
-        'settings show',
-        'settings set dns 8.8.8.8',
-        'clean wg_home']
-        } />
-      
+      title="Try Utility Commands"
+      commands={[
+      'help',
+      'backups show',
+      'settings show',
+      'settings set dns 8.8.8.8',
+      'clean wg_home']} />
+
+
 
       <div className="wiki-navigation-links">
         <Link to="/wiki/server-mgmt" className="nav-link prev">

@@ -6,11 +6,11 @@ import { motion } from 'framer-motion';
 const StateMachine = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>State Machine</h1>
 
       <p>

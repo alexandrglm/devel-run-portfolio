@@ -64,22 +64,22 @@ const Button = ({
   if (href) {
     return (
       <a
-        href={href}
-        target={target}
-        rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
-        className={className}
-        onClick={handleClick}
-        {...accessProps}
-        {...rest}>
-        
+      href={href}
+      target={target}
+      rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
+      className={className}
+      onClick={handleClick}
+      {...accessProps}
+      {...rest}>
+
                 {loading ?
         <>
                         <span className="btn-spinner" aria-hidden="true" />
                         {children}
                     </> :
 
-        children
-        }
+        children}
+
             </a>);
 
   }
@@ -87,39 +87,39 @@ const Button = ({
   if (to) {
     return (
       <Link
-        to={to}
-        className={className}
-        onClick={handleClick}
-        {...accessProps}
-        {...rest}>
-        
+      to={to}
+      className={className}
+      onClick={handleClick}
+      {...accessProps}
+      {...rest}>
+
                 {loading ?
         <>
                         <span className="btn-spinner" aria-hidden="true" />
                         {children}
                     </> :
 
-        children
-        }
+        children}
+
             </Link>);
 
   }
 
   return (
     <button
-      className={className}
-      onClick={handleClick}
-      {...accessProps}
-      {...rest}>
-      
+    className={className}
+    onClick={handleClick}
+    {...accessProps}
+    {...rest}>
+
             {loading ?
       <>
                     <span className="btn-spinner" aria-hidden="true" />
                     {children}
                 </> :
 
-      children
-      }
+      children}
+
         </button>);
 
 };

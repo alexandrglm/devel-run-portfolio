@@ -38,38 +38,38 @@ const WikiSearch = ({ value, onChange, results, onResultClick }) => {
       <div className="wiki-search-input-wrapper">
         <span className="search-icon">🔍</span>
         <input
-          ref={inputRef}
-          type="text"
-          placeholder="Find in docs ... (Ctrl+K / Cmd+K)"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="wiki-search-input" />
-        
+        ref={inputRef}
+        type="text"
+        placeholder="Find in docs ... (Ctrl+K / Cmd+K)"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="wiki-search-input" />
+
         {value &&
         <button
-          className="search-clear"
-          onClick={() => onChange('')}>
-          
+        className="search-clear"
+        onClick={() => onChange('')}>
+
             ✕
-          </button>
-        }
+          </button>}
+
       </div>
 
       {results.length > 0 &&
       <div className="wiki-search-results">
           {results.map((result) =>
         <Link
-          key={result.id}
-          to={result.path}
-          className="wiki-search-result"
-          onClick={onResultClick}>
-          
+        key={result.id}
+        to={result.path}
+        className="wiki-search-result"
+        onClick={onResultClick}>
+
               <div className="result-title">{result.title}</div>
               <div className="result-section">{result.section}</div>
-            </Link>
-        )}
-        </div>
-      }
+            </Link>)}
+
+        </div>}
+
     </div>);
 
 };

@@ -10,38 +10,38 @@ import SvgHandler from '../shaders/SvgHandler';
 
 import { Icons } from '../commons/FontAwesome';
 import {
-  faGithub,
-  faLinkedin,
-  faReact,
-  faNodeJs,
-  faPython,
-  faJs,
-  faJava } from
+faGithub,
+faLinkedin,
+faReact,
+faNodeJs,
+faPython,
+faJs,
+faJava } from
 '../commons/FontAwesome';
 import {
-  faCode,
-  faServer,
-  faDatabase,
-  faRocket,
-  faTerminal,
-  faShieldAlt,
-  faArrowRight,
-  faUser,
-  faMicrochip,
-  faNetworkWired,
-  faBrain,
-  faBook,
-  faLanguage,
-  faTools,
-  faHardHat,
-  faCogs,
-  faSearch,
-  faPalette,
-  faMobile,
-  faGraduationCap,
-  faCertificate,
-  faUserGraduate,
-  faMailBulk } from
+faCode,
+faServer,
+faDatabase,
+faRocket,
+faTerminal,
+faShieldAlt,
+faArrowRight,
+faUser,
+faMicrochip,
+faNetworkWired,
+faBrain,
+faBook,
+faLanguage,
+faTools,
+faHardHat,
+faCogs,
+faSearch,
+faPalette,
+faMobile,
+faGraduationCap,
+faCertificate,
+faUserGraduate,
+faMailBulk } from
 '../commons/FontAwesome';
 
 export default function Index() {
@@ -177,11 +177,11 @@ export default function Index() {
 
   return (
     <motion.div
-      className="page home-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}>
-      
+    className="page home-page"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}>
+
       {}
       <section className="hero-section">
         
@@ -194,18 +194,18 @@ export default function Index() {
         neonGlow={true}
         opacity={0.5}
         blurAmount={2} />
-        
+
         
         <div className="hero-content" style={{ position: 'relative', zIndex: 1 }}>
-          {
+          {}
 
-          }
+
           
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}>
-            
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}>
+
 
             
             <h1>
@@ -213,19 +213,19 @@ export default function Index() {
               <span className="subtitle">5 years programming // 20+ years in Systems & Networking</span>
             </h1>
 
-            {
+            {}
 
 
 
 
-            }
+
             
             
-            {
+            {}
 
 
 
-            }
+
 
 
           </motion.div>
@@ -237,35 +237,35 @@ export default function Index() {
           <div className="hero-stats">
             {stats.map((stat, idx) =>
             <motion.div
-              key={idx}
-              className="stat-item"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + idx * 0.1 }}>
-              
+            key={idx}
+            className="stat-item"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 + idx * 0.1 }}>
+
                 <span className="stat-value">{stat.value}</span>
                 <span className="stat-label">{stat.label}</span>
-              </motion.div>
-            )}
+              </motion.div>)}
+
           </div>
           
           <div className="hero-actions">
               <Button
-              href="https://github.com/alexandrglm"
-              target="_blank"
-              className="btn-github"
-              ariaLabel="Visit my GitHub profile">
-              
+            href="https://github.com/alexandrglm"
+            target="_blank"
+            className="btn-github"
+            ariaLabel="Visit my GitHub profile">
+
                   <Icons icon={faGithub} aria-hidden="true" />
                   GitHub
               </Button>
               
               <Button
-              modal={{ path: '/contact' }}
-              className="btn-contact"
-              ariaLabel="Open contact form"
-              ariaHasPopup="dialog">
-              
+            modal={{ path: '/contact' }}
+            className="btn-contact"
+            ariaLabel="Open contact form"
+            ariaHasPopup="dialog">
+
                   <Icons icon={faMailBulk} aria-hidden="true" />
                   Get in touch
               </Button>
@@ -277,11 +277,11 @@ export default function Index() {
       <section className="about-section">
         <div className="section-container">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}>
-            
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}>
+
             <h2 className="section-title">
               <span className="title-accent">//</span> A bit of background
             </h2>
@@ -324,8 +324,8 @@ export default function Index() {
                           <strong>{interest.label}</strong>
                           <span>{interest.desc}</span>
                         </div>
-                      </div>
-                  )}
+                      </div>)}
+
                 </div>
 
               </div>
@@ -387,8 +387,8 @@ export default function Index() {
                     <div key={idx} className="language-item">
                         <span className="lang-name">{lang.name}</span>
                         <span className="lang-level">{lang.level}</span>
-                      </div>
-                    )}
+                      </div>)}
+
                   </div>
                 </div>
 
@@ -399,8 +399,8 @@ export default function Index() {
                     <div key={idx} className="language-item">
                         <span className="lang-name">{lang.name}</span>
                         <span className="lang-level">{lang.level}</span>
-                      </div>
-                    )}
+                      </div>)}
+
                   </div>
                 </div>
               </div>
@@ -414,11 +414,11 @@ export default function Index() {
       <section className="projects-section">
         <div className="section-container">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}>
-            
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}>
+
             <div className="projects-header">
               <h2 className="section-title">
                 <span className="title-accent">//</span> Draft Projects
@@ -431,14 +431,14 @@ export default function Index() {
             <div className="projects-grid">
               {featuredProjects.map((project, idx) =>
               <motion.div
-                key={idx}
-                className="project-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}>
-                
+              key={idx}
+              className="project-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ y: -5 }}>
+
                   <div className="project-icon">
                     <Icons icon={project.icon} />
                   </div>
@@ -446,33 +446,33 @@ export default function Index() {
                   <p>{project.description}</p>
                   <div className="project-tech">
                     {project.tech.map((tech, tIdx) =>
-                  <span key={tIdx} className="tech-tag">{tech}</span>
-                  )}
+                  <span key={tIdx} className="tech-tag">{tech}</span>)}
+
                   </div>
                   <div className="project-links">
                     {project.link && project.link !== '#' &&
                   <Link to={project.link} className="project-link">
                         Try it! <Icons icon={faArrowRight} />
-                      </Link>
-                  }
+                      </Link>}
+
                     <a
-                    href={`https://github.com/alexandrglm/${project.github}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="github-link">
-                    
+                  href={`https://github.com/alexandrglm/${project.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="github-link">
+
                       <Icons icon={faGithub} />
                     </a>
                   </div>
-                </motion.div>
-              )}
+                </motion.div>)}
+
             </div>
           </motion.div>
         </div>
       </section>
 
       {}
-      {
+      {}
 
 
 
@@ -515,7 +515,7 @@ export default function Index() {
 
 
 
-      }
+
 
       
       {}
@@ -527,7 +527,7 @@ export default function Index() {
               <span>// everything is a draft, including this site</span>
             </div>
             
-            {
+            {}
 
 
 
@@ -554,7 +554,7 @@ export default function Index() {
 
 
 
-            }
+
           </div>
         </div>
       </footer>

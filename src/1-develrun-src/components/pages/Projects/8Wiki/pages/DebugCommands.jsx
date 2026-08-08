@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const DebugCommands = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Debug Commands</h1>
 
       <p>
@@ -211,18 +211,18 @@ const DebugCommands = () => {
       </div>
 
       <WikiCommandDemo
-        title="Try Debug Commands"
-        commands={[
-        'help',
-        'debug status',
-        'debug on',
-        'debug show',
-        'debug states',
-        'debug network',
-        'debug tables',
-        'debug off']
-        } />
-      
+      title="Try Debug Commands"
+      commands={[
+      'help',
+      'debug status',
+      'debug on',
+      'debug show',
+      'debug states',
+      'debug network',
+      'debug tables',
+      'debug off']} />
+
+
 
       <div className="wiki-navigation-links">
         <Link to="/wiki/common-issues" className="nav-link prev">

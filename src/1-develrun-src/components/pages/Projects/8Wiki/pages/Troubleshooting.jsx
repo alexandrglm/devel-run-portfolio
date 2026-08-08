@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const Troubleshooting = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Troubleshooting</h1>
 
       <p>
@@ -224,16 +224,16 @@ wg-autoconf debug tables`}</code></pre>
       </div>
 
       <WikiCommandDemo
-        title="Try Troubleshooting Commands"
-        commands={[
-        'help',
-        'debug on',
-        'debug status',
-        'debug show',
-        'backups show',
-        'status']
-        } />
-      
+      title="Try Troubleshooting Commands"
+      commands={[
+      'help',
+      'debug on',
+      'debug status',
+      'debug show',
+      'backups show',
+      'status']} />
+
+
 
       <div className="wiki-navigation-links">
         <Link to="/wiki/state-machine" className="nav-link prev">

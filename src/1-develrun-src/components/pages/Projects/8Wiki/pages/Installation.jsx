@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const Installation = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Installation</h1>
 
       <h2>Requirements</h2>
@@ -117,12 +117,12 @@ wg-autoconf settings set colours 1`}</code>
 
       <div className="wiki-command-demo">
         <WikiCommandDemo
-          title="Try Installation Commands"
-          commands={[
-          'wg-autoconf --help',
-          'wg-autoconf settings show']
-          } />
-        
+        title="Try Installation Commands"
+        commands={[
+        'wg-autoconf --help',
+        'wg-autoconf settings show']} />
+
+
       </div>
 
       <div className="wiki-navigation-links">

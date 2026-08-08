@@ -40,8 +40,8 @@ const Contact = () => {
   useEffect(() => {
     if (showStatusModal && modalRef.current) {
       const focusable = modalRef.current.querySelectorAll(
-        'button, [href], [tabindex]:not([tabindex="-1"])'
-      );
+      'button, [href], [tabindex]:not([tabindex="-1"])');
+
       if (focusable.length) {
         setTimeout(() => focusable[0]?.focus(), 100);
       }
@@ -157,8 +157,8 @@ const Contact = () => {
         break;
 
       default:
-        break;
-    }
+        break;}
+
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -283,18 +283,18 @@ const Contact = () => {
             </div>
 
             <ContactForm
-      formData={formData}
-      errors={errors}
-      touched={touched}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      onSubmit={handleSubmit}
-      isSubmitting={isSubmitting}
-      turnstileRef={turnstileRef}
-      turnstileToken={turnstileToken}
-      captchaStatus={captchaStatus}
-      formRef={formRef} />
-    
+    formData={formData}
+    errors={errors}
+    touched={touched}
+    onChange={handleChange}
+    onBlur={handleBlur}
+    onSubmit={handleSubmit}
+    isSubmitting={isSubmitting}
+    turnstileRef={turnstileRef}
+    turnstileToken={turnstileToken}
+    captchaStatus={captchaStatus}
+    formRef={formRef} />
+
         </>;
 
 
@@ -309,32 +309,32 @@ const Contact = () => {
             {}
             {showStatusModal &&
       <div
-        className="modal-overlay"
-        onClick={handleStatusModalClose}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="status-modal-title"
-        ref={modalRef}>
-        
+      className="modal-overlay"
+      onClick={handleStatusModalClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="status-modal-title"
+      ref={modalRef}>
+
                     <div
-          className="modal contact-status-modal"
-          onClick={(e) => e.stopPropagation()}>
-          
+        className="modal contact-status-modal"
+        onClick={(e) => e.stopPropagation()}>
+
                         <button
-            className="modal-close"
-            onClick={handleStatusModalClose}
-            aria-label="Close">
-            
+          className="modal-close"
+          onClick={handleStatusModalClose}
+          aria-label="Close">
+
                             <Icons icon={faTimes} aria-hidden="true" />
                         </button>
 
                         {status === 'success' ?
           <div className="contact-status" role="status" aria-live="polite">
                                 <Icons
-              icon={faCheckCircle}
-              className="status-icon status-icon--success"
-              aria-hidden="true" />
-            
+            icon={faCheckCircle}
+            className="status-icon status-icon--success"
+            aria-hidden="true" />
+
                                 <h2 id="status-modal-title" className="status-title status-title--success">
                                     Message Sent! 
                                 </h2>
@@ -344,10 +344,10 @@ const Contact = () => {
                                 </p>
                                 <div className="status-action">
                                     <button
-                onClick={handleStatusModalClose}
-                className="status-button status-button--primary"
-                aria-label="Go to homepage">
-                
+              onClick={handleStatusModalClose}
+              className="status-button status-button--primary"
+              aria-label="Go to homepage">
+
                                         <Icons icon={faArrowLeft} aria-hidden="true" />
                                         Go to Homepage
                                     </button>
@@ -356,10 +356,10 @@ const Contact = () => {
 
           <div className="contact-status" role="alert" aria-live="assertive">
                                 <Icons
-              icon={faExclamationTriangle}
-              className="status-icon status-icon--error"
-              aria-hidden="true" />
-            
+            icon={faExclamationTriangle}
+            className="status-icon status-icon--error"
+            aria-hidden="true" />
+
                                 <h2 id="status-modal-title" className="status-title status-title--error">
                                     Something Went Wrong
                                 </h2>
@@ -369,18 +369,18 @@ const Contact = () => {
                                 </p>
                                 <div className="status-action">
                                     <button
-                onClick={handleStatusModalClose}
-                className="status-button status-button--secondary"
-                aria-label="Try again">
-                
+              onClick={handleStatusModalClose}
+              className="status-button status-button--secondary"
+              aria-label="Try again">
+
                                         Try Again
                                     </button>
                                 </div>
-                            </div>
-          }
+                            </div>}
+
                     </div>
-                </div>
-      }
+                </div>}
+
         </>);
 
 };
@@ -415,42 +415,42 @@ const ContactForm = ({
       case 'loading':
         return '⏳ Loading verification...';
       default:
-        return '';
-    }
+        return '';}
+
   };
 
   return (
     <form
-      ref={formRef}
-      className="contact-form"
-      onSubmit={onSubmit}
-      noValidate
-      aria-label="Contact form">
-      
+    ref={formRef}
+    className="contact-form"
+    onSubmit={onSubmit}
+    noValidate
+    aria-label="Contact form">
+
             <div className="form-group">
                 <label htmlFor="contact-name">
                     Your Name <span className="required" aria-hidden="true">*</span>
                 </label>
                 <input
-          type="text"
-          id="contact-name"
-          name="name"
-          value={formData.name}
-          onChange={onChange}
-          onBlur={onBlur}
-          required
-          disabled={isSubmitting}
-          placeholder="What should I call you?"
-          className={getFieldStatus('name')}
-          aria-invalid={errors.name ? 'true' : 'false'}
-          aria-describedby="name-error"
-          autoComplete="name" />
-        
+        type="text"
+        id="contact-name"
+        name="name"
+        value={formData.name}
+        onChange={onChange}
+        onBlur={onBlur}
+        required
+        disabled={isSubmitting}
+        placeholder="What should I call you?"
+        className={getFieldStatus('name')}
+        aria-invalid={errors.name ? 'true' : 'false'}
+        aria-describedby="name-error"
+        autoComplete="name" />
+
                 <span
-          id="name-error"
-          className={`field-error ${!errors.name ? 'field-error--hidden' : ''}`}
-          role="alert">
-          
+        id="name-error"
+        className={`field-error ${!errors.name ? 'field-error--hidden' : ''}`}
+        role="alert">
+
                     {errors.name || '\u00A0'}
                 </span>
             </div>
@@ -460,25 +460,25 @@ const ContactForm = ({
                     Your Email Address <span className="required" aria-hidden="true">*</span>
                 </label>
                 <input
-          type="email"
-          id="contact-email"
-          name="email"
-          value={formData.email}
-          onChange={onChange}
-          onBlur={onBlur}
-          required
-          disabled={isSubmitting}
-          placeholder="Where can I reach you?"
-          className={getFieldStatus('email')}
-          aria-invalid={errors.email ? 'true' : 'false'}
-          aria-describedby="email-error"
-          autoComplete="email" />
-        
+        type="email"
+        id="contact-email"
+        name="email"
+        value={formData.email}
+        onChange={onChange}
+        onBlur={onBlur}
+        required
+        disabled={isSubmitting}
+        placeholder="Where can I reach you?"
+        className={getFieldStatus('email')}
+        aria-invalid={errors.email ? 'true' : 'false'}
+        aria-describedby="email-error"
+        autoComplete="email" />
+
                 <span
-          id="email-error"
-          className={`field-error ${!errors.email ? 'field-error--hidden' : ''}`}
-          role="alert">
-          
+        id="email-error"
+        className={`field-error ${!errors.email ? 'field-error--hidden' : ''}`}
+        role="alert">
+
                     {errors.email || '\u00A0'}
                 </span>
             </div>
@@ -488,24 +488,24 @@ const ContactForm = ({
                     Your Message <span className="required" aria-hidden="true">*</span>
                 </label>
                 <textarea
-          id="contact-message"
-          name="message"
-          value={formData.message}
-          onChange={onChange}
-          onBlur={onBlur}
-          required
-          disabled={isSubmitting}
-          rows={8}
-          placeholder="Tell me what's on your mind..."
-          className={getFieldStatus('message')}
-          aria-invalid={errors.message ? 'true' : 'false'}
-          aria-describedby="message-error" />
-        
+        id="contact-message"
+        name="message"
+        value={formData.message}
+        onChange={onChange}
+        onBlur={onBlur}
+        required
+        disabled={isSubmitting}
+        rows={8}
+        placeholder="Tell me what's on your mind..."
+        className={getFieldStatus('message')}
+        aria-invalid={errors.message ? 'true' : 'false'}
+        aria-describedby="message-error" />
+
                 <span
-          id="message-error"
-          className={`field-error ${!errors.message ? 'field-error--hidden' : ''}`}
-          role="alert">
-          
+        id="message-error"
+        className={`field-error ${!errors.message ? 'field-error--hidden' : ''}`}
+        role="alert">
+
                     {errors.message || '\u00A0'}
                 </span>
             </div>
@@ -513,28 +513,28 @@ const ContactForm = ({
             {}
             <div className="captcha-wrapper">
                 <div
-          className="captcha-container"
-          ref={turnstileRef}
-          aria-label="CAPTCHA verification" />
-        
+        className="captcha-container"
+        ref={turnstileRef}
+        aria-label="CAPTCHA verification" />
+
                 <span
-          className={`captcha-status captcha-status--${captchaStatus}`}
-          role="status"
-          aria-live="polite">
-          
+        className={`captcha-status captcha-status--${captchaStatus}`}
+        role="status"
+        aria-live="polite">
+
                     {getStatusMessage()}
                 </span>
             </div>
 
             <Button
-        type="submit"
-        variant="primary"
-        size="large"
-        className="submit-btn"
-        loading={isSubmitting}
-        disabled={!turnstileToken}
-        aria-busy={isSubmitting}>
-        
+      type="submit"
+      variant="primary"
+      size="large"
+      className="submit-btn"
+      loading={isSubmitting}
+      disabled={!turnstileToken}
+      aria-busy={isSubmitting}>
+
                 {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
         </form>);

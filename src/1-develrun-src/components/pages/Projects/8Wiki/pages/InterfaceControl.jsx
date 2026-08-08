@@ -7,11 +7,11 @@ import WikiCommandDemo from '../WikiCommandDemo';
 const InterfaceControl = () => {
   return (
     <motion.div
-      className="wiki-page-content"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}>
-      
+    className="wiki-page-content"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}>
+
       <h1>Interface Control</h1>
 
       <p>
@@ -115,18 +115,18 @@ const InterfaceControl = () => {
       </div>
 
       <WikiCommandDemo
-        title="Try Interface Control Commands"
-        commands={[
-        'help',
-        'list',
-        'setup home',
-        'up wg_home',
-        'status',
-        'status wg_home',
-        'down wg_home',
-        'remove wg_home']
-        } />
-      
+      title="Try Interface Control Commands"
+      commands={[
+      'help',
+      'list',
+      'setup home',
+      'up wg_home',
+      'status',
+      'status wg_home',
+      'down wg_home',
+      'remove wg_home']} />
+
+
 
       <div className="wiki-navigation-links">
         <Link to="/wiki/config-mgmt" className="nav-link prev">

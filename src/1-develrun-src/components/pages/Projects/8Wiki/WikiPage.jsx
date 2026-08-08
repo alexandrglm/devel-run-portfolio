@@ -63,11 +63,11 @@ export default function WikiPage() {
             {tableOfContents.map((heading, idx) =>
             <li key={idx} className={`toc-level-${heading.level}`}>
                 <a href={`#${heading.id}`}>{heading.text}</a>
-                </li>
-            )}
+                </li>)}
+
             </ul>
-            </aside>
-        }
+            </aside>}
+
 
         {}
         <article className="wiki-content">
@@ -81,26 +81,26 @@ export default function WikiPage() {
         </span>
         <span className="wiki-version">v{currentPage.version}</span>
         {currentPage.metadata?.command &&
-              <code className="wiki-command">{currentPage.metadata.command}</code>
-              }
+              <code className="wiki-command">{currentPage.metadata.command}</code>}
+
         </div>
 
         {currentPage.excerpt &&
-            <p className="wiki-excerpt">{currentPage.excerpt}</p>
-            }
+            <p className="wiki-excerpt">{currentPage.excerpt}</p>}
+
         </header>
 
         {}
         <div className="markdown-body" data-color-mode="auto">
         <MDEditor.Markdown
-              source={currentPage.markdown}
-              transformLinkUri={(uri) => {
-                if (uri.startsWith('wiki:')) {
-                  return `/wiki/${uri.replace('wiki:', '')}`;
-                }
-                return uri;
-              }} />
-            
+            source={currentPage.markdown}
+            transformLinkUri={(uri) => {
+              if (uri.startsWith('wiki:')) {
+                return `/wiki/${uri.replace('wiki:', '')}`;
+              }
+              return uri;
+            }} />
+
         </div>
 
         {}
@@ -112,11 +112,11 @@ export default function WikiPage() {
               <Link key={child._id} to={`/wiki/${child.slug}`} className="child-page-card">
                 <h4>{child.title}</h4>
                 {child.excerpt && <p>{child.excerpt}</p>}
-                </Link>
-              )}
+                </Link>)}
+
             </div>
-            </section>
-          }
+            </section>}
+
 
         {}
         {relatedPages.length > 0 &&
@@ -126,11 +126,11 @@ export default function WikiPage() {
             {relatedPages.map((related) =>
               <li key={related._id}>
                 <Link to={`/wiki/${related.slug}`}>{related.title}</Link>
-                </li>
-              )}
+                </li>)}
+
             </ul>
-            </section>
-          }
+            </section>}
+
 
         {}
         <footer className="wiki-page-footer">
@@ -145,14 +145,14 @@ export default function WikiPage() {
         {currentPage.metadata?.filePath &&
             <p className="wiki-source">
             <a
-                href={`https://github.com/alexandrglm/wg-autoconf/blob/main/${currentPage.metadata.filePath}`}
-                target="_blank"
-                rel="noopener noreferrer">
-                
+              href={`https://github.com/alexandrglm/wg-autoconf/blob/main/${currentPage.metadata.filePath}`}
+              target="_blank"
+              rel="noopener noreferrer">
+
             📝 Check source code on GitHub
             </a>
-            </p>
-            }
+            </p>}
+
         </footer>
         </article>
         </div>

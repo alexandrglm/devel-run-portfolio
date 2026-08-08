@@ -39,10 +39,10 @@ const WebshellLauncher = () => {
     join(',');
 
     window.open(
-      '/webshell/standalone',
-      '_blank',
-      features
-    );
+    '/webshell/standalone',
+    '_blank',
+    features);
+
   };
 
   const cardData = [
@@ -73,9 +73,9 @@ const WebshellLauncher = () => {
   return (
     <div className={`webshell-launcher ${isAnimating ? 'fade-in' : ''}`}>
       
-      {
+      {}
 
-      }
+
       <div className="launcher-header">
         <div className="header-icon-wrapper">
           <Icons icon={faRocket} className="header-icon" />
@@ -94,9 +94,9 @@ const WebshellLauncher = () => {
       </div>
 
 
-            {
+            {}
 
-      }
+
       <div className="launcher-stats">
         <div className="launcher-stats__grid">
           <div className="launcher-stats__item">
@@ -118,15 +118,15 @@ const WebshellLauncher = () => {
         </div>
       </div>
 
-      {
+      {}
 
-      }
+
       
 
 
-      {
+      {}
 
-      }
+
       <div className="launcher-cta">
 
         <div className="projects-header">
@@ -140,11 +140,11 @@ const WebshellLauncher = () => {
     
           {cardData.map((card) =>
           <div
-            key={card.id}
-            className={`launcher-card ${hoveredCard === card.id ? 'hovered' : ''}`}
-            onMouseEnter={() => setHoveredCard(card.id)}
-            onMouseLeave={() => setHoveredCard(null)}>
-            
+          key={card.id}
+          className={`launcher-card ${hoveredCard === card.id ? 'hovered' : ''}`}
+          onMouseEnter={() => setHoveredCard(card.id)}
+          onMouseLeave={() => setHoveredCard(null)}>
+
               {card.isButton ?
             <button onClick={openStandalone} className="card-button">
                   <div className="card-content">
@@ -159,8 +159,8 @@ const WebshellLauncher = () => {
                   <li key={idx}>
                           <span className="feature-check">✓</span>
                           {feature}
-                        </li>
-                  )}
+                        </li>)}
+
                     </ul>
                     
                     <div className="card-footer">
@@ -187,8 +187,8 @@ const WebshellLauncher = () => {
                   <li key={idx}>
                           <span className="feature-check">✓</span>
                           {feature}
-                        </li>
-                  )}
+                        </li>)}
+
                     </ul>
                     
                     <div className="card-footer">
@@ -200,32 +200,30 @@ const WebshellLauncher = () => {
                       </span>
                     </div>
                   </div>
-                </Link>
-            }
-            </div>
-          )}
+                </Link>}
+
+            </div>)}
+
         </div>
       </div>
 
 
-      {
+      {}
 
-      }
+
       <MarkdownRenderer
-        content={readmeContent}
-        title="Documentation"
-        icon={faBook}
-        defaultOpen={false}
-        className="launcher-readme"
-        basePath={README_BASE_PATH} />
-      
-
-      {
-
-      }
-      {
+      content={readmeContent}
+      title="Documentation"
+      icon={faBook}
+      defaultOpen={false}
+      className="launcher-readme"
+      basePath={README_BASE_PATH} />
 
 
+      {}
+
+
+      {}
 
 
 
@@ -255,7 +253,9 @@ const WebshellLauncher = () => {
 
 
 
-      }
+
+
+
     </div>);
 
 };
