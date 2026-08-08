@@ -1,0 +1,83 @@
+@use '../vars' as *;
+@use '../mixins' as *;
+
+// Selector para cuando data-fullscreen está activo en el html
+[data-fullscreen="true"] {
+  
+  // Asegurar que el body y html ocupen todo
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  // Ocultar navbar y footer en toda la app
+  .navbar, .footer, nav, footer {
+    display: none !important;
+  }
+
+  // El contenedor principal debe ocupar todo
+  #root, .app, .main-content, .standalone-content {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  // El componente webshell debe ocupar todo
+  .webshell {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  // El contenedor de la terminal debe ocupar todo
+  .terminal-container {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    min-height: 100vh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  // El body de la terminal debe ocupar todo el espacio restante
+  .terminal-body {
+    flex: 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+  }
+
+  // El header se mantiene pero sin bordes redondeados
+  .terminal-header {
+    border-radius: 0 !important;
+  }
+
+  // Asegurar que el input esté siempre visible
+  .terminal-input-container {
+    flex-shrink: 0 !important;
+  }
+}

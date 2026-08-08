@@ -1,0 +1,168 @@
+// AUTH MODAl
+@use 'sass:map';
+@use '../vars' as *;
+@use '../mixins' as *;
+
+
+.auth-modal {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 1000;
+    
+    .auth-overlay {
+    
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(2px);
+    
+    }
+    
+    .auth-container {
+      
+      position: relative;
+      background: var(--background-color);
+      
+      border: 1px solid rgba(203, 203, 203, 0.756);
+      border-radius: 2px;
+
+      padding: 30px;
+      text-align: center;
+      
+      width: 100%;
+      max-width: 400px;
+      max-height: 85vh;
+      overflow-y: auto;
+
+      //@include terminal-scrollbar;
+      
+      z-index: 1001;
+    }
+
+    .auth-icon {
+      
+      font-size: 5em;
+
+      margin-bottom: 10px;
+
+      &.red {
+
+        color: var(--error-color);
+
+      }
+
+      &.info {
+
+        color: var(--info-color)
+      }
+
+    }
+
+  
+    .auth-header {
+
+      margin-bottom: 25px;
+      
+      
+      h2 {
+        color: var(--primary-color);
+        margin: 0 0 10px 0;
+        font-size: 1.3em;
+      }
+      
+      p {
+        color: #ccc;
+        margin: 0;
+        font-size: 0.9em;
+      }
+    }
+  
+    .auth-form {
+      margin-bottom: 20px;
+      
+      .auth-input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(0, 255, 0, 0.5);
+        border-radius: 4px;
+        padding: 10px;
+        color: var(--primary-color);
+        font-family: var(--font-family);
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+        }
+      }
+  
+    }
+
+    .auth-button {
+
+      width: 100%;
+      background: var(--primary-color);
+      border: none;
+      border-radius: 4px;
+      padding: 10px;
+      color: #000;
+      font-family: var(--font-family);
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      //margin-bottom: 10px;
+      
+      &:hover:not(:disabled) {
+        opacity: 0.8;
+      }
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+    }
+  
+    .auth-error {
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid #ff4444;
+      border-radius: 4px;
+      padding: 10px;
+      color: #ff4444;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+  
+    .connection-status {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      
+      .status-indicator {
+        font-size: 1em;
+        
+        &.connected {
+          color: var(--primary-color);
+        }
+        
+        &.disconnected {
+          color: var(--error-color);
+        }
+      }
+    }
+  }

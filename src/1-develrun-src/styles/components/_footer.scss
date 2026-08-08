@@ -1,0 +1,77 @@
+// FOOTER GLOBAL
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    z-index: 100;
+    
+    // SCROLL
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    
+    // Oculto
+    &--hidden {
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .footer-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        opacity: 0.8;
+
+        .footer-github {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: var(--primary);
+                transform: scale(1.1);
+                outline: none;
+            }
+
+            @media (hover: none) and (pointer: coarse) {
+                &:active {
+                    color: var(--primary);
+                    transform: scale(1.1);
+                }
+            }
+
+            svg {
+                width: 16px;
+                height: 16px;
+                margin: 0 10px 0 20px;
+            }
+        }
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .footer {
+        transition: none;
+        
+        &--hidden {
+            transform: none;
+            opacity: 1;
+        }
+    }
+}

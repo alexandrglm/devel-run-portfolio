@@ -1,0 +1,8 @@
+{
+  "help": "Available commands: help, list, status, clear",
+  "list": "home.conf
+work.conf
+vpn_us.conf",
+  "status": "MockShell status: all systems healthy.",
+  "error": "Unknown command. Type 'help' for valid commands."
+}

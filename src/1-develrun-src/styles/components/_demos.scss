@@ -1,0 +1,330 @@
+// DEMOS
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.demo-split-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    gap: $spacing-xl;
+    
+    width: 100%;
+    min-height: 60vh;
+    position: relative;
+    
+    padding: $spacing-xl 0;
+
+    z-index: 1;
+}
+
+.demo-split-box {
+
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    position: relative;
+
+    background: rgba(255,255,255,0.07);
+    border-radius: $radius-lg;
+    box-shadow: 0 2px 16px var(--shadow);
+    padding: $spacing-xl $spacing-lg;
+    
+    min-width: 320px;
+    max-width: 420px;
+    
+
+    z-index: 2;
+    backdrop-filter: blur(2px);
+}
+
+.demo-split-left {
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.demo-split-right {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+    .demo-split-layout {
+        flex-direction: column;
+        gap: $spacing-lg;
+        align-items: center;
+        padding: $spacing-lg 0;
+    }
+    .demo-split-box {
+        min-width: 0;
+        width: 98vw;
+        max-width: 99vw;
+        padding: $spacing-lg $spacing-md;
+    }
+}
+// Centrado y layout para demos 1 y 2
+.demo-content-centered {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3.5rem 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: $radius-lg;
+    box-shadow: 0 2px 16px var(--shadow);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xl;
+}
+
+.demo-box-centered {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto $spacing-lg auto;
+    background: var(--bg-secondary);
+    border-radius: $radius-md;
+    box-shadow: 0 1px 8px var(--shadow);
+    padding: $spacing-lg $spacing-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+}
+
+.demo-btn-row {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-md;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .demo-content-centered {
+        max-width: 98vw;
+        padding: $spacing-lg $spacing-xs $spacing-xl $spacing-xs;
+    }
+    .demo-box-centered {
+        max-width: 99vw;
+        padding: $spacing-md $spacing-xs;
+    }
+}
+// @use '../mixins' as *;
+// @use '../vars' as *;
+
+
+// Demo 1: Hooks
+.demo-box {
+    .history-display {
+        background: var(--bg-secondary);
+        padding: $spacing-md;
+        border-radius: $radius-sm;
+        font-family: $font-mono;
+        color: var(--text-secondary);
+        margin-top: $spacing-md;
+    }
+}
+
+// Demo 2: Redux Global State
+.counter-display {
+    @include flex-center;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    h3 {
+        font-size: 3rem;
+        color: var(--primary);
+        margin: 0;
+    }
+}
+
+// Demo 3: Bestiario
+.bestiary-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px; // preview + sidebar
+    gap: $spacing-lg;
+    margin: $spacing-xl 0;
+    align-items: start;
+
+    .bestiary-preview {
+        margin: 0;
+    }
+
+    .bestiary-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+        align-items: stretch;
+        position: static; // ensure not sticky on mobile to avoid overlap
+        top: auto;
+        z-index: 0;
+    }
+}
+
+.part-selector {
+    @include card;
+    text-align: center;
+
+    h4 {
+        margin-bottom: $spacing-md;
+        color: var(--primary);
+    }
+
+    select {
+        width: 100%;
+        padding: $spacing-md;
+        border: 2px solid var(--border);
+        border-radius: $radius-sm;
+        background: var(--bg);
+        color: var(--text);
+        cursor: pointer;
+        font-size: 1rem;
+
+        &:focus {
+            border-color: var(--primary);
+        }
+
+        option {
+            padding: $spacing-sm;
+        }
+    }
+
+    .thumbnails {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: $spacing-md;
+        align-items: center;
+        justify-items: center;
+        padding: $spacing-sm 0;
+    }
+
+    .thumb {
+        background: transparent;
+        border: 2px solid transparent;
+        border-radius: $radius-sm;
+        padding: $spacing-sm;
+        cursor: pointer;
+        transition: transform $transition-fast, border-color $transition-fast, box-shadow $transition-fast;
+
+        img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+        }
+    }
+
+    .thumb.active {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px var(--shadow);
+    }
+}
+
+@media (max-width: 768px) {
+    .bestiary-layout {
+        grid-template-columns: 1fr; // single column: sidebar top + preview
+        .bestiary-sidebar {
+            order: -1; // put it above preview
+            position: static; // ensure it's not sticky and sits in flow
+        }
+    }
+
+    .part-selector {
+        .thumbnails {
+            grid-template-columns: repeat(5, 1fr);
+            gap: $spacing-xs;
+            img { height: 60px; }
+        }
+        h4 { font-size: 1rem; }
+    }
+}
+
+@media (min-width: 769px) {
+    .bestiary-layout {
+        .bestiary-sidebar {
+            position: sticky;
+            top: $spacing-xl;
+            z-index: 1;
+        }
+    }
+}
+
+.bestiary-preview {
+    @include card;
+    margin-top: $spacing-xl;
+    text-align: center;
+
+    h3 {
+        color: var(--primary);
+        margin-bottom: $spacing-lg;
+    }
+}
+
+.bestiary-actions {
+    margin-top: $spacing-md;
+    display: flex;
+    justify-content: center;
+}
+
+.save-creature-btn {
+    @include btn-primary;
+    background: var(--success);
+    border: none;
+    padding: $spacing-md $spacing-lg;
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.saved-filename {
+    margin-top: $spacing-sm;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.creature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+    margin: $spacing-lg 0;
+
+    .part {
+        background: var(--bg-secondary);
+        padding: $spacing-lg $spacing-xl;
+        border-radius: $radius-md;
+        border: 2px solid var(--primary);
+        font-weight: 600;
+        color: var(--primary);
+        min-width: 200px;
+        text-align: center;
+        transition: all $transition-fast;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        img {
+            width: 260px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+    }
+}
+
+.creature-name {
+    margin-top: $spacing-md;
+    padding: $spacing-md;
+    background: var(--bg-secondary);
+    border-radius: $radius-sm;
+    font-family: $font-mono;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}

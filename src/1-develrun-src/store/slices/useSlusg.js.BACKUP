@@ -1,0 +1,13 @@
+export const useSlugs = () => {
+    
+    const hagamosSlug = (elSlug) => {
+        return elSlug
+            .toLowerCase()
+            .trim()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_-]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+    }
+
+    return { hagamosSlug }
+}

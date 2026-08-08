@@ -1,0 +1,489 @@
+// ============================================
+// pages/WebshellTestPage.jsx - Página de prueba para webshell mock
+// ============================================
+
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import WebshellWidget from '../7WebShell/WebshellWidget';
+import Terminal from '../7WebShell/Terminal';
+import { MOCK_RESPONSES } from './mockData';
+import { MOCK_SHELL_DATA } from './MockShellData/mockShellData';
+
+/**
+ * WebshellTestPage - Página para testear la webshell mock
+ * 
+ * Funcionalidades:
+ * - Vista previa del terminal completo
+ * - Widget embeddable para wiki
+ * - Selector de temas
+ * - Reset de historial
+ * - Métricas de uso
+ */
+
+const WebshellTestPage = () => {
+    const { theme, terminalTheme } = useSelector(state => state.app);
+    const [showWidget, setShowWidget] = useState(false);
+    const [commandCount, setCommandCount] = useState(0);
+    const [lastCommand, setLastCommand] = useState('');
+
+    const commandHistory = JSON.parse(localStorage.getItem('webshell_command_history') || '[]');
+
+    // Escuchar comandos ejecutados (para métricas)
+    const handleCommandExecuted = (cmd) => {
+        setCommandCount(prev => prev + 1);
+        setLastCommand(cmd);
+    };
+
+    // Resetear historial
+    const resetHistory = () => {
+        localStorage.removeItem('webshell_command_history');
+        setCommandCount(0);
+        setLastCommand('');
+        window.location.reload(); // Recargar para limpiar estado
+    };
+
+    return (
+        <div className="page webshell-test-page">
+        <style>{`
+            .webshell-test-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+            }
+
+            .test-header {
+            margin-bottom: var(--spacing-xxl);
+            }
+
+            .test-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            }
+
+            .test-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            }
+
+            .test-controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            }
+
+            .control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            }
+
+            .control-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            min-width: 100px;
+            }
+
+            .control-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            }
+
+            .test-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg-secondary);
+            color: var(--text);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+            }
+
+            .test-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            }
+
+            .test-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            }
+
+            .test-btn.danger:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+            }
+
+            .metrics-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            }
+
+            .metric-card {
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            }
+
+            .metric-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            margin-bottom: var(--spacing-xs);
+            }
+
+            .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            }
+
+            .metric-small {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+            font-family: var(--font-mono);
+            }
+
+            .terminal-section {
+            margin-bottom: var(--spacing-xxl);
+            }
+
+            .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            }
+
+            .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin: 0;
+            }
+
+            .section-title .badge {
+            background: var(--primary);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            }
+
+            .terminal-container {
+            height: 600px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            }
+
+            .terminal-container.widget-mode {
+            height: 400px;
+            max-width: 800px;
+            }
+
+            .info-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--primary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-sm);
+            margin: var(--spacing-xl) 0;
+            }
+
+            .info-box h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+            }
+
+            .info-box code {
+            background: var(--bg);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            color: var(--primary);
+            }
+
+            .command-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            }
+
+            .command-item {
+            background: var(--bg);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            }
+
+            .command-item:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateX(4px);
+            }
+
+            @media (max-width: 768px) {
+            .webshell-test-page {
+                padding: var(--spacing-md);
+            }
+            
+            .test-header h1 {
+                font-size: 2rem;
+            }
+            
+            .terminal-container {
+                height: 500px;
+            }
+            }
+        `}</style>
+
+        {/* Header */}
+        <div className="test-header">
+            <h1>🧪 WebShell Test Page</h1>
+            <p>
+            Página de prueba para el componente WebShell mock. 
+            Simula comandos de <code>wg-autoconf</code> sin necesidad de servidor.
+            Todos los comandos responden con datos de <code>mockData.js</code>.
+            </p>
+        </div>
+
+        {/* Controls */}
+        <div className="test-controls">
+            <div className="control-group">
+            <span className="control-label">View Mode:</span>
+            <div className="control-buttons">
+                <button 
+                className={`test-btn ${!showWidget ? 'active' : ''}`}
+                onClick={() => setShowWidget(false)}
+                >
+                Full Terminal
+                </button>
+                <button 
+                className={`test-btn ${showWidget ? 'active' : ''}`}
+                onClick={() => setShowWidget(true)}
+                >
+                Widget Mode
+                </button>
+            </div>
+            </div>
+
+            <div className="control-group">
+            <span className="control-label">Theme:</span>
+            <div className="control-buttons">
+                <span className="test-btn" style={{ background: 'var(--primary)', color: 'white' }}>
+                {terminalTheme || 'default'}
+                </span>
+                <span className="test-btn" style={{ background: 'var(--bg-secondary)' }}>
+                (cambia en AppMenu)
+                </span>
+            </div>
+            </div>
+
+            <div className="control-group">
+            <span className="control-label">Actions:</span>
+            <div className="control-buttons">
+                <button 
+                className="test-btn"
+                onClick={() => window.location.reload()}
+                >
+                🔄 Reload
+                </button>
+                <button 
+                className="test-btn danger"
+                onClick={resetHistory}
+                >
+                🗑️ Reset History
+                </button>
+            </div>
+            </div>
+        </div>
+
+        {/* Metrics */}
+        <div className="metrics-panel">
+            <div className="metric-card">
+            <div className="metric-value">{commandCount}</div>
+            <div className="metric-label">Commands Executed</div>
+            <div className="metric-small">this session</div>
+            </div>
+            <div className="metric-card">
+            <div className="metric-value">{lastCommand || '—'}</div>
+            <div className="metric-label">Last Command</div>
+            <div className="metric-small">
+                {lastCommand ? new Date().toLocaleTimeString() : 'none'}
+            </div>
+            </div>
+            <div className="metric-card">
+            <div className="metric-value">
+                {localStorage.getItem('webshell_command_history') 
+                ? JSON.parse(localStorage.getItem('webshell_command_history')).length 
+                : 0}
+            </div>
+            <div className="metric-label">History Size</div>
+            <div className="metric-small">stored in localStorage</div>
+            </div>
+            <div className="metric-card">
+            <div className="metric-value">{theme}</div>
+            <div className="metric-label">App Theme</div>
+            <div className="metric-small">via Redux</div>
+            </div>
+        </div>
+
+        {/* Terminal Section */}
+        <div className="terminal-section">
+            <div className="section-title">
+            <h2>{showWidget ? '📦 Widget Mode' : '🖥️ Full Terminal'}</h2>
+            <span className="badge">mock mode</span>
+            </div>
+
+            <div className={`terminal-container ${showWidget ? 'widget-mode' : ''}`}>
+            {showWidget ? (
+                <WebshellWidget 
+                title="wg-autoconf CLI (Mock Mode)"
+                height="100%"
+                mockData={MOCK_SHELL_DATA}
+                />
+            ) : (
+                <Terminal />
+            )}
+            </div>
+        </div>
+
+        {/* Info Box */}
+        <div className="info-box">
+            <h3>📋 Available Mock Commands</h3>
+            <p>
+            Este terminal simula los comandos de <code>wg-autoconf</code>. 
+            Todos los comandos responden con datos predefinidos en <code>mockData.js</code>.
+            Haz click en cualquier comando para ejecutarlo automáticamente.
+            </p>
+
+            <div className="command-list">
+            {[
+                'help',
+                'list',
+                'status',
+                'status wg_home',
+                'setup home',
+                'up wg_home',
+                'down wg_home',
+                'routes set wg_home port3',
+                'routes unset wg_home port3',
+                'server create',
+                'server list',
+                'server add myserver alice',
+                'server stats myserver',
+                'server revoke myserver alice',
+                'server remove myserver',
+                'debug on',
+                'debug show',
+                'settings show',
+                'settings set dns 8.8.8.8',
+                'clean',
+                'nuke',
+                'clear',
+                'pwd',
+                'whoami',
+                'date',
+                'uptime',
+                'echo hello world'
+            ].map(cmd => (
+                <div 
+                key={cmd}
+                className="command-item"
+                onClick={() => {
+                    // Buscar el input del terminal y ejecutar comando
+                    const input = document.querySelector('.terminal-input');
+                    if (input) {
+                    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                        window.HTMLInputElement.prototype, 
+                        'value'
+                    ).set;
+                    nativeInputValueSetter.call(input, cmd);
+                    
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    
+                    // Simular Enter
+                    const enterEvent = new KeyboardEvent('keypress', {
+                        key: 'Enter',
+                        code: 'Enter',
+                        keyCode: 13,
+                        which: 13,
+                        bubbles: true
+                    });
+                    input.dispatchEvent(enterEvent);
+                    
+                    handleCommandExecuted(cmd);
+                    }
+                }}
+                >
+                {cmd}
+                </div>
+            ))}
+            </div>
+        </div>
+
+        {/* Debug Info */}
+        <div className="info-box" style={{ borderLeftColor: 'var(--warning)' }}>
+            <h3>🔧 Debug Information</h3>
+            <pre style={{ 
+            background: 'var(--bg)', 
+            padding: 'var(--spacing-md)',
+            borderRadius: 'var(--radius-sm)',
+            overflow: 'auto',
+            fontSize: '0.85rem'
+            }}>
+    {`Current State:
+    • Theme: ${theme}
+    • Terminal Theme: ${terminalTheme}
+    • Widget Mode: ${showWidget ? 'on' : 'off'}
+    • History: ${commandHistory.length} commands
+    • localStorage: ${localStorage.getItem('webshell_command_history') ? 'present' : 'empty'}
+
+    Mock Data Available:
+    • ${Object.keys(MOCK_RESPONSES).length} predefined responses
+    • ${Object.keys(MOCK_RESPONSES).filter(k => !k.includes(' ')).length} base commands
+    • echo: dynamic response
+
+    Component Status:
+    • Terminal: ✅ mock mode
+    • useMockTerminal: ✅ loaded
+    • AppMenu: ✅ themes working
+    • Redux: ✅ connected`}
+            </pre>
+        </div>
+        </div>
+    );
+};
+
+export default WebshellTestPage;

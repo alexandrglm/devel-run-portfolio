@@ -1,0 +1,330 @@
+// POWERSHELL THEME
+@use '../vars' as *;
+@use '../mixins' as *;
+@use "sass:color";
+
+:root[data-webshell-theme="minimal"] {
+  --primary-color: #ffffff;
+  --secondary-color: #60cdff;
+  --accent-color: #0078d4;
+  --background-color: #202020;
+  --header-color: #2d2d30;
+  --border-color: #3c3c3c;
+  --text-dim: #cccccc;
+  --error-color: #ff6b6b;
+  --warning-color: #ffcc02;
+  --info-color: #60cdff;
+  --success-color: #6bcf7f;
+
+  --win11-surface: #2c2c2c;
+  --win11-border: #404040;
+  --win11-hover: rgba(96, 205, 255, 0.1);
+  --win11-active: rgba(96, 205, 255, 0.2);
+  --win11-glass: rgba(44, 44, 44, 0.7);
+}
+
+// Term OVERRIDES
+.webshell[data-webshell-theme="minimal"] {
+  font-family: "Segoe UI Variable", "Segoe UI", sans-serif !important;
+  font-weight: 400 !important;
+
+  .terminal-container {
+    background: #202020 !important;
+
+    border: 1px solid #3c3c3c !important;
+    border-radius: 8px !important;
+
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2) !important;
+
+    &:hover {
+      box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(96, 205, 255, 0.2) !important;
+      transition: all 0.2s ease !important;
+    }
+  }
+
+  .terminal-container .terminal-header {
+    background: linear-gradient(to bottom, #2d2d30, #262629) !important;
+    border-bottom: 1px solid #3c3c3c !important;
+    border-radius: 8px 8px 0 0 !important;
+
+    .terminal-controls {
+      .control {
+        width: 12px !important;
+        height: 12px !important;
+
+        border-radius: 2px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background: transparent !important;
+
+        transition: all 0.1s ease !important;
+
+        &:hover {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        &.close {
+          &:hover {
+            background: #c42b1c !important;
+            border-color: #c42b1c !important;
+          }
+        }
+
+        &.minimize {
+          &:hover {
+            background: #ca5010 !important;
+            border-color: #ca5010 !important;
+          }
+        }
+
+        &.maximize {
+          &:hover {
+            background: #0078d4 !important;
+            border-color: #0078d4 !important;
+          }
+        }
+      }
+    }
+
+    .terminal-title {
+      color: #cccccc !important;
+      font-weight: 400 !important;
+      font-size: 12px !important;
+      font-family: "Segoe UI Variable", "Segoe UI", sans-serif !important;
+    }
+
+    .connection-status .status-dot {
+      width: 8px !important;
+      height: 8px !important;
+
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 2px !important;
+
+      &.connected {
+        background: #6bcf7f !important;
+        border-color: #6bcf7f !important;
+      }
+
+      &.disconnected {
+        background: #ff6b6b !important;
+        border-color: #ff6b6b !important;
+      }
+    }
+  }
+
+  .terminal-container .terminal-body {
+    background: #202020 !important;
+
+    color: #ffffff !important;
+    font-family: "Cascadia Code", "Consolas", monospace !important;
+    font-weight: 400 !important;
+
+    &::-webkit-scrollbar {
+      width: 12px !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #2c2c2c !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #404040 !important;
+      border-radius: 6px !important;
+      border: 2px solid #202020 !important;
+
+      &:hover {
+        background: #60cdff !important;
+      }
+    }
+  }
+
+  .terminal-output {
+    .output-line {
+      &.system {
+        color: #cccccc !important;
+        font-weight: 400 !important;
+
+        .line:first-child {
+          color: #60cdff !important;
+          font-weight: 500 !important;
+        }
+      }
+
+      &.command {
+        color: #ffffff !important;
+        font-weight: 400 !important;
+
+        background: rgba(96, 205, 255, 0.05) !important;
+
+        border-left: 2px solid #60cdff !important;
+
+        padding-left: 6px !important;
+        margin-left: -6px !important;
+      }
+
+      &.response {
+        color: #cccccc !important;
+
+        .line:first-child {
+          color: #60cdff !important;
+          font-weight: 400 !important;
+        }
+      }
+
+      &.error {
+        color: #ff6b6b !important;
+        font-weight: 400 !important;
+
+        background: rgba(255, 107, 107, 0.08) !important;
+
+        border-left: 2px solid #ff6b6b !important;
+        padding-left: 6px !important;
+        margin-left: -6px !important;
+      }
+
+      &.streaming {
+        color: #cccccc !important;
+      }
+    }
+  }
+
+  .terminal-prompt {
+    .prompt-user {
+      color: #60cdff !important;
+      font-weight: 800 !important;
+    }
+
+    .prompt-separator {
+      color: #cccccc !important;
+    }
+
+    .prompt-path {
+      color: #0078d4 !important;
+      font-weight: 400 !important;
+    }
+
+    .prompt-symbol {
+      color: #ffffff !important;
+      font-weight: 400 !important;
+
+      animation: minimal-blink 1s infinite !important;
+    }
+  }
+
+  .terminal-input {
+    color: #ffffff !important;
+    caret-color: #60cdff !important;
+
+    font-family: "Cascadia Code", "Consolas", monospace !important;
+    font-weight: 400 !important;
+
+    &::selection {
+      background: rgba(96, 205, 255, 0.3) !important;
+    }
+
+    &::placeholder {
+      color: #808080 !important;
+      font-style: normal !important;
+    }
+  }
+
+  // LIMPUEZA
+  .terminal-body,
+  .terminal-output .output-line,
+  .terminal-prompt span,
+  .terminal-input {
+    text-shadow: none !important;
+  }
+}
+
+// APPMENU OVERRIDES
+.webshell[data-webshell-theme="minimal"] {
+  .app-menu-container {
+    font-family: "Segoe UI Variable", "Segoe UI", sans-serif !important;
+  }
+
+  .app-menu {
+    background: rgba(44, 44, 44, 0.85) !important;
+    backdrop-filter: blur(40px) saturate(120%) !important;
+
+    border: 1px solid #404040 !important;
+    border-radius: 8px !important;
+
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2) !important;
+
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+
+  .app-menu-item {
+    color: #ffffff !important;
+    font-weight: 400 !important;
+
+    border-radius: 4px !important;
+    margin: 1px 4px !important;
+    transition: all 0.1s ease !important;
+
+    &:hover {
+      background: rgba(96, 205, 255, 0.1) !important;
+      color: #60cdff !important;
+    }
+
+    &.active {
+      background: rgba(96, 205, 255, 0.2) !important;
+      color: #60cdff !important;
+
+      font-weight: 500 !important;
+    }
+
+    .menu-label {
+      font-weight: inherit !important;
+    }
+
+    .active-indicator {
+      color: #60cdff !important;
+    }
+
+    .submenu-arrow {
+      color: #cccccc !important;
+    }
+  }
+
+  .app-menu-separator {
+    background: #404040 !important;
+
+    margin: 4px 8px !important;
+    height: 1px !important;
+  }
+
+  .app-submenu {
+    background: rgba(44, 44, 44, 0.85) !important;
+    backdrop-filter: blur(40px) saturate(120%) !important;
+
+    border: 1px solid #404040 !important;
+    border-radius: 6px !important;
+
+    box-shadow:
+      0 6px 24px rgba(0, 0, 0, 0.25),
+      0 2px 6px rgba(0, 0, 0, 0.15) !important;
+
+    font-size: 14px !important;
+  }
+}
+
+@keyframes minimal-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.6;
+  }
+}

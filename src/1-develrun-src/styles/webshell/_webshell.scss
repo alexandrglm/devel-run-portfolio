@@ -1,0 +1,366 @@
+// ============================================
+// src/styles/components/_webshell.scss
+// ============================================
+@use '../vars' as *;
+@use '../mixins' as *;
+
+
+
+// ============================================
+// COMPONENTE WEBSHELL
+// ============================================
+.webshell {
+
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: 1.4;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+
+
+// ============================================
+// TERMINAL PRINCIPAL
+// ============================================
+
+.terminal-container {
+
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  min-height: 70vh;
+  max-height: 70vh;
+  
+  background: #1e1e1e;
+  border-radius: var(--border-radius);
+  
+  overflow: hidden;
+  
+  
+  @include terminal-box-shadow;
+
+  transition: all var(--transition-speed) ease;
+  
+  &:hover {
+  
+    @include terminal-box-shadow(40px);
+  
+    box-shadow:
+      0 15px 15px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(153, 255, 0, 0.824),
+      2px 10px 12px rgba(255, 255, 255, 0.15);
+  
+  }
+}
+
+.terminal-header {
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  background: 
+    linear-gradient(to bottom, 
+    #3c3c3c, var(--header-color));
+  border-bottom: 1px solid #1a1a1a;
+  padding: 8px 12px;
+  height: 30px;
+  
+  box-sizing: border-box;
+
+  .theme-selector-dropdown {
+
+    z-index: 1000;
+    //right: 0%;
+    //top: 100%;
+    position: absolute;
+  
+  }
+  
+  .terminal-controls {
+  
+    display: flex;
+    gap: 6px;
+    
+  
+    .control {
+  
+      &.close {
+        @include control-button(#ff5f57);
+      }
+      
+      &.minimize {
+        @include control-button(#ffbd2e);
+      }
+      
+      &.maximize {
+        @include control-button(#28ca42);
+      }
+    }
+  }
+  
+  .terminal-title {
+  
+    color: #c7c7c7;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    flex: 1;
+    margin: 0 20px;
+  }
+  
+  .connection-status {
+
+    position: relative;
+    cursor: pointer;
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      
+      &.connected {
+
+        background: var(--primary-color);
+        box-shadow: 0 0 6px rgba(0, 255, 0, 0.6);
+      }
+      &.disconnected {
+        background: var(--error-color);
+        box-shadow: 0 0 6px rgba(255, 107, 107, 0.6);
+      }
+    }
+  }
+}
+
+.terminal-body {
+
+  background: var(--background-color);
+
+  flex: 1;
+  //height: calc(100% - 30px); // con flex 1 he arreglado PERFECTAMENTE el problema de min-height del container!
+
+  overflow-y: auto;
+  padding: 16px;
+  color: var(--primary-color);
+  
+  
+  @include terminal-glow(#9dff00);
+  @include terminal-scrollbar;
+  
+  cursor: text;
+}
+
+// ============================================
+// OUTPUT Y INPUT
+// ============================================
+.terminal-output {
+
+  margin-bottom: 8px;
+  margin-left: 8px;
+  
+  .output-line {
+    
+    margin: 2px 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    
+    .line {
+      margin: 1px 0;
+    }
+    
+    &.system {
+      color: var(--warning-color);
+      @include terminal-glow(#ffff00);
+      
+      .line:first-child {
+        font-weight: bold;
+      }
+    }
+    
+    &.command {
+      color: #ffffff;
+      @include terminal-glow(#ffffff, 0.2);
+      margin: 8px 0 4px 0;
+    }
+    
+    &.response {
+      color: var(--primary-color);
+      margin: 4px 0 8px 0;
+      
+      .line:first-child {
+        color: var(--info-color);
+        font-weight: bold;
+        @include terminal-glow(#00dddd, 0.4);
+      }
+    }
+    
+    &.error {
+      color: var(--error-color);
+      @include terminal-glow(#ff6b6b);
+      margin: 4px 0;
+    }
+    
+    &.typing {
+      color: #666;
+      
+      .typing-indicator {
+        animation: typing-pulse 1.5s infinite;
+        color: var(--primary-color);
+      }
+    }
+
+    &.streaming {
+      color: var(--primary-color);
+      margin: 0;
+      
+      .line {
+        margin: 0;
+        white-space: pre;
+      }
+    }
+
+  }
+}
+
+.terminal-input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.terminal-prompt {
+  color: var(--primary-color);
+  @include terminal-glow(#00ff00);
+  font-weight: bold;
+  margin-right: 8px;
+  flex-shrink: 0;
+  
+  .prompt-user {
+    color: #00dd00;
+  }
+  
+  .prompt-separator {
+    color: #ffffff;
+  }
+  
+  .prompt-path {
+    color: #0088ff;
+    @include terminal-glow(#0088ff);
+  }
+  
+  .prompt-symbol {
+    color: #ffffff;
+    margin-left: 2px;
+  }
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--primary-color);
+  @include terminal-glow(#00ff00);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  width: 100%;
+  caret-color: var(--primary-color);
+  
+  &::selection {
+    background: rgba(0, 255, 0, 0.2);
+  }
+  
+  &::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+    font-style: italic;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// ============================================
+// ANIMACIONES
+// ============================================
+@keyframes typing-pulse {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes terminal-startup {
+  0% {
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 6px rgba(0, 255, 0, 0.6);
+  }
+}
+
+.terminal-container,
+.auth-screen {
+  animation: terminal-startup 0.6s ease-out;
+}
+
+.terminal-prompt .prompt-symbol {
+  animation: glow-pulse 2s infinite;
+}
+
+
+
+// ===================================
+// STANDALONE
+// ====================================
+// Añadir al final de _webshell.scss
+
+// Estilos específicos para modo standalone
+.webshell.standalone-mode {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 99999 !important;
+  
+  .terminal-container {
+    border-radius: 0 !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    
+    &:hover {
+      box-shadow: none !important;
+    }
+  }
+  
+  .terminal-body {
+    flex: 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}

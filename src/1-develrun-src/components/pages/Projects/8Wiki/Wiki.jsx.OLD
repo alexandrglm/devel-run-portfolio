@@ -1,0 +1,183 @@
+// Wiki.jsx
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchWikiPages } from '../../../store/slices/wikiSlice'
+
+// Las categorías las definimos igual que en Admin
+const WIKI_CATEGORIES = [
+    { value: 'getting-started', label: '🚀 Comenzando', icon: '🎯' },
+{ value: 'client', label: '🔌 Cliente VPN', icon: '📱' },
+{ value: 'server', label: '🖥️ Servidor', icon: '⚡' },
+{ value: 'routing', label: '🔄 Routing', icon: '🌐' },
+{ value: 'firewall', label: '🔥 Firewall', icon: '🛡️' },
+{ value: 'troubleshooting', label: '🔧 Troubleshooting', icon: '🔍' },
+{ value: 'advanced', label: '⚡ Avanzado', icon: '🚀' },
+{ value: 'reference', label: '📚 Referencia', icon: '📖' }
+]
+
+export default function Wiki() {
+    const dispatch = useDispatch()
+    const { items: pages, loading } = useSelector(state => state.wiki)
+    const [selectedCategory, setSelectedCategory] = useState('all')
+    const [searchTerm, setSearchTerm] = useState('')
+
+    useEffect(() => {
+        dispatch(fetchWikiPages())
+    }, [dispatch])
+
+    const publishedPages = pages.filter(page => page.status === 'published')
+
+    // Organizar páginas por categoría
+    const pagesByCategory = publishedPages.reduce((acc, page) => {
+        const cat = page.category || 'other'
+    if (!acc[cat]) acc[cat] = []
+        acc[cat].push(page)
+        return acc
+    }, {})
+
+    // Ordenar páginas dentro de cada categoría
+    Object.keys(pagesByCategory).forEach(cat => {
+        pagesByCategory[cat].sort((a, b) => (a.order || 0) - (b.order || 0))
+    })
+
+    // Filtrar por búsqueda
+    const filteredCategories = selectedCategory === 'all'
+    ? WIKI_CATEGORIES
+    : WIKI_CATEGORIES.filter(c => c.value === selectedCategory)
+
+    if (loading) {
+        return (
+            <div className="page wiki-index">
+            <div className="wiki-loading">Cargando wiki...</div>
+            </div>
+        )
+    }
+
+    return (
+        <div className="page wiki-index">
+        <header className="wiki-index-header">
+        <h1>📚 Documentación de wg-autoconf</h1>
+        <p className="wiki-index-subtitle">
+        Guía completa para configurar y gestionar WireGuard en OpenWrt
+        </p>
+
+        {/* Buscador */}
+        <div className="wiki-search">
+        <input
+        type="text"
+        placeholder="🔍 Buscar en la documentación..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        </div>
+
+        {/* Filtro por categoría */}
+        <div className="wiki-category-filter">
+        <button
+        className={selectedCategory === 'all' ? 'active' : ''}
+        onClick={() => setSelectedCategory('all')}
+        >
+        📋 Todas
+        </button>
+        {WIKI_CATEGORIES.map(cat => (
+            <button
+            key={cat.value}
+            className={selectedCategory === cat.value ? 'active' : ''}
+            onClick={() => setSelectedCategory(cat.value)}
+            >
+            {cat.icon} {cat.label}
+            </button>
+        ))}
+        </div>
+        </header>
+
+        <div className="wiki-index-content">
+        {filteredCategories.map(category => {
+            const categoryPages = pagesByCategory[category.value] || []
+
+            // Filtrar por término de búsqueda
+            const filteredPages = categoryPages.filter(page =>
+            searchTerm === '' ||
+            page.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            page.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            page.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+            )
+
+            if (filteredPages.length === 0) return null
+
+                return (
+                    <section key={category.value} className="wiki-category-section">
+                    <h2 className="wiki-category-title">
+                    <span className="category-icon">{category.icon}</span>
+                    {category.label}
+                    <span className="page-count">{filteredPages.length}</span>
+                    </h2>
+
+                    <div className="wiki-category-grid">
+                    {filteredPages.map(page => (
+                        <Link
+                        key={page._id}
+                        to={`/wiki/${page.slug}`}
+                        className="wiki-page-card"
+                        >
+                        <h3>{page.title}</h3>
+                        {page.excerpt && <p>{page.excerpt}</p>}
+
+                        <div className="wiki-page-card-footer">
+                        {page.version && (
+                            <span className="version-tag">v{page.version}</span>
+                        )}
+                        {page.metadata?.command && (
+                            <code className="command-tag">{page.metadata.command}</code>
+                        )}
+                        </div>
+
+                        {page.tags && page.tags.length > 0 && (
+                            <div className="wiki-page-tags">
+                            {page.tags.slice(0, 3).map(tag => (
+                                <span key={tag} className="tag">{tag}</span>
+                            ))}
+                            {page.tags.length > 3 && <span className="tag-more">+{page.tags.length - 3}</span>}
+                            </div>
+                        )}
+                        </Link>
+                    ))}
+                    </div>
+                    </section>
+                )
+        })}
+        </div>
+
+        {/* Sidebar con quick links */}
+        <aside className="wiki-quick-links">
+        <div className="quick-links-card">
+        <h4>⚡ Acceso rápido</h4>
+        <ul>
+        <li><a href="#instalacion">Instalación</a></li>
+        <li><a href="#cliente-basico">Cliente básico</a></li>
+        <li><a href="#crear-servidor">Crear servidor</a></li>
+        <li><a href="#policy-routing">Policy Routing</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+        </div>
+
+        <div className="quick-links-card">
+        <h4>📦 Versiones</h4>
+        <ul>
+        <li><a href="#v1.0.0">v1.0.0 (estable)</a></li>
+        <li><a href="#v1.1.0">v1.1.0 (beta)</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+        </ul>
+        </div>
+
+        <div className="quick-links-card">
+        <h4>🔧 Comandos útiles</h4>
+        <code>wg-autoconf setup myvpn</code>
+        <code>wg-autoconf server create</code>
+        <code>wg-autoconf routes set wg0 lan3</code>
+        </div>
+        </aside>
+        </div>
+    )
+}

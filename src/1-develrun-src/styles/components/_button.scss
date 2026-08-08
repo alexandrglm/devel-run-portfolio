@@ -1,0 +1,306 @@
+// src/components/ui/Button/_button.scss
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.btn {
+    @include btn-primary;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    text-decoration: none;
+    font-family: $font-main;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: all $transition-fast;
+    position: relative;
+    white-space: nowrap;
+    min-height: 44px;
+    min-width: 44px;
+    line-height: 1;
+
+    // Iconos
+    svg {
+        font-size: 1em;
+        flex-shrink: 0;
+    }
+
+    // Spinner de carga
+    &__spinner {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: currentColor;
+        animation: spin 0.6s linear infinite;
+        flex-shrink: 0;
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    &__text {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-xs;
+    }
+
+    // ============================================
+    // VARIANTES
+    // ============================================
+
+    // Primary (verde pistacho)
+    &--primary {
+        background: var(--primary);
+        color: var(--accent-text);
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+        }
+
+        &:active:not(:disabled):not(.btn--loading) {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+    }
+
+    // Secondary
+    &--secondary {
+        background: var(--bg-secondary);
+        color: var(--text);
+        border-color: var(--border);
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            background: var(--border);
+            transform: translateY(-2px);
+        }
+
+        &:active:not(:disabled):not(.btn--loading) {
+            transform: translateY(0);
+        }
+    }
+
+    // Ghost (transparente)
+    &--ghost {
+        background: transparent;
+        color: var(--text-secondary);
+        border-color: transparent;
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        &:active:not(:disabled):not(.btn--loading) {
+            transform: scale(0.95);
+        }
+    }
+
+    // Danger
+    &--danger {
+        background: var(--danger);
+        color: white;
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            background: color.adjust(#dc3545, $lightness: -10%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+        }
+
+        &:active:not(:disabled):not(.btn--loading) {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+    }
+
+    // GitHub (estilo específico)
+    &--github {
+        background: #24292e;
+        color: #ffffff;
+        border-color: #24292e;
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            background: #2f363d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(36, 41, 46, 0.3);
+        }
+
+        &:active:not(:disabled):not(.btn--loading) {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        // Modo oscuro
+        @media (prefers-color-scheme: dark) {
+            background: #3d444d;
+            border-color: #3d444d;
+
+            &:hover:not(:disabled):not(.btn--loading) {
+                background: #4a525d;
+            }
+        }
+    }
+
+    // Contact (estilo específico)
+    &--contact {
+        background: var(--primary);
+        color: var(--accent-text);
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            background: var(--primary-hover);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+        }
+
+        &:active:not(:disabled):not(.btn--loading) {
+            transform: translateY(0) scale(1);
+            box-shadow: none;
+        }
+    }
+
+    // ============================================
+    // TAMAÑOS
+    // ============================================
+
+    &--sm {
+        padding: $spacing-xs $spacing-md;
+        font-size: 0.8rem;
+        min-height: 32px;
+        min-width: 32px;
+        gap: $spacing-xs;
+
+        .btn__spinner {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    &--md {
+        padding: $spacing-sm $spacing-lg;
+        font-size: 0.95rem;
+        min-height: 44px;
+        min-width: 44px;
+        gap: $spacing-sm;
+
+        .btn__spinner {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &--lg {
+        padding: $spacing-md $spacing-xl;
+        font-size: 1.1rem;
+        min-height: 52px;
+        min-width: 52px;
+        gap: $spacing-sm;
+
+        .btn__spinner {
+            width: 22px;
+            height: 22px;
+        }
+
+        svg {
+            font-size: 1.1em;
+        }
+    }
+
+    // ============================================
+    // FULL WIDTH
+    // ============================================
+    &--full-width {
+        width: 100%;
+        justify-content: center;
+    }
+
+    // ============================================
+    // ESTADOS
+    // ============================================
+
+    &--loading {
+        cursor: wait;
+        opacity: 0.8;
+
+        .btn__text {
+            opacity: 0.8;
+        }
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+
+        &:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    // ============================================
+    // FOCUS
+    // ============================================
+    &:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 3px;
+    }
+}
+
+// ============================================
+// REDUCCIÓN DE MOVIMIENTO
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none;
+
+        &:hover:not(:disabled):not(.btn--loading) {
+            transform: none !important;
+        }
+
+        .btn__spinner {
+            animation-duration: 0s;
+        }
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+    .btn {
+        &--md {
+            font-size: 0.85rem;
+            padding: $spacing-sm $spacing-md;
+            min-height: 40px;
+        }
+
+        &--lg {
+            font-size: 1rem;
+            padding: $spacing-sm $spacing-lg;
+            min-height: 48px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        &--md {
+            font-size: 0.8rem;
+            padding: $spacing-xs $spacing-md;
+            min-height: 36px;
+        }
+
+        &--lg {
+            font-size: 0.9rem;
+            padding: $spacing-sm $spacing-md;
+            min-height: 44px;
+        }
+    }
+}

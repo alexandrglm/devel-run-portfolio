@@ -1,0 +1,282 @@
+// src/1-develrun-src/styles/mixins.scss
+@use "sass:color";
+@use "sass:map";
+@use "sass:meta";
+
+@use './vars' as *;
+
+
+@mixin card {
+  background: var(--card-bg);
+  padding: $spacing-xl;
+  border-radius: $radius-md;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: 1px solid var(--border);
+  transition: all $transition-normal;
+
+  &:hover {
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+}
+
+@mixin btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all $transition-fast;
+  font-family: $font-main;
+
+  &:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-secondary {
+  @include btn-primary;
+  background: var(--bg-secondary);
+  color: var(--text);
+  border: 1px solid var(--border);
+
+  &:hover:not(:disabled) {
+    background: var(--border);
+  }
+}
+
+@mixin btn-danger {
+  @include btn-primary;
+  background: var(--danger);
+
+  &:hover:not(:disabled) {
+    background: color.adjust(#dc3545, $lightness: -10%);
+  }
+}
+
+@mixin input-base {
+  padding: $spacing-md;
+  border: 1px solid var(--border);
+  border-radius: $radius-sm;
+  font-size: 1rem;
+  font-family: $font-main;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Responsive breakpoints map
+$breakpoints: (
+  mobile: 768px,
+  tablet: 968px,
+  desktop: 1200px,
+  large: 1400px
+);
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "No breakpoint named '#{$breakpoint}' in $breakpoints map.";
+  }
+}
+
+@mixin fade-in($duration: 0.3s) {
+    opacity: 0;
+    animation: fadeIn $duration ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@mixin glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+
+@mixin badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  white-space: nowrap;
+
+  i, svg {
+    margin-right: $spacing-xs;
+    font-size: 0.8rem;
+  }
+
+  &-outline {
+    background: transparent;
+    border: 1px solid currentColor;
+  }
+
+  &-pill {
+    border-radius: $radius-lg;
+  }
+}
+
+@mixin badge-success {
+  @include badge;
+  background: rgba(var(--success-rgb), 0.15);
+  color: var(--success);
+  border: 1px solid rgba(var(--success-rgb), 0.3);
+}
+
+@mixin badge-warning {
+  @include badge;
+  background: rgba(var(--warning-rgb), 0.15);
+  color: var(--warning);
+  border: 1px solid rgba(var(--warning-rgb), 0.3);
+}
+
+@mixin badge-danger {
+  @include badge;
+  background: rgba(var(--danger-rgb), 0.15);
+  color: var(--danger);
+  border: 1px solid rgba(var(--danger-rgb), 0.3);
+}
+
+@mixin badge-info {
+  @include badge;
+  background: rgba(var(--primary-rgb), 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
+}
+
+// WEBSHELL especifico
+
+@mixin terminal-glow($color, $intensity: var(--glow-intensity)) {
+  text-shadow: 0 0 3px rgba($color, $intensity);
+}
+
+@mixin terminal-box-shadow($depth: var(--shadow-depth)) {
+  box-shadow:
+    0 10px $depth rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@mixin terminal-scrollbar($track-color: #1a1a1a, $thumb-color: #404040) {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 4px;
+
+    &:hover {
+      @if meta.type-of($thumb-color) == "color" {
+        background: color.adjust($thumb-color, $lightness: 10%);
+      } @else {
+        filter: brightness(1.1);
+      }
+    }
+  }
+}
+
+
+@mixin control-button($color) {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: $color;
+  transition: all 0.2s ease;
+
+  &:hover {
+    @if meta.type-of($color) == "color" {
+      background: color.adjust($color, $lightness: 10%);
+    } @else {
+      filter: brightness(1.1);
+    }
+    transform: scale(1.1);
+  }
+}
+
+// Scrollbar customization mixin
+@mixin custom-scrollbar($track-color: #1a1a1a, $thumb-color: #404040) {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 4px;
+
+    &:hover {
+      @if meta.type-of($thumb-color) == "color" {
+        background: color.adjust($thumb-color, $lightness: 10%);
+      } @else {
+        filter: brightness(1.1);
+      }
+    }
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color $track-color;
+}
+
+@mixin listas {
+  li {
+    margin-bottom: $spacing-xs;
+  }
+}
+
+@mixin iconosXL {
+  font-size: 5rem;
+  margin-bottom: $spacing-lg;
+}

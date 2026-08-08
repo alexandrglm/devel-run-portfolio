@@ -1,0 +1,100 @@
+// WEBSHELL APP MENU PROPIO
+
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.connection-status {
+
+  position: relative;
+  cursor: pointer;
+
+}
+
+.app-menu-container {
+  
+  position: absolute;
+  right: 0;
+  top: 100%;
+  
+  z-index: 1000;
+
+}
+
+.app-menu {
+  
+  min-width: 200px;
+  
+  background: rgba(40, 40, 40, 0.98);
+  backdrop-filter: blur(20px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.06);
+  
+  padding: 4px 0;
+  font-size: 13px;
+
+
+}
+/*
+.app-menu-header{
+
+  padding: 20px;
+}
+*/
+
+.app-menu-item {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  
+  color: #ffffff;
+  
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  
+  &:hover {
+    background: var(--primary-color);
+    color: black;
+  }
+  
+  &.has-submenu::after {
+
+    font-size: 10px;
+    margin-left: auto;
+    opacity: 0.6;
+  }
+}
+
+.menu-label {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.app-menu-separator {
+  
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4px 0;
+
+}
+
+.app-submenu {
+  
+  position: fixed;
+  min-width: 160px;
+  
+  background: rgba(40, 40, 40, 0.98);
+  
+  backdrop-filter: blur(20px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  
+  padding: 4px 0;
+  font-size: 13px;
+}

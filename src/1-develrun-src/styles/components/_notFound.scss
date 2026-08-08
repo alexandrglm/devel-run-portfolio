@@ -1,0 +1,219 @@
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.notfound-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xl;
+    background: transparent !important;
+    position: relative;
+    overflow: hidden;
+
+
+    &.page {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    @media (max-width: 768px) {
+        padding: $spacing-md;
+    }
+}
+
+.notfound-content {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.notfound-header {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+}
+
+.notfound-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xs;
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.05em;
+    margin-bottom: $spacing-sm;
+    font-family: $font-display;
+
+    @media (max-width: 768px) {
+        font-size: 5rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 4rem;
+    }
+
+    &__number {
+        display: inline-block;
+        color: var(--text);
+
+        &--zero {
+            color: var(--primary);
+            animation: zeroFloat 3s ease-in-out infinite;
+        }
+    }
+}
+
+.notfound-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1.5rem;
+    }
+}
+
+.notfound-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+    max-width: 480px;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
+}
+
+.notfound-status {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-xs $spacing-md;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+
+    svg {
+        color: var(--primary);
+        font-size: 1rem;
+    }
+}
+
+.notfound-actions {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: $spacing-sm;
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        width: 100%;
+        gap: $spacing-sm;
+    }
+}
+
+.notfound-btn {
+    min-width: 160px;
+    justify-content: center;
+    font-size: 1rem;
+    padding: $spacing-md $spacing-xl;
+    text-decoration: none;
+
+    @media (max-width: 480px) {
+        width: 100%;
+        min-width: auto;
+        padding: $spacing-sm $spacing-lg;
+    }
+
+    svg {
+        font-size: 1.1rem;
+    }
+
+    &--primary {
+        background: var(--primary);
+        color: var(--accent-text);
+        border-color: var(--primary);
+
+        &:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+        }
+    }
+
+    &--secondary {
+        background: transparent;
+        color: var(--text);
+        border: 2px solid var(--border);
+
+        &:hover {
+            background: var(--bg-secondary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+    }
+}
+
+.notfound-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin: 0;
+
+    svg {
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes zeroFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .notfound-code__number--zero {
+        animation: none;
+    }
+
+    .notfound-header {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}

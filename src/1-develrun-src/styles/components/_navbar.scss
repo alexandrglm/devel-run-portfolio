@@ -1,0 +1,408 @@
+@use '../vars' as *;
+@use '../mixins' as *;
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2000;
+  padding: $spacing-lg $spacing-xl;
+  background: var(--card-bg);
+  box-shadow: 0 2px 4px var(--shadow);
+  border-bottom: 1px solid var(--border);
+  min-height: 50px;
+  gap: $spacing-lg;
+  
+  // SCROLL OCULTAR
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  
+  &--hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .logos {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: color $transition-fast, background $transition-fast;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-sm;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--primary);
+      background: var(--bg-secondary);
+    }
+  }
+  
+  a.active {
+    background: var(--bg-secondary);
+    color: var(--primary);
+  }
+
+  button {
+    padding: $spacing-sm $spacing-md;
+    white-space: nowrap;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: $font-main;
+    color: var(--text);
+    transition: color $transition-fast, background $transition-fast;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: var(--primary);
+      background: var(--bg-secondary);
+    }
+  }
+
+
+  // MODO DESKTOP
+  &__desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: $spacing-xl;
+  }
+
+  &__links {
+    display: flex;
+    gap: $spacing-lg;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+    margin-left: auto;
+
+    .user-info {
+      color: var(--text-secondary);
+      font-weight: 500;
+      padding: $spacing-sm $spacing-md;
+      background: var(--bg-secondary);
+      border-radius: $radius-sm;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+    }
+
+    .theme-toggle {
+      font-size: 1.3rem;
+      padding: $spacing-sm;
+    }
+  }
+
+  // DROPDOWN DESKTOP
+  .dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    .drop-label {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-xs;
+      color: var(--text);
+      text-decoration: none;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $radius-sm;
+      cursor: pointer;
+      font-size: 1.6rem;
+      font-weight: 500;
+      background: none;
+      border: none;
+      font-family: $font-main;
+
+      &:hover {
+        color: var(--primary);
+        background: var(--bg-secondary);
+      }
+    }
+
+    .chevron {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: $spacing-xs;
+      transition: transform 0.15s ease;
+      
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+
+    .dropdown-content {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: $radius-sm;
+      box-shadow: 0 4px 12px var(--shadow);
+      padding: $spacing-xs;
+      z-index: 200;
+      animation: dropdownFade 0.2s ease;
+
+      a {
+        width: 100%;
+        padding: $spacing-sm $spacing-md;
+        display: block;
+        font-size: 0.95rem;
+        
+        &:hover {
+          background: var(--bg-secondary);
+          color: var(--primary);
+        }
+      }
+    }
+  }
+
+
+  // MODO HAMBURG$ER
+  &__toggle {
+    display: none;
+    
+    @media (max-width: 968px) {
+      display: flex;
+    }
+  }
+
+  &__menu {
+    display: none;
+  }
+}
+
+// ANIMS
+
+// DROPDOWN
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// RESPONSIVE
+@media (max-width: 968px) {
+  .navbar {
+    padding: 0;
+    min-height: 0;
+    height: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
+
+    // Ocultar desktop en móvil
+    &__desktop {
+      display: none !important;
+    }
+  }
+
+  // DROPDOWN HAMBURGER
+  .dropdown {
+    width: 100%;
+    
+    .drop-label {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: $spacing-md;
+    }
+
+    &.hamburger-left {
+      .drop-label { justify-content: flex-start; }
+      .chevron-left { order: 0; margin-right: $spacing-sm; margin-left: 0; }
+      .chevron-right { display: none; }
+    }
+
+    &.hamburger-right {
+      .drop-label { justify-content: space-between; }
+      .chevron-right { order: 2; margin-left: $spacing-sm; margin-right: 0; }
+      .chevron-left { display: none; }
+    }
+
+    .dropdown-content {
+      position: static;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      min-width: auto;
+      animation: none;
+      padding-left: $spacing-lg;
+
+      a {
+        padding: $spacing-xs $spacing-md;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  // HAMBURGER COMPLETO
+  .navbar {
+    &__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: $radius-sm;
+      width: 2em;
+      height: 2em;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1200;
+      box-shadow: 0 2px 8px var(--shadow);
+      animation: slideIn 0.3s ease-out;
+      transition: all $transition-fast;
+      user-select: none;
+      touch-action: none;
+
+      &:hover {
+        background: var(--bg-secondary);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    &__menu {
+      position: fixed;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: $radius-md;
+      box-shadow: 0 4px 12px var(--shadow);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      min-width: 200px;
+      max-width: 280px;
+      padding: $spacing-sm;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+
+      &--open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      a, button {
+        font-size: 0.9rem;
+        text-align: left;
+        width: 100%;
+        height: 40px;
+        color: var(--text);
+        background: transparent;
+        border: none;
+        border-radius: $radius-sm;
+        transition: all $transition-fast;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: $spacing-sm $spacing-md;
+
+        &:hover {
+          background: var(--bg-secondary);
+          color: var(--primary);
+        }
+      }
+
+      .user-info {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: var(--bg-secondary);
+        padding: $spacing-sm $spacing-md;
+        border-radius: $radius-sm;
+        margin: $spacing-xs 0;
+        height: 40px;
+        display: flex;
+        align-items: center;
+      }
+
+      .theme-toggle {
+        justify-content: flex-end;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // SCALE
+  :root {
+    --menu-scale: min(1, calc((100vh * 0.8) / 600));
+  }
+
+  .navbar__menu,
+  .navbar__menu--open {
+    transform-origin: top left;
+    transform: scale(var(--menu-scale));
+  }
+}
+
+// REDUCED MOTION
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
+    transition: none;
+    
+    &--hidden {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  .dropdown-content {
+    animation: none;
+  }
+}
+
+// HAMBURGER ANIMS
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

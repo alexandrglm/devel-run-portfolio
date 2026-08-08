@@ -1,0 +1,30 @@
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.page {
+    h1 {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+.demo-box {
+    @include card;
+    margin: $spacing-lg 0;
+
+    h3 {
+        margin-top: 0;
+        color: var(--primary);
+    }
+
+    p {
+        margin-bottom: $spacing-md;
+    }
+
+    button {
+        margin-right: $spacing-md;
+        margin-top: $spacing-sm;
+    }
+}

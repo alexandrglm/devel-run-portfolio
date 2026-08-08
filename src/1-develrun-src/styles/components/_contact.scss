@@ -1,0 +1,713 @@
+// CONTACT
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.contact-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xl;
+    background: var(--bg);
+
+    @media (max-width: 768px) {
+        padding: $spacing-md;
+    }
+
+    @media (max-width: 480px) {
+        padding: $spacing-sm;
+    }
+}
+
+.contact-page__inner {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
+}
+
+// ============================================
+// CONTENT
+// ============================================
+.contact-content {
+    position: relative;
+
+    &--page {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+
+        .contact-header {
+            h1 {
+                font-size: 3.5rem;
+
+                @media (max-width: 768px) {
+                    font-size: 2.8rem;
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 2.2rem;
+                }
+            }
+
+            .contact-subtitle {
+                font-size: 1.3rem;
+
+                @media (max-width: 768px) {
+                    font-size: 1.1rem;
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    &--modal {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: $radius-lg;
+        box-shadow: 0 20px 60px var(--shadow);
+        padding: $spacing-xxl;
+        max-width: 650px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        @media (max-width: 768px) {
+            padding: $spacing-xl;
+            border-radius: $radius-md;
+        }
+
+        @media (max-width: 480px) {
+            padding: $spacing-lg;
+            border-radius: $radius-sm;
+        }
+
+        .contact-header {
+            h1 {
+                font-size: 2rem;
+
+                @media (max-width: 768px) {
+                    font-size: 1.75rem;
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// HEADER
+// ============================================
+.contact-header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+
+    @media (max-width: 768px) {
+        margin-bottom: $spacing-lg;
+    }
+
+    @media (max-width: 480px) {
+        margin-bottom: $spacing-md;
+    }
+
+    h1 {
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: $spacing-sm;
+        letter-spacing: -0.02em;
+
+        @media (max-width: 480px) {
+            margin-bottom: $spacing-xs;
+        }
+    }
+
+    .contact-subtitle {
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
+    }
+}
+
+// ============================================
+// FORMULARIO
+// ============================================
+.contact-form {
+    position: relative;
+    z-index: 1;
+
+    .form-group {
+        margin-bottom: $spacing-lg;
+
+        @media (max-width: 480px) {
+            margin-bottom: $spacing-md;
+        }
+
+        label {
+            display: block;
+            margin-bottom: $spacing-sm;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 0.01em;
+
+            .required {
+                color: var(--danger);
+                margin-left: 2px;
+            }
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: $spacing-md $spacing-lg;
+            border: 2px solid var(--border);
+            border-radius: $radius-sm;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1.05rem;
+            font-family: $font-main;
+            transition: all $transition-fast;
+            line-height: 1.6;
+
+            &::placeholder {
+                color: var(--text-secondary);
+                opacity: 0.5;
+                font-size: 1rem;
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--primary);
+                box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+                background: var(--bg);
+            }
+
+            &:hover:not(:focus) {
+                border-color: var(--primary-hover);
+            }
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+
+            &.error {
+                border-color: var(--danger);
+                box-shadow: 0 0 0 4px rgba(var(--danger-rgb), 0.1);
+
+                &:focus {
+                    border-color: var(--danger);
+                    box-shadow: 0 0 0 4px rgba(var(--danger-rgb), 0.15);
+                }
+            }
+
+            &.success {
+                border-color: var(--success);
+                box-shadow: 0 0 0 4px rgba(var(--success-rgb), 0.1);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 180px;
+
+            @media (max-width: 480px) {
+                min-height: 140px;
+            }
+        }
+
+        .field-error {
+            display: block;
+            margin-top: $spacing-xs;
+            font-size: 0.85rem;
+            color: var(--danger);
+            min-height: 1.2em;
+
+            &--hidden {
+                visibility: hidden;
+            }
+        }
+    }
+
+    // ============================================
+    // CAPTCHA
+    // ============================================
+    .captcha-wrapper {
+        margin: $spacing-lg 0 $spacing-xl;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-xs;
+
+        @media (max-width: 480px) {
+            margin: $spacing-md 0 $spacing-lg;
+        }
+
+        .captcha-container {
+            min-height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .captcha-status {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            min-height: 1.2em;
+
+            &--ok {
+                color: var(--success);
+                opacity: 1;
+            }
+
+            &--error {
+                color: var(--danger);
+                opacity: 1;
+            }
+
+            &--loading {
+                color: var(--text-secondary);
+                opacity: 0.5;
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 0.5;
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    // ============================================
+    // BOTÓN DE ENVÍO
+    // ============================================
+    .submit-btn {
+        width: 100%;
+        padding: $spacing-lg $spacing-xl;
+        background: var(--primary);
+        color: var(--accent-text);
+        border: none;
+        border-radius: $radius-sm;
+        font-size: 1.15rem;
+        font-weight: 600;
+        font-family: $font-main;
+        cursor: pointer;
+        transition: all $transition-fast;
+        position: relative;
+        overflow: hidden;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $spacing-sm;
+
+        @media (max-width: 480px) {
+            font-size: 1rem;
+            min-height: 52px;
+            padding: $spacing-md $spacing-lg;
+        }
+
+        &:hover:not(:disabled) {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.3);
+        }
+
+        &:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.6s linear infinite;
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// MODAL DE ESTADO
+// ============================================
+.contact-status-modal {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    box-shadow: 0 30px 80px var(--shadow);
+    padding: $spacing-xxl;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    animation: modalSlide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+
+    @keyframes modalSlide {
+        from {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    @media (max-width: 768px) {
+        padding: $spacing-xl;
+        border-radius: $radius-md;
+    }
+
+    @media (max-width: 480px) {
+        padding: $spacing-lg;
+        border-radius: $radius-sm;
+        margin: $spacing-md;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: $spacing-md;
+        right: $spacing-md;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all $transition-fast;
+        z-index: 2;
+
+        &:hover {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 480px) {
+            top: $spacing-sm;
+            right: $spacing-sm;
+            width: 36px;
+            height: 36px;
+            font-size: 1.25rem;
+        }
+    }
+}
+
+// ============================================
+// ESTADOS
+// ============================================
+.contact-status {
+    text-align: center;
+    padding: $spacing-lg $spacing-md;
+
+    .status-icon {
+        font-size: 5rem;
+        display: block;
+        margin-bottom: $spacing-md;
+
+        @media (max-width: 768px) {
+            font-size: 4rem;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 3.5rem;
+            margin-bottom: $spacing-sm;
+        }
+
+        &--success {
+            color: var(--success);
+        }
+
+        &--error {
+            color: var(--danger);
+        }
+    }
+
+    .status-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: $spacing-sm;
+
+        @media (max-width: 768px) {
+            font-size: 1.75rem;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 1.5rem;
+        }
+
+        &--success {
+            color: var(--success);
+        }
+
+        &--error {
+            color: var(--danger);
+        }
+    }
+
+    .status-message {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        margin: 0 0 $spacing-sm 0;
+        line-height: 1.6;
+
+        @media (max-width: 480px) {
+            font-size: 0.95rem;
+        }
+    }
+
+    .status-details {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        opacity: 0.6;
+        margin-bottom: $spacing-lg;
+
+        @media (max-width: 480px) {
+            font-size: 0.8rem;
+        }
+    }
+
+    .status-action {
+        display: flex;
+        justify-content: center;
+    }
+
+    .status-button {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-sm $spacing-xl;
+        border: none;
+        border-radius: $radius-sm;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all $transition-fast;
+        font-family: $font-main;
+        min-height: 48px;
+        text-decoration: none;
+
+        @media (max-width: 480px) {
+            width: 100%;
+            justify-content: center;
+        }
+
+        &--primary {
+            background: var(--primary);
+            color: var(--accent-text);
+
+            &:hover {
+                background: var(--primary-hover);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.3);
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: none;
+            }
+        }
+
+        &--secondary {
+            background: var(--bg-secondary);
+            color: var(--text);
+            border: 1px solid var(--border);
+
+            &:hover {
+                background: var(--border);
+                transform: translateY(-2px);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+// ============================================
+// MODAL OVERLAY
+// ============================================
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md;
+    animation: overlayFade 0.3s ease forwards;
+
+    @keyframes overlayFade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+        opacity: 1;
+    }
+
+    @media (max-width: 480px) {
+        padding: $spacing-sm;
+    }
+
+    .modal {
+        max-height: 95vh;
+        overflow-y: auto;
+        position: relative;
+        animation: modalSlide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+    }
+}
+
+// ============================================
+// ACCESIBILIDAD
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+    .contact-status {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .modal-overlay {
+        animation: none;
+        opacity: 1;
+    }
+
+    .modal-overlay .modal {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .contact-form .submit-btn .spinner {
+        animation-duration: 0s;
+    }
+}
+
+// ============================================
+// DARK MODE
+// ============================================
+@media (prefers-color-scheme: dark) {
+    .contact-content--modal {
+        background: var(--card-bg);
+        border-color: var(--border);
+    }
+
+    .contact-status-modal {
+        background: var(--card-bg);
+        border-color: var(--border);
+    }
+
+    .contact-form .form-group {
+        input,
+        textarea {
+            background: var(--bg);
+            border-color: var(--border);
+            color: var(--text);
+
+            &:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.15);
+            }
+        }
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}

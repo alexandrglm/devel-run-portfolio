@@ -1,0 +1,57 @@
+{
+  "help": "wg-autoconf v1.0.0-r1 - WireGuard Automation Tool\n\nUSAGE:\n  wg-autoconf <command> [options]\n\nCOMMANDS:\n  setup <name>              Create WireGuard interface\n  up <interface>            Activate interface\n  down <interface>          Deactivate interface\n  list                      Show available .conf files\n  status                    Show all active interfaces\n  status <interface>        Show specific interface details\n  routes set <wg> <lan>     Route LAN through VPN\n  routes unset <wg> <lan>   Remove routing\n  server create             Create WireGuard server\n  server add <n> <user>     Add client to server\n  server revoke <n> <user>  Revoke client access\n  server list               Show all servers and clients\n  server stats <n>          Display server statistics\n  settings show             Display current settings\n  settings set <k> <v>      Change setting\n  debug on/off              Enable/disable logging\n  clean                     Remove selected interfaces\n  nuke                      Remove ALL WireGuard configs\n\nEXAMPLES:\n  wg-autoconf setup home\n  wg-autoconf up wg_home\n  wg-autoconf routes set wg_home port3\n  wg-autoconf server create\n  wg-autoconf server add myserver alice",
+
+  "clear": "",
+
+  "list": "home.conf\nwork.conf\nvpn_us.conf\nserver_main.conf",
+
+  "status": "==[ WireGuard Status ]====================================\n\n==[ wg_home (CREATED, UP, ROUTED) ]======\n  Local:      10.2.0.2/32\n  Endpoint:   vpn.example.com:51820\n  Transfer:   102.3 KiB received, 45.2 KiB sent\n  Routes:     port3  (via _vpn_wg_home_port3)\n  Status:     ◆ Connected\n\n==[ wg_work (CREATED, UP) ]==============\n  Local:      10.3.0.5/32\n  Endpoint:   work-vpn.example.com:51821\n  Transfer:   256.7 KiB received, 128.4 KiB sent\n  Status:     ◆ Connected\n\n==[ wg_vpn_us (CREATED, DOWN) ]==========\n  Local:      10.4.0.1/32\n  Status:     ○ Interface created but not active",
+
+  "status wg_home": "==[ wg_home Status ]====================================\nLocal:           10.2.0.2/32\nEndpoint:        vpn.example.com:51820\nListening Port:  51820\nPublic Key:      X9DFBhm20MXz/f6H2uoApgNF+ZMmizfUXp0uW2XZiQ==\nTransfer:        102.3 KiB received\n                 45.2 KiB sent\nLast Handshake:  3 seconds ago\nRoutes:          0.0.0.0/0\nDNS:             1.1.1.1, 1.0.0.1\nStatus:          ◆ Connected and Active\nCreated:         2025-02-22 14:30:15",
+
+  "setup home": "[OK] Interface wg_home created successfully!\n\nInterface Details:\n  Name:        wg_home\n  Private Key: uEcbqUV3DpqVgoElw2EV/m00T0Jwj9173y2nhTjnMnQ= (hidden)\n  Address:     10.2.0.2/32\n  Endpoint:    vpn.example.com:51820\n  \nNext Steps:\n  1. Activate:  wg-autoconf up wg_home\n  2. Route:     wg-autoconf routes set wg_home port3\n  3. Test:      ping -I wg_home 8.8.8.8",
+
+  "up wg_home": "[OK] Interface wg_home activated successfully!\n\nStatus: ◆ Connected\nTransfer: 0 B received, 0 B sent\nLast Handshake: Just now\n\nYou can now use this interface for VPN traffic.",
+
+  "down wg_home": "[OK] Interface wg_home deactivated.\n\nAll routes and firewall rules have been removed.\nUse 'up' to reactivate.",
+
+  "routes set wg_home port3": "[OK] Routes configured successfully!\n\nConfiguration Details:\n  Routing Table:  _vpn_wg_home_port3 (ID: 150)\n  Source:         port3 (192.168.3.0/24)\n  Gateway:        wg_home\n  Priority:       1500, 1501, 1503\n  \nFirewall Zone:    wg_home (created)\nForwarding:       port3 ↔ wg_home (bidirectional)\n\nTraffic from port3 will now route through wg_home VPN.",
+
+  "routes unset wg_home port3": "[OK] Routes removed successfully!\n\nRouting table _vpn_wg_home_port3 cleaned.\nFirewall rules updated.\nIP rules flushed.\n\nPort3 traffic will use default gateway.",
+
+  "server create": "[INTERACTIVE SERVER SETUP]\n\nServer name: myserver\nSubnet [10.99.0.0/24]: \nDNS [10.99.0.1]: \nListen port [51820]: \nEndpoint [vpn.example.com]: \n\n[OK] Server wg_server_myserver created!\n\nServer Public Key: GHyXLa7n1gGPN/LJfxbh7EKz92ilepSDzk7jEz5l7DE=\nSubnet: 10.99.0.0/24\nDNS: 10.99.0.1\nListen Port: 51820\nEndpoint: vpn.example.com\n\nReady to add clients:\n  wg-autoconf server add myserver <username>",
+
+  "server list": "==[ Active WireGuard Servers ]=========================\n\nServer: myserver\n  Subnet: 10.99.0.0/24\n  Clients: 2\n    - alice (10.99.0.2) - Last HS: 5 seconds ago\n    - bob (10.99.0.3) - Last HS: 2 minutes ago\n\nServer: enterprise\n  Subnet: 10.98.0.0/24\n  Clients: 3\n    - emp_user1 (10.98.0.2) - Last HS: 1 minute ago\n    - emp_user2 (10.98.0.3) - Last HS: 3 minutes ago\n    - emp_user3 (10.98.0.4) - Last HS: 15 minutes ago",
+
+  "server add myserver alice": "[OK] User 'alice' added to server 'myserver'\n\nUser Details:\n  Name:          alice\n  IP:            10.99.0.2\n  Public Key:    /BjQMhFdwD410zqUE4hVgM1OJOpPVeKahjzKtXz3Wmk=\n  Created:       2025-02-22 14:35:20\n  \nConfig File:   /usr/libexec/wg-autoconf/configs/myserver/alice.conf\nStatus:        Ready to export\n\nExport this .conf file to client device and import in WireGuard app.",
+
+  "server stats myserver": "==[ Server: myserver Statistics ]=======================\n\nServer Info:\n  Public Key:      GHyXLa7n1gGPN/LJfxbh7EKz92ilepSDzk7jEz5l7DE=\n  Subnet:          10.99.0.0/24\n  Listen Port:     51820\n  Total Clients:   2\n  Active:          2\n\nClients:\n  [1] alice\n      IP:          10.99.0.2\n      Status:      ◆ Connected\n      Last HS:     5 seconds ago\n      RX:          12.4 KiB\n      TX:          8.2 KiB\n      \n  [2] bob\n      IP:          10.99.0.3\n      Status:      ◆ Connected\n      Last HS:     2 minutes ago\n      RX:          45.7 KiB\n      TX:          23.1 KiB\n      \nTotal Transfer:    57.1 KiB received, 31.3 KiB sent",
+
+  "server revoke myserver alice": "[CONFIRM] Are you sure you want to revoke user 'alice'? (yes/no): yes\n\n[OK] User 'alice' revoked from server 'myserver'\n\nActions taken:\n  ✓ Removed peer from wg_server_myserver\n  ✓ Deleted config: /usr/libexec/wg-autoconf/configs/myserver/alice.conf\n  ✓ Updated state machine\n  \nClient alice can no longer connect.",
+
+  "server remove myserver": "[CONFIRM] Are you sure you want to remove server 'myserver' completely? (yes/no): yes\n\n[OK] Server 'myserver' removed completely\n\nActions taken:\n  ✓ Revoked all 2 clients (no confirmation per client)\n  ✓ Removed UCI interface wg_server_myserver\n  ✓ Removed firewall zone\n  ✓ Flushed routing tables\n  ✓ Deleted /usr/libexec/wg-autoconf/configs/myserver/\n  ✓ Cleared state entries\n  \nServer and all configurations removed.",
+
+  "settings show": "# wg-autoconf v1.0.0-r1 User Settings\n# This file overrides built-in defaults.\n# Use: wg-autoconf settings set <key> <value>\n\nDEFAULT_DNS=\"1.1.1.1, 1.0.0.1\"\nDEFAULT_PORT=\"51820\"\nDEFAULT_ALLOW_IPS=\"0.0.0.0/0\"\nDEFAULT_COLOURS=\"1\"\nDEFAULT_VERBOSE=\"0\"",
+
+  "settings set dns 8.8.8.8": "[OK] Setting updated: DEFAULT_DNS=\"8.8.8.8\"\n\nChanges will apply to new interfaces created.\nExisting interfaces keep their current DNS.",
+
+  "debug on": "[OK] Debug logging enabled\n\nDebug Log: /usr/libexec/wg-autoconf/debug/wg-autoconf.log\n\nView debug log:\n  wg-autoconf debug show\n  wg-autoconf debug live (tail)",
+
+  "debug off": "[OK] Debug logging disabled",
+
+  "debug show": "[2025-02-22 14:30:15] [SETUP] Starting interface setup for wg_home\n[2025-02-22 14:30:16] [STATE] Creating state entry ID_1_NAME=home\n[2025-02-22 14:30:17] [UCI] Adding network interface to /etc/config/network\n[2025-02-22 14:30:18] [FIREWALL] Creating firewall zone wg_home\n[2025-02-22 14:30:19] [ROUTES] Setting up routing table _vpn_wg_home_port3\n[2025-02-22 14:30:20] [NFTABLES] Re-adding accept rules after firewall reload\n[2025-02-22 14:30:21] [SUCCESS] Interface wg_home setup complete",
+
+  "clean": "[INTERACTIVE CLEANUP]\n\nSelect interfaces to remove:\n\n[ ] wg_home (10.2.0.2/32)\n[ ] wg_work (10.3.0.5/32)\n[x] wg_vpn_us (10.4.0.1/32)\n\nProceed with removal? (yes/no): yes\n\n[OK] Cleaned 1 interface(s)",
+
+  "nuke": "[WARNING] This will remove ALL WireGuard configurations!\n\nInterfaces to remove:\n  - wg_home\n  - wg_work\n  - wg_vpn_us\n  - wg_server_myserver\n  - wg_server_enterprise\n\nServers to remove:\n  - myserver (2 clients)\n  - enterprise (3 clients)\n\nAre you absolutely certain? Type YES to confirm: YES\n\n[OK] System completely nuked!\n\nAll WireGuard interfaces, servers, routing tables, firewall zones removed.\nState file reset.",
+
+  "pwd": "/home/user",
+
+  "whoami": "user",
+
+  "uptime": " 14:35:20 up 3 days,  2:15,  1 user,  load average: 0.12, 0.18, 0.14",
+
+  "ls": "home.conf\nwork.conf\nvpn_us.conf\nserver_main.conf",
+
+  "error": "[ERROR] Unknown command. Type 'help' for available commands."
+}

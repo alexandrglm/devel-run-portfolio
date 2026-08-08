@@ -1,0 +1,170 @@
+@use "sass:color";
+
+@use './vars' as *;
+@use './mixins' as *;
+
+@use './components/navbar';
+@use './components/footer';
+@use './components/pages';
+@use './components/login';
+@use './components/admin';
+@use './components/demos';
+@use './components/contact';
+@use './components/loading';
+@use './components/performanceStats';
+@use './components/home';
+@use './components/wiki';
+@use './components/cookies';
+@use './components/markdownRenderer';
+@use './components/notFound';
+
+
+@use "./webshell/webshell";
+@use "./webshell/appmenu";
+@use "./webshell/webshell-fullscreen";
+@use "./webshell/webshell-modal-auth";
+@use "./webshell/webshell-modal-help";
+@use "./webshell/webshell-modal-about";
+@use "./webshell/webshell-theme-light";
+@use "./webshell/webshell-theme-minimal";
+@use "./webshell/webshell-theme-monokai";
+@use "./webshell/webshell-theme-ubuntu";
+@use "./webshell/webshell-launcher";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  background: var(--bg);
+  color: var(--text);
+  transition: background $transition-normal, color $transition-normal;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+#root {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+// Light Theme Variables
+body[data-theme="light"] {
+  --bg: #{$bg-light};
+  --bg-secondary: #{$bg-secondary-light};
+  --text: #{$text-light};
+  --text-secondary: #{$text-secondary-light};
+  --primary: #{$primary-light};
+  --accent: var(--primary);
+  --primary-hover: #{$primary-hover-light};
+  --success: #{$success-light};
+  --danger: #{$danger-light};
+  --warning: #{$warning-light};
+  --border: #{$border-light};
+  --card-bg: #{$card-light};
+  --accent-text: #ffffff;
+  --shadow: #{$shadow-light};
+}
+
+// Dark Theme Variables
+body[data-theme="dark"] {
+  --bg: #{$bg-dark};
+  --bg-secondary: #{$bg-secondary-dark};
+  --text: #{$text-dark};
+  --text-secondary: #{$text-secondary-dark};
+  --primary: #{$primary-dark};
+  --accent: var(--primary);
+  --primary-hover: #{$primary-hover-dark};
+  --success: #{$success-dark};
+  --danger: #{$danger-dark};
+  --warning: #{$warning-dark};
+  --border: #{$border-dark};
+  --card-bg: #{$card-dark};
+  --accent-text: #ffffff;
+  --shadow: #{$shadow-dark};
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-xl;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 0;
+  }
+}
+
+.page {
+  animation: fadeIn 0.3s ease;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: $spacing-lg;
+    color: var(--text);
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: $spacing-md;
+    color: var(--text);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: $spacing-md;
+    color: var(--text);
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    margin-bottom: $spacing-sm;
+    color: var(--text);
+  }
+
+  p {
+    margin-bottom: $spacing-md;
+    color: var(--text-secondary);
+  }
+
+  ul {
+    margin-left: $spacing-lg;
+    margin-bottom: $spacing-md;
+
+    li {
+      margin-bottom: $spacing-sm;
+      color: var(--text-secondary);
+    }
+  }
+}
+
+button {
+  @include btn-primary;
+}
+
+input, textarea, select {
+  @include input-base;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

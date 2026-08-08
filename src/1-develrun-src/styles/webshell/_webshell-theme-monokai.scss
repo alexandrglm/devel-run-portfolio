@@ -1,0 +1,316 @@
+// MONOKAI THEME
+@use '../vars' as *;
+@use '../mixins' as *;
+@use "sass:color";
+
+:root[data-webshell-theme="monokai"] {
+  // Monokai classic colors
+  --primary-color: #f8f8f2;
+  --secondary-color: #cfcfc2;
+  --accent-color: #a6e22e;
+  --background-color: #272822;
+  --header-color: #3e3d32;
+  --border-color: #49483e;
+  --text-dim: #75715e;
+  --error-color: #f92672;
+  --warning-color: #e6db74;
+  --info-color: #66d9ef;
+  --success-color: #a6e22e;
+
+  // Monokai specific
+  --monokai-pink: #f92672;
+  --monokai-orange: #fd971f;
+  --monokai-yellow: #e6db74;
+  --monokai-green: #a6e22e;
+  --monokai-cyan: #66d9ef;
+  --monokai-purple: #ae81ff;
+  --monokai-comment: #75715e;
+  --monokai-hover: rgba(166, 226, 46, 0.1);
+  --monokai-active: rgba(166, 226, 46, 0.2);
+}
+
+// TERM STYLES OVERRRIDES
+.webshell[data-webshell-theme="monokai"] {
+  font-family: "Fira Code", "SF Mono", "Consolas", monospace !important;
+  font-weight: 400 !important;
+
+  .terminal-container {
+    background: #272822 !important;
+    border: 1px solid #49483e !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(166, 226, 46, 0.1) !important;
+
+    &:hover {
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.6),
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(166, 226, 46, 0.3),
+        inset 0 1px 0 rgba(166, 226, 46, 0.15) !important;
+    }
+  }
+
+  .terminal-container .terminal-header {
+    background: linear-gradient(to bottom, #3e3d32, #2f2e23) !important;
+
+    border-bottom: 1px solid #49483e !important;
+
+    .terminal-controls {
+      .control {
+        width: 13px !important;
+        height: 13px !important;
+        border: 1px solid rgba(248, 248, 242, 0.2) !important;
+
+        &:hover {
+          border-color: rgba(248, 248, 242, 0.4) !important;
+          transform: scale(1.1) !important;
+        }
+
+        &.close {
+          background: linear-gradient(135deg, #f92672, #c91e4a) !important;
+
+          &:hover {
+            background: linear-gradient(135deg, #fb4085, #f92672) !important;
+            box-shadow: 0 2px 8px rgba(249, 38, 114, 0.5) !important;
+          }
+        }
+
+        &.minimize {
+          background: linear-gradient(135deg, #e6db74, #d4c85c) !important;
+
+          &:hover {
+            background: linear-gradient(135deg, #f4ed87, #e6db74) !important;
+            box-shadow: 0 2px 8px rgba(230, 219, 116, 0.5) !important;
+          }
+        }
+
+        &.maximize {
+          background: linear-gradient(135deg, #a6e22e, #8bc127) !important;
+
+          &:hover {
+            background: linear-gradient(135deg, #b8e749, #a6e22e) !important;
+            box-shadow: 0 2px 8px rgba(166, 226, 46, 0.5) !important;
+          }
+        }
+      }
+    }
+
+    .terminal-title {
+      color: #75715e !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .connection-status .status-dot {
+      border: 1px solid rgba(248, 248, 242, 0.2) !important;
+
+      &.connected {
+        background: #a6e22e !important;
+        box-shadow: 0 0 8px rgba(166, 226, 46, 0.6) !important;
+      }
+
+      &.disconnected {
+        background: #f92672 !important;
+        box-shadow: 0 0 8px rgba(249, 38, 114, 0.6) !important;
+      }
+    }
+  }
+
+  .terminal-container .terminal-body {
+    background: #272822 !important;
+
+    color: #f8f8f2 !important;
+    font-family: "Fira Code", "SF Mono", "Consolas", monospace !important;
+    font-weight: 400 !important;
+
+    &::-webkit-scrollbar {
+      width: 10px !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #1e1f1c !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #a6e22e, #66d9ef) !important;
+      border-radius: 5px !important;
+
+      &:hover {
+        background: linear-gradient(180deg, #b8e749, #7ee8ff) !important;
+      }
+    }
+  }
+
+  .terminal-output {
+    .output-line {
+      &.system {
+        color: #e6db74 !important;
+        font-weight: 500 !important;
+        text-shadow: 0 0 4px rgba(230, 219, 116, 0.3) !important;
+
+        .line:first-child {
+          color: #fd971f !important;
+          font-weight: 600 !important;
+          text-shadow: 0 0 6px rgba(253, 151, 31, 0.4) !important;
+        }
+      }
+
+      &.command {
+        color: #f8f8f2 !important;
+        font-weight: 500 !important;
+
+        background: rgba(166, 226, 46, 0.08) !important;
+
+        border-left: 3px solid #a6e22e !important;
+
+        padding-left: 8px !important;
+        margin-left: -8px !important;
+        text-shadow: 0 0 3px rgba(248, 248, 242, 0.2) !important;
+      }
+
+      &.response {
+        color: #cfcfc2 !important;
+
+        text-shadow: 0 0 2px rgba(207, 207, 194, 0.2) !important;
+
+        .line:first-child {
+          color: #66d9ef !important;
+          font-weight: 500 !important;
+          text-shadow: 0 0 4px rgba(102, 217, 239, 0.4) !important;
+        }
+      }
+
+      &.error {
+        color: #f92672 !important;
+        font-weight: 500 !important;
+        background: rgba(249, 38, 114, 0.1) !important;
+
+        border-left: 3px solid #f92672 !important;
+        padding-left: 8px !important;
+        margin-left: -8px !important;
+        text-shadow: 0 0 4px rgba(249, 38, 114, 0.4) !important;
+      }
+
+      &.streaming {
+        color: #cfcfc2 !important;
+        text-shadow: 0 0 2px rgba(207, 207, 194, 0.2) !important;
+      }
+    }
+  }
+
+  .terminal-prompt {
+    .prompt-user {
+      color: #a6e22e !important;
+      font-weight: 600 !important;
+      text-shadow: 0 0 4px rgba(166, 226, 46, 0.4) !important;
+    }
+
+    .prompt-separator {
+      color: #75715e !important;
+    }
+
+    .prompt-path {
+      color: #66d9ef !important;
+
+      font-weight: 500 !important;
+      text-shadow: 0 0 3px rgba(102, 217, 239, 0.3) !important;
+    }
+
+    .prompt-symbol {
+      color: #f8f8f2 !important;
+      font-weight: 600 !important;
+
+      animation: monokai-glow 1.5s infinite !important;
+      text-shadow: 0 0 4px rgba(248, 248, 242, 0.3) !important;
+    }
+  }
+
+  .terminal-input {
+    color: #f8f8f2 !important;
+    caret-color: #a6e22e !important;
+    font-family: "Fira Code", "SF Mono", "Consolas", monospace !important;
+
+    text-shadow: 0 0 2px rgba(248, 248, 242, 0.2) !important;
+
+    &::selection {
+      background: rgba(166, 226, 46, 0.3) !important;
+    }
+
+    &::placeholder {
+      color: #75715e !important;
+      font-style: italic !important;
+    }
+  }
+}
+
+// APPMENU OVerrides
+.webshell[data-webshell-theme="monokai"] {
+  .app-menu-container {
+    font-family: "Fira Code", "SF Mono", "Consolas", monospace !important;
+  }
+
+  .app-menu {
+    background: rgba(39, 40, 34, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid #49483e !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.3) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+  }
+
+  .app-menu-item {
+    color: #f8f8f2 !important;
+    font-weight: 400 !important;
+
+    &:hover {
+      background: rgba(166, 226, 46, 0.1) !important;
+      color: #a6e22e !important;
+    }
+
+    &.active {
+      background: rgba(166, 226, 46, 0.2) !important;
+      color: #a6e22e !important;
+      font-weight: 500 !important;
+    }
+
+    .menu-label {
+      font-weight: inherit !important;
+    }
+
+    .active-indicator {
+      color: #a6e22e !important;
+    }
+
+    .submenu-arrow {
+      color: #75715e !important;
+    }
+  }
+
+  .app-menu-separator {
+    background: #49483e !important;
+  }
+
+  .app-submenu {
+    background: rgba(39, 40, 34, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid #49483e !important;
+    box-shadow:
+      0 6px 24px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    font-size: 13px !important;
+  }
+}
+
+@keyframes monokai-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 4px rgba(248, 248, 242, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(166, 226, 46, 0.6);
+  }
+}

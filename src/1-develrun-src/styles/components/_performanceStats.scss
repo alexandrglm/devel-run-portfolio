@@ -1,0 +1,55 @@
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.performance-stats {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  top: auto;
+  left: auto;
+  min-width: 90px;
+  background: rgba(8, 8, 8, 0.6);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  z-index: 9999;
+  font-family: var(--font-family, "Courier New", monospace);
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  backdrop-filter: blur(3px);
+}
+
+.performance-stats .perf-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.performance-stats .perf-label {
+  color: rgba(255,255,255,0.72);
+}
+
+.performance-stats .perf-value {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .performance-stats { right: 8px; bottom: 8px; top: auto; left: auto; display: flex; justify-content: space-between; }
+}
+
+.performance-stats .perf-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-family, "Courier New", monospace);
+}
+.performance-stats .perf-btn[aria-pressed='true'] {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}

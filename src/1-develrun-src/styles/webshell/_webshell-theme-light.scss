@@ -1,0 +1,304 @@
+// LIGHT THEME
+@use '../vars' as *;
+@use '../mixins' as *;
+@use "sass:color";
+
+:root[data-webshell-theme="light"] {
+  // Terminal colors
+  --primary-color: #2d2d2d;
+  --secondary-color: #555555;
+  --accent-color: #0066cc;
+  --background-color: rgb(230, 235, 219);
+  --header-color: #e8edd8;
+  --border-color: #b8c5a3;
+  --text-dim: #777777;
+  --error-color: #d63031;
+  --warning-color: #e17000;
+  --info-color: #0984e3;
+  --success-color: #00b894;
+
+  // Light theme specific
+  --light-surface: #f5f8f0;
+  --light-border: #c4d1b0;
+  --light-text-muted: #999999;
+  --light-hover: rgba(0, 102, 204, 0.08);
+  --light-active: rgba(0, 102, 204, 0.12);
+}
+
+.webshell[data-webshell-theme="light"] {
+  font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif !important;
+  font-weight: 400 !important;
+
+  .terminal-container {
+    background: rgb(230, 235, 219) !important;
+
+    border: 1px solid #b8c5a3 !important;
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+
+    &:hover {
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(0, 102, 204, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+
+  .terminal-container .terminal-header {
+    background: linear-gradient(to bottom, #e8edd8, #dde2cd) !important;
+    border-bottom: 1px solid #c4d1b0 !important;
+
+    .terminal-controls {
+      .control {
+        width: 12px !important;
+        height: 12px !important;
+        border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+
+        &:hover {
+          border-color: rgba(0, 0, 0, 0.4) !important;
+          transform: scale(1.05) !important;
+        }
+
+        &.close {
+          background: #ff5f57 !important;
+          &:hover {
+            background: #ff4744 !important;
+            box-shadow: 0 1px 4px rgba(255, 95, 87, 0.4) !important;
+          }
+        }
+
+        &.minimize {
+          background: #ffbd2e !important;
+
+          &:hover {
+            background: #ffaa1b !important;
+            box-shadow: 0 1px 4px rgba(255, 189, 46, 0.4) !important;
+          }
+        }
+
+        &.maximize {
+          background: #28ca42 !important;
+
+          &:hover {
+            background: #20b038 !important;
+            box-shadow: 0 1px 4px rgba(40, 202, 66, 0.4) !important;
+          }
+        }
+      }
+    }
+
+    .terminal-title {
+      color: #777777 !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+    }
+
+    .connection-status .status-dot {
+      border: 1px solid rgba(0, 0, 0, 0.15) !important;
+
+      &.connected {
+        background: #00b894 !important;
+        box-shadow: 0 0 4px rgba(0, 184, 148, 0.4) !important;
+      }
+
+      &.disconnected {
+        background: #d63031 !important;
+        box-shadow: 0 0 4px rgba(214, 48, 49, 0.4) !important;
+      }
+    }
+  }
+
+  .terminal-container .terminal-body {
+    background: rgb(230, 235, 219) !important;
+
+    color: #2d2d2d !important;
+    font-family:
+      "JetBrains Mono", "SF Mono", "Cascadia Code", monospace !important;
+    font-weight: 400 !important;
+
+    &::-webkit-scrollbar {
+      width: 8px !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f5f8f0 !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #b8c5a3 !important;
+      border-radius: 4px !important;
+
+      &:hover {
+        background: #a5b28f !important;
+      }
+    }
+  }
+
+  .terminal-output {
+    .output-line {
+      &.system {
+        color: #e17000 !important;
+        font-weight: 500 !important;
+
+        .line:first-child {
+          color: #0066cc !important;
+          font-weight: 600 !important;
+        }
+      }
+
+      &.command {
+        color: #2d2d2d !important;
+        font-weight: 500 !important;
+        background: rgba(0, 102, 204, 0.05) !important;
+
+        border-left: 2px solid #0066cc !important;
+        padding-left: 6px !important;
+        margin-left: -6px !important;
+      }
+
+      &.response {
+        color: #555555 !important;
+
+        .line:first-child {
+          color: #0984e3 !important;
+          font-weight: 500 !important;
+        }
+      }
+
+      &.error {
+        color: #d63031 !important;
+        font-weight: 500 !important;
+        background: rgba(214, 48, 49, 0.06) !important;
+
+        border-left: 2px solid #d63031 !important;
+        padding-left: 6px !important;
+        margin-left: -6px !important;
+      }
+
+      &.streaming {
+        color: #555555 !important;
+      }
+    }
+  }
+
+  .terminal-prompt {
+    .prompt-user {
+      color: #0066cc !important;
+      font-weight: 600 !important;
+    }
+
+    .prompt-separator {
+      color: #777777 !important;
+    }
+
+    .prompt-path {
+      color: #0984e3 !important;
+      font-weight: 500 !important;
+    }
+
+    .prompt-symbol {
+      color: #2d2d2d !important;
+      font-weight: 600 !important;
+      animation: light-cursor 1s infinite !important;
+    }
+  }
+
+  .terminal-input {
+    color: #2d2d2d !important;
+    caret-color: #0066cc !important;
+
+    font-family:
+      "JetBrains Mono", "SF Mono", "Cascadia Code", monospace !important;
+
+    &::selection {
+      background: rgba(0, 102, 204, 0.2) !important;
+    }
+
+    &::placeholder {
+      color: #999999 !important;
+      font-style: normal !important;
+    }
+  }
+
+  // LIMPIEZA DE GLOWS DEFAULT
+  .terminal-body,
+  .terminal-output .output-line,
+  .terminal-prompt span,
+  .terminal-input {
+    text-shadow: none !important;
+  }
+}
+
+// ============================================
+// APP MENU COMPONENTS
+// ============================================
+.webshell[data-webshell-theme="light"] {
+  .app-menu-container {
+    font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif !important;
+  }
+
+  .app-menu {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    background: rgba(245, 248, 240, 0.95) !important;
+
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid #c4d1b0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .app-menu-item {
+    color: #2d2d2d !important;
+    font-weight: 400 !important;
+
+    &:hover {
+      background: rgba(0, 102, 204, 0.08) !important;
+      color: #0066cc !important;
+    }
+
+    &.active {
+      background: rgba(0, 102, 204, 0.12) !important;
+      color: #0066cc !important;
+      font-weight: 500 !important;
+    }
+
+    .menu-label {
+      font-weight: inherit !important;
+    }
+
+    .active-indicator {
+      color: #0066cc !important;
+    }
+
+    .submenu-arrow {
+      color: #777777 !important;
+    }
+  }
+
+  .app-menu-separator {
+    background: #c4d1b0 !important;
+  }
+
+  .app-submenu {
+    background: rgba(245, 248, 240, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid #c4d1b0 !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06) !important;
+    font-size: 13px !important;
+  }
+}
+
+@keyframes light-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,120 @@
+// ABOUT MODAL
+
+@use 'sass:map';
+@use '../vars' as *;
+@use '../mixins' as *;
+
+.about-content {
+
+    @include terminal-scrollbar;
+
+    text-align: left;
+    margin: 20px 0;
+    //max-height: 50vh;
+    overflow-y: auto;
+    
+    .about-section {
+      margin-bottom: 20px;
+      
+      h3 {
+        color: var(--primary-color);
+        font-size: 1.1em;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        padding-bottom: 5px;
+        font-weight: 600;
+      }
+      
+      .about-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        .info-label {
+          color: var(--info-color);
+          font-weight: 500;
+          font-size: 0.9em;
+        }
+        
+        .info-value {
+          color: var(--primary-color);
+          font-family: var(--font-family);
+          font-size: 0.9em;
+        }
+      }
+      
+      .tech-stack {
+        .tech-category {
+          padding: 6px 0;
+          color: #ccc;
+          font-size: 0.9em;
+          line-height: 1.5;
+          
+          strong {
+            color: var(--secondary-color);
+            margin-right: 8px;
+          }
+        }
+      }
+      
+      .architecture-info {
+        p {
+          margin: 6px 0;
+          color: #ccc;
+          font-size: 0.9em;
+          line-height: 1.5;
+          
+          &:before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 8px;
+            margin-left: 8px;
+          }
+        }
+      }
+      
+      .about-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding-top: 1em;
+
+        svg {
+          margin: 0 1em 0 0;
+        }
+        
+        a {
+          color: var(--info-color);
+          text-decoration: none;
+          font-size: 0.9em;
+          padding: 6px 10px;
+          border: 1px solid rgba(0, 221, 221, 0.3);
+          border-radius: 4px;
+          transition: all 0.2s ease;
+          
+          &:hover {
+            background: rgba(0, 221, 221, 0.1);
+            border-color: var(--info-color);
+            color: #ffffff;
+          }
+          
+          &:active {
+            transform: translateY(1px);
+          }
+        }
+      }
+    }
+  }
+
+

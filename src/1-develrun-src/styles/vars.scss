@@ -1,0 +1,179 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:meta";
+
+// FONTS
+$font-main: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-display: 'Glory', 'Helvetica Neue', Arial, sans-serif;
+$font-mono: 'Xanh Mono', 'Courier New', Courier, monospace;
+
+
+
+
+/// LIGHT THEME VARIABLES
+// Fondos
+$bg-light: #f5f3ed;                        // Crema principal
+$bg-secondary-light: #ebe8df;              // Crema más oscuro para cards/secciones
+
+// Textos 
+$text-light: #2c2a26;                      // Gris oscuro cálido
+$text-secondary-light: #6b6760;            // Gris medio cálido
+
+// Acento verde pistacho 
+$primary-light: #7c9e2d;                   // Verde pistacho oscuro
+$primary-hover-light: #657f24;             // Verde pistacho más oscuro al hover
+
+// Estados
+$success-light: #5a8a3a;                   // Verde éxito
+$danger-light: #b8392e;                    // Rojo apagado
+$warning-light: #c09020;                   // Amarillo mostaza
+
+// Bordes y sombras
+$border-light: #d1ccc0;                    // Borde beige
+$shadow-light: rgba(44, 42, 38, 0.12);     // Sombra gris cálido
+$card-light: #faf9f5;                      // Card crema muy claro
+
+
+
+// DARK
+// Fondos - grises neutros oscuros
+$bg-dark: #1a1a1a;                         // Gris muy oscuro (no azulado)
+$bg-secondary-dark: #242424;               // Gris oscuro medio
+
+// Textos - grises claros neutros
+$text-dark: #e8e6e3;                       // Casi blanco crema
+$text-secondary-dark: #a8a6a3;             // Gris claro neutral
+
+// Acento verde pistacho - más claro en dark
+$primary-dark: #a1ca0e;                    // Verde pistacho claro ácido
+$primary-hover-dark: #8409ef;              // Verde pistacho muy claro al hover
+
+// Estados
+$success-dark: #6fb848;                    // Verde éxito brillante
+$danger-dark: #e85d52;                     // Rojo coral
+$warning-dark: #e8b947;                    // Amarillo dorado
+
+// Bordes y sombras
+$border-dark: #3a3a3a;                     // Borde gris oscuro
+$shadow-dark: rgba(0, 0, 0, 0.45);         // Sombra negra
+$card-dark: #202020;                       // Card gris oscuro
+
+
+// SPACINGS
+$spacing-xs: 0.25rem;      // 4px
+$spacing-sm: 0.5rem;       // 8px
+$spacing-md: 1rem;         // 16px
+$spacing-lg: 1.5rem;       // 24px
+$spacing-xl: 2rem;         // 32px
+$spacing-xxl: 3rem;        // 48px
+
+
+// BORDER-RADIUS
+$radius-sm: 10px;
+$radius-md: 25px;
+$radius-lg: 50px;
+
+
+// TRANSITIONS
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-lento: 0.5s ease;
+
+
+
+:root {
+    
+    // Terminal (NO cambian con theme)
+    --primary-color: #b3ff00;
+    --background-color: #0c0c0c;
+    --header-color: #2a2a2a;
+    --error-color: #ff6b6b;
+    --warning-color: #ffff00;
+    --info-color: #00dddd;
+
+    // Terminal dimensiones/efectos
+    --font-family: "JetBrains Mono", "Courier New", monospace;
+    --font-size: 14px;
+    --border-radius: 8px;
+    --max-width: 90vw;
+    --min-height: 70vh;
+    --max-height: 85vh;
+    --glow-intensity: 0.3;
+    --transition-speed: 0.3s;
+    --shadow-depth: 30px;
+}
+
+
+
+// VARS DE PALABRAMAGICA 
+// _variables.scss
+$font-primary: "Merriweather", serif;
+$font-secondary: "Inter", sans-serif;
+
+// VARIABLES
+$font-primary: "Merriweather", serif;
+$color-white: whitesmoke;
+$color-green: #5fff22;
+$color-green-glow: rgba(95, 255, 34, 0.5);
+$shadow-dark: rgba(0, 0, 0, 1);
+$shadow-light: rgba(0, 0, 0, 0.6);
+$accent: #8e00db;
+
+// Git component colors
+$git-bg: rgba(0, 78, 42, 0.75);
+$git-text: #f5f5f7;
+$git-link: #bbff00;
+$git-link-hover :#8e00db;
+$git-strong: #ff2a00;
+
+// Breakpoints
+$breakpoints: (
+    mobile: 480px,
+    tablet: 768px,
+    desktop: 1024px,
+    large: 1440px
+);
+
+
+
+// VARS WEBSHELL THEMES
+// Tema oscuro por defecto
+:root {
+    // Fondos
+    --app-bg-primary: #{$bg-dark};
+    --app-bg-secondary: #{$bg-secondary-dark};
+    
+    // Navbar
+    --navbar-text: #{$text-dark};
+    --navbar-accent: #{$primary-dark};
+    --navbar-accent-hover: #{$primary-hover-dark};
+    --navbar-border: #{$border-dark};
+
+    // Navbar Hamburger Autoescalable
+    --menu-scale: 1;
+}
+
+
+
+// LIGHT THEME
+[data-theme="light"] {
+    // Fondos
+    --app-bg-primary: #{$bg-light};
+    --app-bg-secondary: #{$bg-secondary-light};
+    
+    // Navbar
+    --navbar-text: #{$text-light};
+    --navbar-accent: #{$primary-light};
+    --navbar-accent-hover: #{$primary-hover-light};
+    --navbar-border: #{$border-light};
+}
+
+
+// Z-index, a ver si los arreglo
+$z-index: (
+    modal: 1000,
+    dropdown: 100,
+    fixed: 50,
+    nav: 10,
+    base: 1
+);
