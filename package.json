@@ -25,6 +25,7 @@
     "crypto-js": "^4.2.0",
     "dotenv": "^16.6.1",
     "express": "^4.22.2",
+    "express-rate-limit": "^8.6.2",
     "framer-motion": "^12.23.24",
     "mongodb": "^7.5.0",
     "node-rsa": "^2.0.0",
