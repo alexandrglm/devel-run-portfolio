@@ -162,326 +162,314 @@ export default function Index() {
 
   return (
     <motion.div
-    className="page home-page"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5 }}
+      className="page home-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
-    {/* ============================================
-      HERO SECTION
-      ============================================ */}
+      {/* ============================================
+        HERO SECTION
+        ============================================ */}
       <section className="hero-section">
-      <SvgHandler
-      style={{ position: 'fixed', inset: 0, zIndex: 1 }}
-      breathing={false}
-      rotation={false}
-      parallax={true}
-      waveBlur={false}
-      colorShift={true}
-      neonGlow={true}
-      opacity={0.5}
-      blurAmount={2}
-      />
+        <SvgHandler
+          style={{ position: 'fixed', inset: 0, zIndex: 1 }}
+          breathing={false}
+          rotation={false}
+          parallax={true}
+          waveBlur={false}
+          colorShift={true}
+          neonGlow={true}
+          opacity={0.5}
+          blurAmount={2}
+        />
 
-      <div className="hero-content" style={{ position: 'relative', zIndex: 1 }}>
-      <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 }}
-      >
-      <h1>
-      Alexander Gomez
-      <span className="subtitle">5 years programming // 20+ years in Systems & Networking</span>
-      </h1>
-      </motion.div>
+        <div className="hero-content" style={{ position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h1>
+              Alexander Gomez
+              <span className="subtitle">5 years programming // 20+ years in Systems & Networking</span>
+            </h1>
+          </motion.div>
 
-      <p className="hero-description">
-      Mainframe software developer, freelance, focused on Full-Stack <br />
-      with a deep, uncompromising affinity for the back-end
-      </p>
-      <div className="hero-stats">
-      {stats.map((stat, idx) => (
-        <motion.div
-        key={idx}
-        className="stat-item"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 + idx * 0.1 }}
-        >
-        <span className="stat-value">{stat.value}</span>
-        <span className="stat-label">{stat.label}</span>
-        </motion.div>
-      ))}
-      </div>
-      </div>
+          <p className="hero-description">
+            Mainframe software developer, freelance, focused on Full-Stack <br />
+            with a deep, uncompromising affinity for the back-end
+          </p>
+          <div className="hero-stats">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                className="stat-item"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + idx * 0.1 }}
+              >
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ============================================
         ABOUT SECTION
         ============================================ */}
-        <section className="about-section">
+      <section className="about-section">
         <div className="section-container">
-        <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        >
-        <h2 className="section-title">
-        <span className="title-accent">//</span> A bit of background
-        </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="section-title">
+              <span className="title-accent">//</span> A bit of background
+            </h2>
 
-        <div className="about-grid">
-        <div className="about-text">
-        <p>
-        My coding journey began just after I turned <strong>10 years old</strong>, writing <strong>BASIC</strong> on some Z80 derivatives for fun (those old Vtech clones, uhhh, what great times those were).
-        But, if I have one regret, it's not pivoting into a hardware/software engineering career until well
-        into my <strong>30's</strong>.
-        </p>
+            <div className="about-grid">
+              <div className="about-text">
+                <p>
+                  My coding journey began just after I turned <strong>10 years old</strong>, writing <strong>BASIC</strong> on some Z80 derivatives for fun (those old Vtech clones, uhhh, what great times those were).
+                  But, if I have one regret, it's not pivoting into a hardware/software engineering career until well
+                  into my <strong>30's</strong>.
+                </p>
 
-        <p>
-        Somewhat chaotic, yet operating within a slightly <strong>OCD-like</strong> framework where almost every single detail of my life is constantly planned, prioritised, managed, and dissected as if it were a <strong>binary tree</strong>.
-        </p>
+                <p>
+                  Somewhat chaotic, yet operating within a slightly <strong>OCD-like</strong> framework where almost every single detail of my life is constantly planned, prioritised, managed, and dissected as if it were a <strong>binary tree</strong>.
+                </p>
 
-        <p>
-        Everything is a draft to me, a learning curve, or an excuse to build simple tools that make my life easier.
-        With an <strong>unconfessed habit of tinkering</strong> with almost any electronic device I can get my hands on, usually trying to reprogram it.
-        </p>
-        <p>
-        Even so, I genuinely wish I had better <strong>SMD</strong> micro-soldering and micro-electronics skills… honestly, I could spend whole days just hooking up wires to any serial port I can find.
-        </p>
+                <p>
+                  Everything is a draft to me, a learning curve, or an excuse to build simple tools that make my life easier.
+                  With an <strong>unconfessed habit of tinkering</strong> with almost any electronic device I can get my hands on, usually trying to reprogram it.
+                </p>
+                <p>
+                  Even so, I genuinely wish I had better <strong>SMD</strong> micro-soldering and micro-electronics skills… honestly, I could spend whole days just hooking up wires to any serial port I can find.
+                </p>
 
-        <p>
-        With no particular charisma but, although I dedicated my education and career to other fields, I never stop striving to <strong>keep learning every day</strong>; not only new programming languages and frameworks, or getting new ways to tinker with devices, but also through learning alongside other developers.<br /><br />
-        </p>
+                <p>
+                  With no particular charisma but, although I dedicated my education and career to other fields, I never stop striving to <strong>keep learning every day</strong>; not only new programming languages and frameworks, or getting new ways to tinker with devices, but also through learning alongside other developers.<br /><br />
+                </p>
 
-        <h3>This is my goal, my current journey.</h3><br /><h3> And, these are my interests:</h3>
+                <h3>This is my goal, my current journey.</h3><br /><h3> And, these are my interests:</h3>
 
-        {/* Interests Grid */}
-        <div className="interests-grid">
-        {interests
-          .sort((a, b) => (a.orderId || 0) - (b.orderId || 0))
-          .map((interest, idx) => (
-            <div key={idx} className="interest-item">
-            <Icons icon={interest.icon} />
-            <div>
-            <strong>{interest.label}</strong>
-            <span>{interest.desc}</span>
+                {/* Interests Grid */}
+                <div className="interests-grid">
+                  {interests
+                    .sort((a, b) => (a.orderId || 0) - (b.orderId || 0))
+                    .map((interest, idx) => (
+                      <div key={idx} className="interest-item">
+                        <Icons icon={interest.icon} />
+                        <div>
+                          <strong>{interest.label}</strong>
+                          <span>{interest.desc}</span>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              {/* Sidebar */}
+              <div className="about-sidebar">
+
+                {/* branch: gravatar-ci  */}
+                <div className="info-card gravatar-card-wrapper">
+                  <div className="gravatar-hovercard">
+                    <div className="gravatar-hovercard__inner">
+                      <div className="gravatar-hovercard__header">
+                        <a className="gravatar-hovercard__avatar-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer">
+                          <img className="gravatar-hovercard__avatar" src="https://1.gravatar.com/avatar/3a217ecb55a0197d19dabb8f9dc8be833cc3542e02af00f2da75ae60c08c0d89?s=256&d=initials" width="80" height="80" alt="Alexander Gomez" />
+                        </a>
+                        <a className="gravatar-hovercard__personal-info-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer">
+                          <h4 className="gravatar-hovercard__name">Alexander Gomez</h4>
+                          <p className="gravatar-hovercard__job">Jr. Software Developer | FSD | Freelance</p>
+                        </a>
+                      </div>
+
+                      <div className="gravatar-hovercard__social-links">
+                        <a className="gravatar-hovercard__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" data-service-name="gravatar">
+                          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/gravatar.svg" width="24" height="24" alt="Gravatar" />
+                        </a>
+                        <a className="gravatar-hovercard__social-link" href="https://www.linkedin.com/in/alexandr-gomez-8056a8389" target="_blank" rel="noopener noreferrer" data-service-name="linkedin">
+                          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/linkedin.svg" width="24" height="24" alt="LinkedIn" />
+                        </a>
+                        <a className="gravatar-hovercard__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" data-service-name="github">
+                          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/github.svg" width="24" height="24" alt="GitHub" />
+                        </a>
+                      </div>
+
+                      <div className="gravatar-hovercard__footer">
+                        <a className="gravatar-hovercard__profile-url" title="https://gravatar.com/glmalexandr" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
+                          gravatar.com/glmalexandr
+                        </a>
+                        <a className="gravatar-hovercard__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
+                          View profile →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="info-card">
+                  <h3>
+                    <Icons icon={faUserGraduate} /> Trainings
+                  </h3>
+                  <ul>
+                    <li>
+                      <strong>Java Developer Professional Certificate</strong>
+                      <br />
+                      <span className="cert-meta">IBM Skills Network · 2026</span>
+                    </li>
+                    <li>
+                      <strong>Full Stack Development Graduate</strong>
+                      <br />
+                      <span className="cert-meta">Bottega University · 2025</span>
+                    </li>
+                    <li>
+                      <strong>IT Security Auditing & Data Protection (LOPD)</strong>
+                      <br />
+                      <span className="cert-meta">IFEFOR-CEBEK · 2023</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="info-card">
+                  <h3><Icons icon={faBook} /> Currently Learning</h3>
+                  <ul>
+                    <li>Software Engineering</li>
+                    <li>Core Java & Spring Boot</li>
+                    <li>Data Structures & Algorithms</li>
+                    <li>BI / Data Analytics / Data Science</li>
+                    <li>R / DAX</li>
+                  </ul>
+                </div>
+
+                <div className="info-card">
+                  <h3><Icons icon={faTools} /> Currently Working On</h3>
+                  <ul>
+                    <li>Shell <em>but-UI-based experience</em> tools</li>
+                    <li>OpenWrt - QualcommAX drivers disassembling</li>
+                    <li>Node - React "webshell" components</li>
+                    <li>Some WireGuard tools for OpenWrt</li>
+                    <li>Socioeconomic Indicators in Basque Country data science project</li>
+                    <li>Data Modeling - ETL, for PowerBI</li>
+                  </ul>
+                </div>
+
+                <div className="info-card">
+                  <h4>
+                    <Icons icon={faCode} /> Languages you can approach me in ...
+                  </h4>
+                  <div className="language-list">
+                    {languages.map((lang, idx) => (
+                      <div key={idx} className="language-item">
+                        <span className="lang-name">{lang.name}</span>
+                        <span className="lang-level">{lang.level}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="info-card">
+                  <h4> ... and the human languages too <Icons icon={faLanguage} /></h4>
+                  <div className="language-list">
+                    {humanLanguages.map((lang, idx) => (
+                      <div key={idx} className="language-item">
+                        <span className="lang-name">{lang.name}</span>
+                        <span className="lang-level">{lang.level}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
             </div>
-            </div>
-          ))}
-          </div>
-          </div>
-
-          {/* Sidebar */}
-          <div className="about-sidebar">
-
-          {/* Integracion Gravatar test 20261013
-              - Test 20261013, pendiente portar a objeto propio
-          */}
-
-          <div className="info-card gravatar-card-wrapper">
-          <div className="gravatar-hovercard">
-          <div className="gravatar-hovercard__inner">
-          <div className="gravatar-hovercard__header">
-          <a className="gravatar-hovercard__avatar-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer">
-          <img className="gravatar-hovercard__avatar" src="https://1.gravatar.com/avatar/3a217ecb55a0197d19dabb8f9dc8be833cc3542e02af00f2da75ae60c08c0d89?s=256&d=initials" width="80" height="80" alt="Alexander Gomez" />
-          </a>
-          <a className="gravatar-hovercard__personal-info-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer">
-          <h4 className="gravatar-hovercard__name">Alexander Gomez</h4>
-          <p className="gravatar-hovercard__job">Jr. Software Developer | FSD | Freelance</p>
-          </a>
-          </div>
-
-          <div className="gravatar-hovercard__social-links">
-          <a className="gravatar-hovercard__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" data-service-name="gravatar">
-          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/gravatar.svg" width="24" height="24" alt="Gravatar" />
-          </a>
-          <a className="gravatar-hovercard__social-link" href="https://www.linkedin.com/in/alexandr-gomez-8056a8389" target="_blank" rel="noopener noreferrer" data-service-name="linkedin">
-          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/linkedin.svg" width="24" height="24" alt="LinkedIn" />
-          </a>
-          <a className="gravatar-hovercard__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" data-service-name="github">
-          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/github.svg" width="24" height="24" alt="GitHub" />
-          </a>
-          </div>
-
-          <div className="gravatar-hovercard__footer">
-          <a className="gravatar-hovercard__profile-url" title="https://gravatar.com/glmalexandr" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
-          gravatar.com/glmalexandr
-          </a>
-          <a className="gravatar-hovercard__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
-          View profile →
-          </a>
-          </div>
-          </div>
-          </div>
-          </div>
-          {/* ----------------------------- */}
-
-          <div className="info-card">
-          <h3>
-          <Icons icon={faUserGraduate} /> Trainings
-          </h3>
-          {/* Resto de trainings... */}
-
-
-
-
-          <div className="info-card">
-          <h3>
-          <Icons icon={faUserGraduate} /> Trainings
-          </h3>
-          <ul>
-          <li>
-          <strong>Java Developer Professional Certificate</strong>
-          <br />
-          <span className="cert-meta">IBM Skills Network · 2026</span>
-          </li>
-          <li>
-          <strong>Full Stack Development Graduate</strong>
-          <br />
-          <span className="cert-meta">Bottega University · 2025</span>
-          </li>
-          <li>
-          <strong>IT Security Auditing & Data Protection (LOPD)</strong>
-          <br />
-          <span className="cert-meta">IFEFOR-CEBEK · 2023</span>
-          </li>
-          </ul>
-          </div>
-
-          <div className="info-card">
-          <h3><Icons icon={faBook} /> Currently Learning</h3>
-          <ul>
-          <li>Software Engineering</li>
-          <li>Core Java & Spring Boot</li>
-          <li>Data Structures & Algorithms</li>
-          <li>BI / Data Analytics / Data Science</li>
-          <li>R / DAX</li>
-          </ul>
-          </div>
-
-          <div className="info-card">
-          <h3><Icons icon={faTools} /> Currently Working On</h3>
-          <ul>
-          <li>Shell <em>but-UI-based experience</em> tools</li>
-          <li>OpenWrt - QualcommAX drivers disassembling</li>
-          <li>Node - React "webshell" components</li>
-          <li>Some WireGuard tools for OpenWrt</li>
-          <li>Socioeconomic Indicators in Basque Country data science project</li>
-          <li>Data Modeling - ETL, for PowerBI</li>
-          </ul>
-          </div>
-
-          <div className="info-card">
-          <h4>
-          <Icons icon={faCode} /> Languages you can approach me in ...
-          </h4>
-          <div className="language-list">
-          {languages.map((lang, idx) => (
-            <div key={idx} className="language-item">
-            <span className="lang-name">{lang.name}</span>
-            <span className="lang-level">{lang.level}</span>
-            </div>
-          ))}
-          </div>
-          </div>
-
-          <div className="info-card">
-          <h4> ... and the human languages too <Icons icon={faLanguage} /></h4>
-          <div className="language-list">
-          {humanLanguages.map((lang, idx) => (
-            <div key={idx} className="language-item">
-            <span className="lang-name">{lang.name}</span>
-            <span className="lang-level">{lang.level}</span>
-            </div>
-          ))}
-          </div>
-          </div>
-          </div>
-          </div>
           </motion.div>
-          </div>
-          </section>
+        </div>
+      </section>
 
-          {/* ============================================
-            PROJECTS SECTION
-            ============================================ */}
-            <section className="projects-section">
-            <div className="section-container">
-            <motion.div
+      {/* ============================================
+        PROJECTS SECTION
+        ============================================ */}
+      <section className="projects-section">
+        <div className="section-container">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            >
+          >
             <div className="projects-header">
-            <h2 className="section-title">
-            <span className="title-accent">//</span> Draft Projects
-            </h2>
-            <a
-            href="https://github.com/alexandrglm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="view-all"
-            >
-            Check them in GitHub <Icons icon={faArrowRight} />
-            </a>
+              <h2 className="section-title">
+                <span className="title-accent">//</span> Draft Projects
+              </h2>
+              <a
+                href="https://github.com/alexandrglm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="view-all"
+              >
+                Check them in GitHub <Icons icon={faArrowRight} />
+              </a>
             </div>
 
             <div className="projects-grid">
-            {featuredProjects.map((project, idx) => (
-              <motion.div
-              key={idx}
-              className="project-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -5 }}
-              >
-              <div className="project-icon">
-              <Icons icon={project.icon} />
-              </div>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="project-tech">
-              {project.tech.map((tech, tIdx) => (
-                <span key={tIdx} className="tech-tag">{tech}</span>
-              ))}
-              </div>
-              <div className="project-links">
-              {project.link && project.link !== '#' && (
-                <a
-                href={`https://github.com/alexandrglm/${project.github}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="github-link"
+              {featuredProjects.map((project, idx) => (
+                <motion.div
+                  key={idx}
+                  className="project-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -5 }}
                 >
-                <Icons icon={faGithub} />
-                </a>
-              )}
-              </div>
-              </motion.div>
-            ))}
+                  <div className="project-icon">
+                    <Icons icon={project.icon} />
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className="project-tech">
+                    {project.tech.map((tech, tIdx) => (
+                      <span key={tIdx} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                  <div className="project-links">
+                    {project.link && project.link !== '#' && (
+                      <a
+                        href={`https://github.com/alexandrglm/${project.github}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="github-link"
+                      >
+                        <Icons icon={faGithub} />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            </motion.div>
-            </div>
-            </section>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* ============================================
-              FOOTER
-              ============================================ */}
-              <footer className="page-footer">
-              <div className="section-container">
-              <div className="footer-content">
-              <div className="footer-message">
+      {/* ============================================
+        FOOTER
+        ============================================ */}
+      <footer className="page-footer">
+        <div className="section-container">
+          <div className="footer-content">
+            <div className="footer-message">
               <span className="footer-icon">⚡</span>
               <span>// everything is a draft, including this site</span>
-              </div>
-              </div>
-              </div>
-              </footer>
-              </motion.div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </motion.div>
   );
 }
