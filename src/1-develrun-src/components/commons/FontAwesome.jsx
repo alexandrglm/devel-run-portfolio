@@ -154,7 +154,7 @@ export {
   faHome,
   faCompass,
   faArrowLeft,
-  faSeedling
+  faSeedling,
   faSignsPost,
   faChartArea
 };
