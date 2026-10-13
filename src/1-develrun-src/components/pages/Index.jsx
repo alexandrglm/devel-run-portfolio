@@ -39,7 +39,10 @@ import {
   faGraduationCap,
   faCertificate,
   faUserGraduate,
-  faMailBulk
+  faMailBulk,
+  faSeedling,
+  faSignsPost,
+  faChartArea
 } from '../commons/FontAwesome';
 
 export default function Index() {
@@ -51,6 +54,30 @@ export default function Index() {
   ];
 
   const featuredProjects = [
+    {
+      title: 'Power BI Training Demos 2026',
+      description: 'Overview of Power BI demo projects created and shared for a 2026 data science training, including sales, ODS-2030-EUS, and financials datasets.',
+      tech: ['Power BI', 'DAX', 'Python', 'ETL'],
+      link: '/',
+      icon: faChartArea,
+      github: 'demos-powerbi-training-2026'
+    },
+    {
+      title: 'Kobo Clara eReader SDK 2026',
+      description: 'Cross-compilation toolchain for the Kobo Clara Colour, solving compatibility issues that arise when using standard Docker images or the default Debian cross-compiler.',
+      tech: ['crosstools-NG', 'glibC 2.19', 'GCC 9.5.0', ],
+      link: '/',
+      icon: faSeedling,
+      github: 'kobo-clara-colour-toolchain-glibc2.19'
+    },
+    {
+      title: 'Euskadi Cartography WGS84 fixes 2026',
+      description: 'Basque Country cartography data, fixed & updated to 2026, converted to WGS84 projection, paired with all official names (also includes "El limitado"), ready to use in Maps, Power BI, etc.',
+      tech: ['GeoJSON', 'wgs84', 'GIS', 'PowerBI'],
+      link: '/',
+      icon: faSignsPost,
+      github: 'euskadi-cartography-wgs84-fixed-updated-2026'
+    },
     {
       title: 'WebShell React',
       description: 'React-based WebShell for real-time server shell access on Render, Heroku, and related free-tier platforms without native shell access.',
@@ -315,6 +342,11 @@ export default function Index() {
                   </h3>
                   <ul>
                     <li>
+                      <strong>Data Science / BI</strong>
+                      <br />
+                      <span className="cert-meta">IFEFOR-CEBEK · 2026</span>
+                    </li>
+                    <li>
                       <strong>Java Developer Professional Certificate</strong>
                       <br />
                       <span className="cert-meta">IBM Skills Network · 2026</span>
@@ -339,7 +371,6 @@ export default function Index() {
                     <li>Core Java & Spring Boot</li>
                     <li>Data Structures & Algorithms</li>
                     <li>BI / Data Analytics / Data Science</li>
-                    <li>R / DAX</li>
                   </ul>
                 </div>
 

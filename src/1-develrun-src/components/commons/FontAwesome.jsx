@@ -62,10 +62,11 @@ faSearch,
 faMicrochip,
 faHome,
 faCompass,
-faArrowLeft } from
-
-
-'@fortawesome/free-solid-svg-icons';
+faSeedling
+faArrowLeft
+faSignsPost,
+faChartArea
+} from '@fortawesome/free-solid-svg-icons';
 
 import {
 faGithub,
@@ -152,4 +153,8 @@ faNodeJs,
 faMicrochip,
 faHome,
 faCompass,
-faArrowLeft };
+faArrowLeft,
+faSeedling
+faSignsPost,
+faChartArea
+};
