@@ -63,7 +63,7 @@ import {
   faHome,
   faCompass,
   faSeedling,
-  faArrowLeft
+  faArrowLeft,
   faSignsPost,
   faChartArea
 } from '@fortawesome/free-solid-svg-icons';
