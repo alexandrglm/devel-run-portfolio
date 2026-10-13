@@ -276,43 +276,46 @@ export default function Index() {
               {/* Sidebar */}
               <div className="about-sidebar">
 
-                {/* branch: gravatar-ci  */}
+                {/* branch: gravatar-ci */}
                 <div className="info-card gravatar-card-wrapper">
                   <div className="gravatar-hovercard">
                     <div className="gravatar-hovercard__inner">
+
                       <div className="gravatar-hovercard__header">
                         <a className="gravatar-hovercard__avatar-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer">
-                          <img className="gravatar-hovercard__avatar" src="https://1.gravatar.com/avatar/3a217ecb55a0197d19dabb8f9dc8be833cc3542e02af00f2da75ae60c08c0d89?s=256&d=initials" width="80" height="80" alt="Alexander Gomez" />
+                          <img className="gravatar-hovercard__avatar" src="https://1.gravatar.com/avatar/3a217ecb55a0197d19dabb8f9dc8be833cc3542e02af00f2da75ae60c08c0d89?s=256&d=initials" alt="Alexander Gomez" />
                         </a>
                         <a className="gravatar-hovercard__personal-info-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer">
                           <h4 className="gravatar-hovercard__name">Alexander Gomez</h4>
                           <p className="gravatar-hovercard__job">Jr. Software Developer | FSD | Freelance</p>
                         </a>
-                      </div>
+                        </div>
 
-                      <div className="gravatar-hovercard__social-links">
-                        <a className="gravatar-hovercard__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" data-service-name="gravatar">
-                          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/gravatar.svg" width="24" height="24" alt="Gravatar" />
-                        </a>
-                        <a className="gravatar-hovercard__social-link" href="https://www.linkedin.com/in/alexandr-gomez-8056a8389" target="_blank" rel="noopener noreferrer" data-service-name="linkedin">
-                          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/linkedin.svg" width="24" height="24" alt="LinkedIn" />
-                        </a>
-                        <a className="gravatar-hovercard__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" data-service-name="github">
-                          <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/github.svg" width="24" height="24" alt="GitHub" />
-                        </a>
-                      </div>
+                        <div className="gravatar-hovercard__social-links">
+                          <a className="gravatar-hovercard__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" data-service-name="gravatar" title="Gravatar">
+                            <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/gravatar.svg" alt="Gravatar" />
+                          </a>
+                          <a className="gravatar-hovercard__social-link" href="https://www.linkedin.com/in/alexandr-gomez-8056a8389" target="_blank" rel="noopener noreferrer" data-service-name="linkedin" title="LinkedIn">
+                            <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/linkedin.svg" alt="LinkedIn" />
+                          </a>
+                          <a className="gravatar-hovercard__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" data-service-name="github" title="GitHub">
+                            <img className="gravatar-hovercard__social-icon" src="https://s.gravatar.com/icons/github.svg" alt="GitHub" />
+                          </a>
+                        </div>
 
-                      <div className="gravatar-hovercard__footer">
-                        <a className="gravatar-hovercard__profile-url" title="https://gravatar.com/glmalexandr" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
+                        <div className="gravatar-hovercard__footer">
+                          <a className="gravatar-hovercard__profile-url" title="https://gravatar.com/glmalexandr" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
                           gravatar.com/glmalexandr
-                        </a>
-                        <a className="gravatar-hovercard__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
+                          </a>
+                          <a className="gravatar-hovercard__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
                           View profile →
-                        </a>
+                          </a>
                       </div>
+
                     </div>
                   </div>
                 </div>
+
 
                 <div className="info-card">
                   <h3>
