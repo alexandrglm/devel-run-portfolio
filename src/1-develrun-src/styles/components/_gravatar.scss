@@ -1,0 +1,105 @@
+@use '../vars' as *;
+@use '../mixins' as *;
+
+
+.gravatar-profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    // border-radius: $radius-sm;
+
+    .gravatar-card__header {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+
+        .gravatar-card__avatar-link {
+            flex-shrink: 0;
+
+            .gravatar-card__avatar {
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid var(--primary);
+                transition: transform $transition-fast;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        .gravatar-card__info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+
+            .gravatar-card__name {
+                font-size: 1.1rem;
+                color: var(--text);
+                margin: 0 0 2px 0;
+                font-weight: 700;
+            }
+
+            .gravatar-card__job {
+                font-size: 0.8rem;
+                color: var(--text-secondary);
+                margin: 0;
+                line-height: 1.3;
+            }
+        }
+    }
+
+    .gravatar-card__social-links {
+        display: flex;
+        gap: $spacing-sm;
+        padding-top: $spacing-xs;
+        border-top: 1px solid var(--border);
+
+        .gravatar-card__social-link {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            transition: all $transition-fast;
+
+            img {
+                width: 16px;
+                height: 16px;
+                filter: var(--icon-filter, none);
+            }
+
+            &:hover {
+                border-color: var(--primary);
+                transform: translateY(-2px);
+                background: var(--card-bg);
+            }
+        }
+    }
+
+    .gravatar-card__footer {
+        padding-top: $spacing-xs;
+        text-align: right;
+
+        .gravatar-card__profile-link {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: $spacing-xs;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
