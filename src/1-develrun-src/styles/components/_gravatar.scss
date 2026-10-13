@@ -7,9 +7,7 @@
     gap: $spacing-md;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: var(--border-radius, $radius-sm);
-    padding: $spacing-lg;
-
+    padding: $spacing-md;
 
     // flex para upper
     .gravatar-card__header {
@@ -21,8 +19,8 @@
             flex-shrink: 0;
 
             .gravatar-card__avatar {
-                width: 68px;
-                height: 68px;
+                width: 64px;
+                height: 64px;
                 border-radius: 50%;
                 object-fit: cover;
                 border: 2px solid var(--primary);
@@ -43,7 +41,7 @@
             min-width: 0;
 
             .gravatar-card__name {
-                font-size: 1.15rem;
+                font-size: 1.1rem;
                 color: var(--text);
                 margin: 0;
                 font-weight: 700;
@@ -59,7 +57,7 @@
                 font-size: 0.8rem;
                 color: var(--text-secondary);
                 margin: 0;
-                line-height: 1.4;
+                line-height: 1.3;
             }
         }
     }
@@ -68,12 +66,12 @@
         display: flex;
         align-items: center;
         gap: $spacing-sm;
-        padding-top: $spacing-sm;
+        padding-top: $spacing-xs;
         border-top: 1px solid var(--border);
 
         .gravatar-card__social-link {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -83,8 +81,8 @@
             transition: all $transition-fast;
 
             img {
-                width: 18px;
-                height: 18px;
+                width: 16px;
+                height: 16px;
                 filter: brightness(0.9) invert(0.1);
             }
 
@@ -92,7 +90,6 @@
                 border-color: var(--primary);
                 background: var(--card-bg);
                 transform: translateY(-2px);
-                box-shadow: 0 4px 12px var(--shadow);
 
                 img {
                     filter: none;
@@ -114,10 +111,6 @@
             text-decoration: none;
             font-family: var(--font-mono, monospace);
             font-size: 0.75rem;
-
-            &:hover {
-                color: var(--text);
-            }
         }
 
         .gravatar-card__profile-link {
@@ -127,7 +120,6 @@
             display: inline-flex;
             align-items: center;
             gap: $spacing-xs;
-            transition: color $transition-fast;
 
             &:hover {
                 color: var(--primary-hover);
