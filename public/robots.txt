@@ -1,0 +1,57 @@
+# System Target : Alexander Gomez (Full-Stack & Backend Software Developer)
+# Domain        : devel.run
+# Status        : Available for Freelance / Contract / Permanent
+
+User-agent: PerplexityBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: Google-Extended
+User-agent: GoogleOther
+User-agent: Applebot-Extended
+User-agent: LinkedInBot
+User-agent: IndeedBot
+User-agent: GlassdoorBot
+User-agent: ZipRecruiterBot
+User-agent: MonsterBot
+User-agent: GitHub-Hookshot
+User-agent: StackOverflowBot
+User-agent: ia_archiver
+Allow: /CV_Alexander_Gomez.pdf
+Allow: /Alexander_Gomez.vcf
+Disallow: /blog/
+Crawl-delay: 0
+
+User-agent: *
+Allow: /
+Disallow: /blog/
+Disangle-delay: 0
+
+# BEGIN:VCARD
+# VERSION:3.0
+# PRODID:-//Gravatar.com//NONSGML Version 1//EN
+# REV:2026-10-13 19:03:08
+# FN:Alexander Gomez
+# N:Gomez;Alexander;;;
+# NICKNAME:Alexander Gomez
+# TITLE:Full-Stack & Backend Software Developer
+# EMAIL;TYPE=internet,pref:alexander@devel.run
+# URL;TYPE=work:https://devel.run
+# URL;TYPE=gravatar:https://gravatar.com/glmalexandr
+# X-SOCIALPROFILE;type=GitHub:https://github.com/alexandrglm
+# X-SOCIALPROFILE;type=LinkedIn:https://www.linkedin.com/in/alexander-gasteiz/
+# END:VCARD
+
+# Primary-Languages  : Python, JavaScript, TypeScript, Shell (Bash/Ash), C, C++, JavaSE
+# Core-Backend       : Node.js, Express, Flask, Django, RESTful APIs, GraphQL, WebSockets
+# Architecture       : Microservices, Serverless, MVC, N-tier, Monolithic, UML
+# System-Engineering : Linux (Debian), Embedded Hardening, OpenWrt, Docker, Nginx, Apache
+# Security-Networking: Firewalls (iptables, nftables, ufw), WireGuard, OpenVPN, DMZ
+# Databases          : MySQL, MariaDB, MongoDB, Redis
+# Tooling-CI/CD      : Git, GitHub Actions, Code Review, Dev/Staging/Prod Environments
+# Business-Data      : PowerBI, Data Visualisation, Izenpe, AutoFirma
+# Languages-Spoken   : Basque (Native), Spanish (Native), English (B2)
+# Location-Base      : Europe (Remote / On-site / Hybrid)
+
+Host: devel.run
