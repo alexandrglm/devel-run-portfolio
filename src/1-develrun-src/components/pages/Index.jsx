@@ -74,7 +74,7 @@ export default function Index() {
       github: 'kobo-clara-colour-toolchain-glibc2.19'
     },
     {
-      title: 'Euskadi Cartography WGS84 fixes 2026',
+      title: 'Euskadi Cartography WGS84 fixes',
       description: 'Basque Country cartography data, fixed & updated to 2026, converted to WGS84 projection, paired with all official names (also includes "El limitado"), ready to use in Maps, Power BI, etc.',
       tech: ['GeoJSON', 'wgs84', 'GIS', 'PowerBI'],
       link: '/',
@@ -285,9 +285,13 @@ export default function Index() {
                   With no particular charisma but, although I dedicated my education and career to other fields, I never stop striving to <strong>keep learning every day</strong>; not only new programming languages and frameworks, or getting new ways to tinker with devices, but also through learning alongside other developers.<br /><br />
                 </p>
 
-                <h3>This is my goal, my current journey.</h3><br /><h3> And, these are my interests:</h3>
+                <h3>This is my goal, my current journey.</h3>
 
                 {/* Interests Grid */}
+                <h2 className="section-title">
+                  <span className="title-accent">//</span> Focus Areas
+                </h2>
+
                 <div className="interests-grid">
                   {interests
                     .sort((a, b) => (a.orderId || 0) - (b.orderId || 0))
@@ -314,7 +318,8 @@ export default function Index() {
                     </a>
                     <a className="gravatar-card__personal-info-link" href="https://gravatar.com/glmalexandr" target="_blank" rel="noopener noreferrer">
                     <h4 className="gravatar-card__name">Alexander Gomez</h4>
-                    <p className="gravatar-card__job">Jr. Software Developer | FSD | Freelance</p>
+                    <p className="gravatar-card__job">Jr. Software Developer | FullStack | Data Analyst</p>
+                    <p className="gravatar-card__job">Freelance</p>
                     </a>
                   </div>
 
@@ -347,7 +352,7 @@ export default function Index() {
 
                 <div className="info-card">
                   <h3>
-                    <Icons icon={faUserGraduate} /> Trainings
+                    <Icons icon={faUserGraduate} /> Training
                   </h3>
                   <ul>
                     <li>
@@ -376,22 +381,23 @@ export default function Index() {
                 <div className="info-card">
                   <h3><Icons icon={faBook} /> Currently Learning</h3>
                   <ul>
-                    <li>Software Engineering</li>
-                    <li>Core Java & Spring Boot</li>
+                    <li>Data Science / Data Analytics</li>
                     <li>Data Structures & Algorithms</li>
-                    <li>BI / Data Analytics / Data Science</li>
+                    <li>Python refresh for data science projects</li>
+                    <li>Software Engineering</li>
+                    <li>Core JavaSE & Spring Boot</li>
                   </ul>
                 </div>
 
                 <div className="info-card">
                   <h3><Icons icon={faTools} /> Currently Working On</h3>
                   <ul>
+                    <li>Data Modeling - ETL</li>
+                    <li>Various Socioeconomic Indicators data science project</li>
                     <li>Shell <em>but-UI-based experience</em> tools</li>
                     <li>OpenWrt - QualcommAX drivers disassembling</li>
+                    <li>Some WireGuard and other tools, for OpenWrt</li>
                     <li>Node - React "webshell" components</li>
-                    <li>Some WireGuard tools for OpenWrt</li>
-                    <li>Socioeconomic Indicators in Basque Country data science project</li>
-                    <li>Data Modeling - ETL, for PowerBI</li>
                   </ul>
                 </div>
 
