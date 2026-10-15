@@ -67,7 +67,7 @@ import {
   faSignsPost,
   faChartArea,
   faFile,
-  faAdressCard,
+  faAddressCard,
   faShareNodes
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -161,6 +161,6 @@ export {
   faSignsPost,
   faChartArea,
   faFile,
-  faAdressCard,
+  faAddressCard,
   faShareNodes
 };
