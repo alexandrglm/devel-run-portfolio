@@ -44,8 +44,8 @@ import {
   faSignsPost,
   faChartArea,
   faFile,
-  faAddresscard,
-  faSharenodes
+  faAddressCard,
+  faShareNodes
 } from '../commons/FontAwesome';
 
 export default function Index() {
@@ -321,7 +321,7 @@ export default function Index() {
                   <div className="gravatar-card__social-links">
 
                     <a className="gravatar-card__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" title="Gravatar">
-                      <Icons icon={faSharenodes} />
+                      <Icons icon={faShareNodes} />
                     </a>
 
                     <a className="gravatar-card__social-link" href="https://www.linkedin.com/in/alexander-gasteiz" target="_blank" rel="noopener noreferrer" title="LinkedIn">
@@ -337,7 +337,7 @@ export default function Index() {
                     </a>
 
                     <a className="gravatar-card__social-link" href="/Alexander_Gomez.vcf" target="_blank" rel="noopener noreferrer" title="GitHub">
-                    <Icons icon={faAddresscard} />
+                    <Icons icon={faAddressCard} />
                     </a>
 
                   </div>
