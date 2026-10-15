@@ -321,33 +321,27 @@ export default function Index() {
                   <div className="gravatar-card__social-links">
 
                     <a className="gravatar-card__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" title="Gravatar">
-                      <Icons icon={faShareNodes} />
+                      <Icons icon={faShareNodes} color="#e8e6e3"/>
                     </a>
 
                     <a className="gravatar-card__social-link" href="https://www.linkedin.com/in/alexander-gasteiz" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                      <Icons icon={faLinkedin} />
+                      <Icons icon={faLinkedin} color="#e8e6e3"/>
                     </a>
 
                     <a className="gravatar-card__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" title="GitHub">
-                      <Icons icon={faGithub} />
+                      <Icons icon={faGithub} color="#e8e6e3"/>
                     </a>
 
                     <a className="gravatar-card__social-link" href="/CV_Alexander_Gomez.pdf" target="_blank" rel="noopener noreferrer" title="GitHub">
-                      <Icons icon={faFile} />
+                      <Icons icon={faFile} color="#e8e6e3"/>
                     </a>
 
                     <a className="gravatar-card__social-link" href="/Alexander_Gomez.vcf" target="_blank" rel="noopener noreferrer" title="GitHub">
-                    <Icons icon={faAddressCard} />
+                    <Icons icon={faAddressCard} color="#e8e6e3"/>
                     </a>
 
                   </div>
 
-                  {/*<div className="gravatar-card__footer">
-                    <span className="gravatar-card__profile-url">gravatar.com/glmalexandr</span>
-                    <a className="gravatar-card__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
-                    Profile →
-                    </a>
-                  </div>*/}
                 </div>
 
 
