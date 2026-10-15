@@ -65,7 +65,10 @@ import {
   faSeedling,
   faArrowLeft,
   faSignsPost,
-  faChartArea
+  faChartArea,
+  faFile,
+  faAdresscard,
+  faSharenodes
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -156,5 +159,8 @@ export {
   faArrowLeft,
   faSeedling,
   faSignsPost,
-  faChartArea
+  faChartArea,
+  faFile,
+  faAdresscard,
+  faSharenodes
 };

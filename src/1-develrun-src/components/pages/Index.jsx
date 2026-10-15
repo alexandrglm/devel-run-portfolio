@@ -42,7 +42,10 @@ import {
   faMailBulk,
   faSeedling,
   faSignsPost,
-  faChartArea
+  faChartArea,
+  faFile,
+  faAddresscard,
+  faSharenodes
 } from '../commons/FontAwesome';
 
 export default function Index() {
@@ -305,34 +308,46 @@ export default function Index() {
 
                 {/* branch: gravatar-ci */}
                 <div className="info-card gravatar-profile-card">
-                <div className="gravatar-card__header">
-                <a className="gravatar-card__avatar-link" href="https://gravatar.com/glmalexandr" target="_blank" rel="noopener noreferrer">
-                <img className="gravatar-card__avatar" src="https://1.gravatar.com/avatar/3a217ecb55a0197d19dabb8f9dc8be833cc3542e02af00f2da75ae60c08c0d89?s=256&d=initials" alt="Alexander Gomez" />
-                </a>
-                <a className="gravatar-card__personal-info-link" href="https://gravatar.com/glmalexandr" target="_blank" rel="noopener noreferrer">
-                <h4 className="gravatar-card__name">Alexander Gomez</h4>
-                <p className="gravatar-card__job">Jr. Software Developer | FSD | Freelance</p>
-                </a>
-                </div>
+                  <div className="gravatar-card__header">
+                    <a className="gravatar-card__avatar-link" href="https://gravatar.com/glmalexandr" target="_blank" rel="noopener noreferrer">
+                    <img className="gravatar-card__avatar" src="https://1.gravatar.com/avatar/3a217ecb55a0197d19dabb8f9dc8be833cc3542e02af00f2da75ae60c08c0d89?s=256&d=initials" alt="Alexander Gomez" />
+                    </a>
+                    <a className="gravatar-card__personal-info-link" href="https://gravatar.com/glmalexandr" target="_blank" rel="noopener noreferrer">
+                    <h4 className="gravatar-card__name">Alexander Gomez</h4>
+                    <p className="gravatar-card__job">Jr. Software Developer | FSD | Freelance</p>
+                    </a>
+                  </div>
 
-                <div className="gravatar-card__social-links">
-                <a className="gravatar-card__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" title="Gravatar">
-                <img src="https://s.gravatar.com/icons/gravatar.svg" alt="Gravatar" />
-                </a>
-                <a className="gravatar-card__social-link" href="https://www.linkedin.com/in/alexandr-gomez-8056a8389" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                <img src="https://s.gravatar.com/icons/linkedin.svg" alt="LinkedIn" />
-                </a>
-                <a className="gravatar-card__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" title="GitHub">
-                <img src="https://s.gravatar.com/icons/github.svg" alt="GitHub" />
-                </a>
-                </div>
+                  <div className="gravatar-card__social-links">
 
-                <div className="gravatar-card__footer">
-                <span className="gravatar-card__profile-url">gravatar.com/glmalexandr</span>
-                <a className="gravatar-card__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
-                Profile →
-                </a>
-                </div>
+                    <a className="gravatar-card__social-link" href="https://gravatar.com/glmalexandr?utm_source=hovercard" target="_blank" rel="noopener noreferrer" title="Gravatar">
+                      <Icons icon={faSharenodes} />
+                    </a>
+
+                    <a className="gravatar-card__social-link" href="https://www.linkedin.com/in/alexander-gasteiz" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                      <Icons icon={faLinkedin} />
+                    </a>
+
+                    <a className="gravatar-card__social-link" href="https://github.com/alexandrglm" target="_blank" rel="noopener noreferrer" title="GitHub">
+                      <Icons icon={faGithub} />
+                    </a>
+
+                    <a className="gravatar-card__social-link" href="/CV_Alexander_Gomez.pdf" target="_blank" rel="noopener noreferrer" title="GitHub">
+                      <Icons icon={faFile} />
+                    </a>
+
+                    <a className="gravatar-card__social-link" href="/Alexander_Gomez.vcf" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <Icons icon={faAddresscard} />
+                    </a>
+
+                  </div>
+
+                  {/*<div className="gravatar-card__footer">
+                    <span className="gravatar-card__profile-url">gravatar.com/glmalexandr</span>
+                    <a className="gravatar-card__profile-link" href="https://gravatar.com/glmalexandr?utm_source=profile-card" target="_blank" rel="noopener noreferrer">
+                    Profile →
+                    </a>
+                  </div>*/}
                 </div>
 
 
