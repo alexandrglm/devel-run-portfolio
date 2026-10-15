@@ -109,64 +109,64 @@ export default function Index() {
 
   const interests = [
     {
-      orderId: 4,
-      icon: faNetworkWired,
-      label: 'Firewalling & Networking',
-      desc: 'Hardening OpenWrt systems, automating WireGuard deployments, and treating routers as development platforms for MIPS and ARM (Lantiq, Broadcom BCM6328, ipq807x)'
-    },
-    {
-      orderId: 7,
-      icon: faMicrochip,
-      label: 'Embedded & Dev Boards',
-      desc: 'Playing with ESP32, Arduino, and anything with a UART. From MicroPython to LVGL (if it has pins xD) I\'ll probably try to reprogram it'
-    },
-    {
-      orderId: 3,
-      icon: faSearch,
-      label: 'Reverse Engineering',
-      desc: 'Dissecting firmware with Ghidra, mapping TR-069 protocol internals, or understanding how hardware really works under the hood'
-    },
-    {
-      orderId: 8,
-      icon: faDatabase,
-      label: 'Data Science & BI',
-      desc: 'Taking my first steps with Power BI, personal projects modeling Euskadi socioeconomic indicators. Learning R, DAX, and the art of ETL'
-    },
-    {
-      orderId: 6,
-      icon: faPalette,
-      label: 'Artistic Skills',
-      desc: 'Preserving anime cel pigmentation references (STAC, Taiyo Shikisai), documenting colour history. Also playing guitar / bass'
-    },
-    {
-      orderId: 10,
-      icon: faMobile,
-      label: 'Android Ecosystem',
-      desc: 'Keeping old devices alive with GSI ROMs, Magisk modules, and Play Integrity bypasses'
-    },
-    {
-      orderId: 9,
-      icon: faTerminal,
-      label: 'Shell Scripting & UI',
-      desc: 'Creating CLI tools with Ash and Bash, building interactive shell experiences with UI/UX in mind, and turning terminal chaos into order'
-    },
-    {
-      orderId: 2,
-      icon: faCode,
-      label: 'C & Systems Programming',
-      desc: 'Migrating shell tools to C for performance, because sometimes shell isn\'t fast enough, and I like getting closer to the metal'
-    },
-    {
-      orderId: 5,
+      orderId: 1,
       icon: faGraduationCap,
       label: 'Learning',
       desc: 'Full Stack Development graduate from Bottega. Currently diving deeper into Data Modeling, JavaSE/Spring, and whatever catches my curiosity'
     },
     {
-      orderId: 1,
+      orderId: 2,
+      icon: faDatabase,
+      label: 'Data Science & BI',
+      desc: 'Taking my first steps with Power BI, personal projects modeling Euskadi socioeconomic indicators. Learning R, DAX, and the art of ETL'
+    },
+    {
+      orderId: 3,
+      icon: faTerminal,
+      label: 'Shell Scripting & UI',
+      desc: 'Creating CLI tools, by building interactive shell experiences with UI/UX in mind, and turning terminal chaos into order'
+    },
+    {
+      orderId: 4,
+      icon: faSearch,
+      label: 'Reverse Engineering',
+      desc: 'Dissecting firmware with Ghidra, mapping many ISP\'s TR-069 protocol internals, or understanding how hardware really works under the hood'
+    },
+    {
+      orderId: 5,
+      icon: faCode,
+      label: 'C & Systems Programming',
+      desc: 'Migrating shell tools to C for performance, because sometimes shell isn\'t fast enough, and I like getting closer to the metal'
+    },
+    {
+      orderId: 6,
+      icon: faMicrochip,
+      label: 'Embedded & Dev Boards',
+      desc: 'Playing some ESP32, Arduino boards, almost anything with a UART. From MicroPython to LVGL (if it has pins xD), I\'ll probably try to reprogram it'
+    },
+    {
+      orderId: 7,
+      icon: faNetworkWired,
+      label: 'Firewalling & Networking',
+      desc: 'Hardening Linux-based environments, automating WireGuard deployments, treating routers as development platforms for MIPS and ARM (Lantiq, Broadcom BCM6328, IPQ807x)'
+    },
+    {
+      orderId: 8,
       icon: faTools,
       label: 'Hardware Tinkering',
-      desc: 'Hooking up wires to anything with a serial port, tinkering with dev boards, and treating routers as embedded platforms'
+      desc: 'Hooking up wires to anything with a serial port, tinkering with dev boards, and treating routers as embedded platforms for development'
+    },
+    {
+      orderId: 9,
+      icon: faMobile,
+      label: 'Android Ecosystem',
+      desc: 'Keeping old devices alive with GSI ROMs, Magisk modules, coding Play Integrity bypass tools'
+    },
+    {
+      orderId: 10,
+      icon: faPalette,
+      label: 'Artistic Skills',
+      desc: 'Preserving and documenting history about anime cel pigmentation references (STAC, Taiyo Shikisai). Also playing guitar / bass for my own production (mixing, mastering skills)'
     }
   ];
 
